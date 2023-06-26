@@ -10,6 +10,9 @@ import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 
+import FamilyPage from "./pages/FamilyPage/FamilyPage";
+import FamilyDetail from "./components/FamilyDetails/FamilyDetails";
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +20,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+
+        <Route path="/family" element={<FamilyPage />} />
+
+        <Route path="/family/:id" element={<FamilyDetail />} />
 
         <Route
           path="/profile"
