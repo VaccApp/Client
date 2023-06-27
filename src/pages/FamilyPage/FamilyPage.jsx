@@ -21,11 +21,21 @@ export default function FamilyPage() {
     getAllFamilies();
   }, []);
 
+  const renderFamily = () => {
+    return family.map((fam) => <FamilyCard key={fam._id} {...fam} />);
+  };
+
   return (
     <div>
-      {family.map((fam) => (
-        <FamilyCard key={fam._id} {...fam} />
-      ))}
+      <h1>Family Page</h1>
+      <button>
+        <Link to="/family/create">Crear Familia</Link>
+      </button>
+      {family.length > 0 ? (
+        renderFamily()
+      ) : (
+        <p>Aún no hay miembros en la unidad familiar.</p>
+      )}
     </div>
   );
 }
