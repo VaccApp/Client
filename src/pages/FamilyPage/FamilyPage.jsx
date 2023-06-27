@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import FamilyCard from "../../components/FamilyCard/FamilyCard";
+import FamilyCard from "../../components/Family/FamilyCard";
 
 const API_URL = "http://localhost:5005";
 
 export default function FamilyPage() {
   const [family, setFamily] = useState([]);
+
+  console.log();
 
   const getAllFamilies = () => {
     axios
@@ -18,8 +20,6 @@ export default function FamilyPage() {
   useEffect(() => {
     getAllFamilies();
   }, []);
-
-  console.log(family.map((fam) => console.log(fam._id)));
 
   return (
     <div>

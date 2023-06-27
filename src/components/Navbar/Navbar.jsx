@@ -16,14 +16,30 @@ function Navbar() {
 
       {isLoggedIn && (
         <>
-          <button onClick={logOutUser}>Logout</button>
+          <button onClick={logOutUser}>Cerrar sesión</button>
 
           <Link to="/profile">
-            <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
+            <button>Perfil</button>
+            {/* <img
+              src="https://picsum.photos/id/402/200/300"
+              style={{ width: 50, height: 50, borderRadius: 25 }}
+              alt="profile"
+            /> */}
           </Link>
 
-          <span>{user && user.name}</span>
+          <Link to="/family">
+            <button>Familia</button>
+          </Link>
+
+          <Link to="/child">
+            <button>Descendientes</button>
+          </Link>
+
+          <Link to="/vaccines">
+            <button>Vacunas</button>
+          </Link>
+
+          <span className="userIcon">{user && user.name}</span>
         </>
       )}
 
@@ -31,11 +47,11 @@ function Navbar() {
         <>
           <Link to="/signup">
             {" "}
-            <button>Sign Up</button>{" "}
+            <button>Registrarse</button>{" "}
           </Link>
           <Link to="/login">
             {" "}
-            <button>Login</button>{" "}
+            <button>Iniciar sesión</button>{" "}
           </Link>
         </>
       )}

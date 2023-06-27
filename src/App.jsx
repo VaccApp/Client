@@ -11,7 +11,13 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 
 import FamilyPage from "./pages/FamilyPage/FamilyPage";
-import FamilyDetail from "./components/FamilyDetails/FamilyDetails";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import React from "react";
+import FamilyDetails from "./components/Family/FamilyDetails";
+import VaccinesPage from "./pages/VaccinesPage/VaccinesPage";
+import VaccinePage from "./pages/VaccinesPage/VaccinePage";
+import ChildrenPage from "./pages/ChildrenPage/ChildrenPage";
+import ChildPage from "./pages/ChildrenPage/ChildPage";
 
 function App() {
   return (
@@ -21,9 +27,24 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route path="/family" element={<FamilyPage />} />
+        <Route
+          path="/family"
+          element={
+            <IsPrivate>
+              <FamilyPage />
+            </IsPrivate>
+          }
+        />
 
-        <Route path="/family/:id" element={<FamilyDetail />} />
+        <Route path="/family/:id" element={<FamilyDetails />} />
+
+        <Route path="/child" element={<ChildrenPage />} />
+
+        <Route path="/child/:childId" element={<ChildPage />} />
+
+        <Route path="/vaccines" element={<VaccinesPage />} />
+
+        <Route path="/vaccines/:vaccineId" element={<VaccinePage />} />
 
         <Route
           path="/profile"
@@ -50,6 +71,8 @@ function App() {
             </IsAnon>
           }
         />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,15 @@
+nav {
+    background-color: aquamarine;
+    padding: 40px;
+}
+
+nav button, span {
+    margin: 10px;
+    border-radius: 24%;
+
+}
+
+.userIcon {
+    background-color: #fdd226;
+    padding: 6px;
+}
