@@ -19,6 +19,8 @@ import VaccinePage from "./pages/VaccinesPage/VaccinePage";
 import ChildrenPage from "./pages/ChildrenPage/ChildrenPage";
 import ChildPage from "./pages/ChildrenPage/ChildPage";
 
+import FamilyCreateForm from "./pages/FamilyCreateForm/FamilyCreateForm";
+
 function App() {
   return (
     <div className="App">
@@ -35,6 +37,8 @@ function App() {
             </IsPrivate>
           }
         />
+
+        <Route path="/family/create" element={<FamilyCreateForm />} />
 
         <Route path="/family/:id" element={<FamilyDetails />} />
 
