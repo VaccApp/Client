@@ -8,8 +8,6 @@ const API_URL = "http://localhost:5005";
 export default function FamilyPage() {
   const [family, setFamily] = useState([]);
 
-  console.log();
-
   const getAllFamilies = () => {
     axios
       .get(`${API_URL}/family`)

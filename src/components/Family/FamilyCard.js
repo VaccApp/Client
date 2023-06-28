@@ -2,7 +2,7 @@ import "./FamilyCard.css";
 import { Link } from "react-router-dom";
 
 export default function FamilyCard({ surname, parents, children, _id }) {
-  console.log({ surname, parents, children, _id });
+  // console.log({ surname, parents, children, _id });
   return (
     <div className="familyCard">
       <Link to={`/family/${_id}`}>

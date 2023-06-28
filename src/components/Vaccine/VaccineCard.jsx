@@ -12,20 +12,30 @@ export default function VaccineCard({
   _id,
 }) {
   return (
-    <table className="vaccines">
-      <Link to={`/vaccines/${_id}`}>
-        <div key={_id} {..._id} className="vaccine">
+    <div>
+      <table className="vaccines">
+        {/* <div key={_id} {..._id} className="vaccine"> */}
+        <tbody key={_id} {..._id} className="vaccine">
           <tr>
             <td>Vacuna: {name}</td>
             <td>Dosis: {dose}</td>
+          </tr>
+          <tr>
             <td>Enfermedad: {disease}</td>
             <td>Farmacéutica: {creator}</td>
+          </tr>
+          <tr>
             <td>Fecha de expiración: {expires}</td>
             <td>Lote: {batch}</td>
+          </tr>
+          <tr>
             <td>Estado: {status}</td>
           </tr>
-        </div>
-      </Link>
-    </table>
+        </tbody>
+        <Link to={`/vaccines/${_id}`}>Ver vacuna</Link>
+
+        {/* </div> */}
+      </table>
+    </div>
   );
 }

@@ -23,7 +23,11 @@ export default function VaccinesPage() {
 
   const renderVaccines = () => {
     return vaccines.map((vaccine) => (
-      <VaccineCard key={vaccine._id} {...vaccine} />
+      <VaccineCard
+        key={vaccine._id}
+        {...vaccine}
+        // esto no se si va aquí: refreshVaccines={getAllVaccines}
+      />
     ));
   };
 

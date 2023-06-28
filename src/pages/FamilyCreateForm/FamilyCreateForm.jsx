@@ -6,26 +6,29 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
 export default function FamilyCreateForm() {
-  const [family, setFamily] = useState({
-    name: "",
-    parents: [],
-  });
-
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  //Aquí hay que volver
+  // const [family, setFamily] = useState({
+  //   name: "",
+  //   parents: [],
+  // });
+  const [parents, setParents] = useState([user.name]);
+  const [surname, setSurname] = useState("");
 
   const navigate = useNavigate();
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFamily({ ...family, [name]: value });
-  };
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setSurname({ ...family, [name]: value });
+  // };
+  const handleSurnameInput = (e) => setSurname(e.target.value);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     familyService
-      .create(family)
+      .create(parents, surname)
       .then((response) => {
-        console.log(response);
+        console.log("Response CREADA", response);
         navigate("/family");
       })
       .catch((error) => console.log(error));
@@ -41,20 +44,19 @@ export default function FamilyCreateForm() {
             type="text"
             name="surname"
             id="surname"
-            value={family.surname}
-            onChange={handleInputChange}
+            value={surname}
+            onChange={handleSurnameInput}
           />
           <br />
-          {/* <label htmlFor="parents">Progenitor </label>
+          <label htmlFor="parents">Progenitor </label>
           <input
             type="text"
             name="parents"
             id="parents"
-            value={user.name}
-            onChange={handleInputChange}
-            placeholder={user.name}
-            readonly
-          /> */}
+            // defaultValue={user.name}
+            value={parents}
+            placeholder={parents}
+          />
         </div>
         <br />
         <button type="submit">Crear Familia</button>

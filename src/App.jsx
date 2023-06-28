@@ -20,6 +20,7 @@ import ChildrenPage from "./pages/ChildrenPage/ChildrenPage";
 import ChildPage from "./pages/ChildrenPage/ChildPage";
 
 import FamilyCreateForm from "./pages/FamilyCreateForm/FamilyCreateForm";
+import EditVaccinePage from "./pages/VaccinesPage/EditVaccinePage";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
 
         <Route path="/family/create" element={<FamilyCreateForm />} />
 
-        <Route path="/family/:id" element={<FamilyDetails />} />
+        <Route path="/family/:familyId" element={<FamilyDetails />} />
 
         <Route path="/child" element={<ChildrenPage />} />
 
@@ -49,6 +50,8 @@ function App() {
         <Route path="/vaccines" element={<VaccinesPage />} />
 
         <Route path="/vaccines/:vaccineId" element={<VaccinePage />} />
+
+        <Route path="/vaccines/:vaccineId/edit" element={<EditVaccinePage />} />
 
         <Route
           path="/profile"
