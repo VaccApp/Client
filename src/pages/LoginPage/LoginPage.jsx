@@ -3,6 +3,9 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import authService from "../../services/auth.service";
+import logo from "../../images/family-care-logo.png";
+import googleLogo from "../../images/google-logo.png";
+import appleLogo from "../../images/apple-logo.png";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -47,25 +50,42 @@ function LoginPage() {
   return (
     <div className="LoginPage">
       <h1>Login</h1>
+      <img src={logo} alt="familyCare logo" className="logo" />
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
+        <label>Usuario</label>
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleEmail}
+          placeholder="Tu email"
+        />
+        <br />
+        <label>Contraseña</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
+          placeholder="Tu contraseña"
         />
-
-        <button type="submit">Login</button>
+        <br />
+        <button type="submit" className="continuar">Continuar ➜</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <hr />
+      <button className="googleButton">
+        <img src={googleLogo} alt="Google logo" />
+        Continuar con Google</button>
+      <br />
+      <button className="appleButton">
+        <img src={appleLogo} alt="Apple logo" />
+        Continuar con Apple</button>
+      <br />
+      <p>¿Nuevo en familyCare?</p>
+      <Link to={"/signup"}> REGÍSTRATE</Link>
     </div>
   );
 }

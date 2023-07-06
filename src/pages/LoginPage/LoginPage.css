@@ -1,0 +1,77 @@
+.googleButton {
+  background-color: white;
+  color: darkgrey;
+  border: 1px darkgrey solid;
+  box-shadow: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.googleButton:hover {
+  background-color: #357ae8;
+}
+
+.googleButton:active {
+  background-color: #357ae8;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.googleButton:focus {
+  outline: none;
+}
+
+.googleButton img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.appleButton {
+  background-color: #000;
+  color: white;
+  border: none;
+  box-shadow: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.appleButton:hover {
+  background-color: #000;
+}
+
+.appleButton:active {
+  background-color: #000;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.appleButton:focus {
+  outline: none;
+}
+
+.appleButton img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.continuar {
+  background-color: #000;
+  color: white;
+  border: none;
+  box-shadow: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}

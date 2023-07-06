@@ -2,6 +2,9 @@ import "./SignupPage.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
+import logo from "../../images/family-care-logo.png";
+import googleLogo from "../../images/google-logo.png";
+import appleLogo from "../../images/apple-logo.png";
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -47,30 +50,57 @@ function SignupPage() {
 
   return (
     <div className="SignupPage">
-      <h1>Sign Up</h1>
+      <h1>Signup</h1>
+      {/* alinaer la imagen a la derecha */}
+      <img src={logo} alt="familyCare logo" className="logo" />
 
       <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
+        <label>Usuario</label>
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleEmail}
+          placeholder="Tu email"
+        />
+        <br />
+        <label>Contraseña</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
+          placeholder="Tu contraseña"
         />
-
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-
-        <button type="submit">Sign Up</button>
+        <br />
+        <label>Nombre</label>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleName}
+          placeholder="Tu nombre"
+        />
+        <p>
+          Al registrarte, aceptas nuestras Condiciones de uso y Política de
+          privacidad.
+        </p>
+        <button type="submit" className="continuar">Continuar ➜</button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>¿Ya tienes cuenta?</p>
-      <Link to={"/login"}> Inicia sesión</Link>
+      <hr />
+      <button className="googleButton">
+        <img src={googleLogo} alt="google logo" />
+        Continuar con Google</button>
+      <br />
+      <button className="appleButton">
+        <img src={appleLogo} alt="apple logo" />
+        Continuar con Apple</button>
+      <br />
+      <p>¿Ya tienes cuenta en familyCare?</p>
+      <Link to={"/login"}> INICIA SESIÓN</Link>
     </div>
   );
 }
