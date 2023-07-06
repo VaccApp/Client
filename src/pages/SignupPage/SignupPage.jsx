@@ -10,6 +10,8 @@ function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [dni, setDni] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -17,11 +19,13 @@ function SignupPage() {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
+  const handleSurname = (e) => setSurname(e.target.value);
+  const handleDni = (e) => setDni(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = { email, password, name };
+    const requestBody = { email, password, name, surname, dni };
 
     // Send a request to the server using axios
     /* 
@@ -81,6 +85,25 @@ function SignupPage() {
           onChange={handleName}
           placeholder="Tu nombre"
         />
+        <br />
+        <label>Apellido</label>
+        <input
+          type="text"
+          name="surname"
+          value={surname}
+          onChange={handleSurname}
+          placeholder="Tu apellido"
+        />
+        <br />
+        <label>DNI</label>
+        <input
+          type="text"
+          name="dni"
+          value={dni}
+          onChange={handleDni}
+          placeholder="Tu DNI"
+        />
+        <br />
         <p>
           Al registrarte, aceptas nuestras Condiciones de uso y Política de
           privacidad.
