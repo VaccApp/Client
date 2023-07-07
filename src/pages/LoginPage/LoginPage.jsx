@@ -53,25 +53,27 @@ function LoginPage() {
       <img src={logo} alt="familyCare logo" className="logo" />
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Usuario</label>
+        <label className="form-label">Usuario</label>
         <input
           type="email"
           name="email"
           value={email}
           onChange={handleEmail}
           placeholder="Tu email"
+          className="form-control"
         />
         <br />
-        <label>Contraseña</label>
+        <label className="form-label">Contraseña</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
           placeholder="Tu contraseña"
+          className="form-control"
         />
         <br />
-        <button type="submit" className="continuar">Continuar ➜</button>
+        <button type="submit" className="btn btn-dark">Continuar ➜</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
