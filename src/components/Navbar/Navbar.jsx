@@ -9,17 +9,19 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <Link to="/">
-        <button>Home</button>
+        <button class="btn btn-light">Home</button>
       </Link>
 
       {isLoggedIn && (
         <>
-          <button onClick={logOutUser}>Cerrar sesión</button>
+          <button class="btn btn-light" onClick={logOutUser}>
+            Cerrar sesión
+          </button>
 
           <Link to="/profile">
-            <button>Perfil</button>
+            <button class="btn btn-light">Perfil</button>
             {/* <img
               src="https://picsum.photos/id/402/200/300"
               style={{ width: 50, height: 50, borderRadius: 25 }}
@@ -28,15 +30,15 @@ function Navbar() {
           </Link>
 
           <Link to="/family">
-            <button>Familia</button>
+            <button class="btn btn-light">Familia</button>
           </Link>
 
           <Link to="/child">
-            <button>Descendientes</button>
+            <button class="btn btn-light">Descendientes</button>
           </Link>
 
           <Link to="/vaccines">
-            <button>Vacunas</button>
+            <button class="btn btn-light">Vacunas</button>
           </Link>
 
           <span className="userIcon">{user && user.name}</span>
@@ -47,11 +49,11 @@ function Navbar() {
         <>
           <Link to="/signup">
             {" "}
-            <button>Registrarse</button>{" "}
+            <button class="btn btn-light">Registrarse</button>{" "}
           </Link>
           <Link to="/login">
             {" "}
-            <button>Iniciar sesión</button>{" "}
+            <button class="btn btn-light">Iniciar sesión</button>{" "}
           </Link>
         </>
       )}

@@ -55,60 +55,64 @@ function SignupPage() {
   return (
     <div className="SignupPage">
       <h1>Signup</h1>
-      {/* alinaer la imagen a la derecha */}
       <img src={logo} alt="familyCare logo" className="logo" />
 
       <form onSubmit={handleSignupSubmit}>
-        <label>Usuario</label>
+        <label className="form-label">Usuario</label>
         <input
           type="email"
           name="email"
           value={email}
           onChange={handleEmail}
           placeholder="Tu email"
+          className="form-control"
         />
         <br />
-        <label>Contraseña</label>
+        <label className="form-label">Contraseña</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
           placeholder="Tu contraseña"
+          className="form-control"
         />
         <br />
-        <label>Nombre</label>
+        <label className="form-label">Nombre</label>
         <input
           type="text"
           name="name"
           value={name}
           onChange={handleName}
           placeholder="Tu nombre"
+          className="form-control"
         />
         <br />
-        <label>Apellido</label>
+        <label className="form-label">Apellido</label>
         <input
           type="text"
           name="surname"
           value={surname}
           onChange={handleSurname}
           placeholder="Tu apellido"
+          className="form-control"
         />
         <br />
-        <label>DNI</label>
+        <label className="form-label">DNI</label>
         <input
           type="text"
           name="dni"
           value={dni}
           onChange={handleDni}
           placeholder="Tu DNI"
+          className="form-control"
         />
         <br />
         <p>
           Al registrarte, aceptas nuestras Condiciones de uso y Política de
           privacidad.
         </p>
-        <button type="submit" className="continuar">Continuar ➜</button>
+        <button type="submit" className="btn btn-dark">Continuar ➜</button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
