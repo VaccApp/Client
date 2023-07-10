@@ -11,7 +11,7 @@ export default function FamilyDetails(props) {
   const getAFamily = (id) => {
     axios
       .get(`${API_URL}/family/${familyId}`)
-      .then((response) => setFamily(response.data))
+      .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   };
 
