@@ -4,15 +4,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import FamilyCard from "../../components/Family/FamilyCard";
 import "./FamilyPage.css";
-
-const API_URL = "http://localhost:5005";
+import familyService from "../../services/family.service";
 
 export default function FamilyPage() {
   const [families, setFamilies] = useState([]);
 
   const getAllFamilies = () => {
-    axios
-      .get(`${API_URL}/family`)
+    familyService
+      .list()
       .then((response) => setFamilies(response.data))
       .catch((error) => console.log(error));
   };
