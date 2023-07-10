@@ -19,6 +19,7 @@ import VaccinePage from "./pages/VaccinesPage/VaccinePage";
 import ChildrenPage from "./pages/ChildrenPage/ChildrenPage";
 import ChildPage from "./pages/ChildrenPage/ChildPage";
 import AddChildPage from "./pages/AddChildPage/AddChildPage";
+import ChildDetailPage from "./pages/ChildDetailPage/ChildDetailPage";
 import FamilyCreateForm from "./pages/FamilyCreateForm/FamilyCreateForm";
 import EditVaccinePage from "./pages/VaccinesPage/EditVaccinePage";
 
@@ -33,9 +34,7 @@ function App() {
         <Route
           path="/family"
           element={
-            <IsPrivate>
               <FamilyPage />
-            </IsPrivate>
           }
         />
 
@@ -47,7 +46,7 @@ function App() {
 
         <Route path="/child" element={<ChildrenPage />} />
 
-        <Route path="/child/:childId" element={<ChildPage />} />
+        {/* <Route path="family/:familyId/children" element={<ChildrenPage />} /> */}
 
         <Route path="/vaccines" element={<VaccinesPage />} />
 
