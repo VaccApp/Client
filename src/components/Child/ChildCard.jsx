@@ -8,7 +8,7 @@ export default function ChildCard({ name, birthdate, healthcard, vaccines }) {
   return (
     <div>
       <h1>{name}</h1>
-      <h3>Fecha de nacimiento: {birthdate}</h3>
+      <h3>Fecha de nacimiento: {birthdate.slice(0, 10)}</h3>
       <h4>Tarjeta sanitaria: {healthcard}</h4>
       <h4>Vacunas:</h4>
       {vaccines.map((vaccine) => (

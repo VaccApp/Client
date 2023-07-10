@@ -46,7 +46,7 @@ function App() {
 
         <Route path="/child" element={<ChildrenPage />} />
 
-        {/* <Route path="family/:familyId/children" element={<ChildrenPage />} /> */}
+        <Route path="family/:familyId/children/:id" element={<ChildDetailPage />} />
 
         <Route path="/vaccines" element={<VaccinesPage />} />
 
