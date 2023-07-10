@@ -11,7 +11,7 @@ function AddChildPage() {
   const [healthcard, setHealthcard] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const { user } = useContext(AuthContext);
 
