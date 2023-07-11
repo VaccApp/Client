@@ -21,10 +21,14 @@ function ChildDetailPage() {
     getChild();
   }, [id]);
 
+  const renderChild = () => {
+    return <ChildCard key={child._id} {...child} />;
+  };
+
   return (
     <div>
       <h1>Child Detail Page</h1>
-      <ChildCard key={child._id} {...child} />
+      {child && renderChild()}
     </div>
   );
 }
