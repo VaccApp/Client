@@ -22,6 +22,7 @@ import AddChildPage from "./pages/AddChildPage/AddChildPage";
 import ChildDetailPage from "./pages/ChildDetailPage/ChildDetailPage";
 import FamilyCreateForm from "./pages/FamilyCreateForm/FamilyCreateForm";
 import EditVaccinePage from "./pages/VaccinesPage/EditVaccinePage";
+import ChildDetails from "./components/Child/ChildDetails";
 
 function App() {
   return (
@@ -31,12 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route
-          path="/family"
-          element={
-              <FamilyPage />
-          }
-        />
+        <Route path="/family" element={<FamilyPage />} />
 
         <Route path="/family/create" element={<FamilyCreateForm />} />
 
@@ -44,9 +40,11 @@ function App() {
 
         <Route path="/family/:familyId/add-child" element={<AddChildPage />} />
 
-        <Route path="/child" element={<ChildrenPage />} />
+        {/* <Route path="/child" element={<ChildrenPage />} /> */}
 
-        {/* <Route path="family/:familyId/children" element={<ChildrenPage />} /> */}
+        <Route path="/family/:familyId/children" element={<ChildrenPage />} />
+
+        <Route path="/child/:childId" element={<ChildDetails />} />
 
         <Route path="/vaccines" element={<VaccinesPage />} />
 

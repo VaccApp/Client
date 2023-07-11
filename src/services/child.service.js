@@ -25,14 +25,14 @@ class ChildService {
   }
 
   //GET /child (para traer los hijos de una familia)
-  getAll(familyId) {
-    return this.api.get(`/family/${familyId}/child)`);
-  }
+  getAll = (familyId) => {
+    return this.api.get(`/family/${familyId}/children)`);
+  };
 
   // GET /child/:childId
-  getOne(id) {
-    return this.api.get(`/child/${id}`);
-  }
+  getOne = (childId) => {
+    return this.api.get(`/child/${childId}`);
+  };
 }
 
 const childService = new ChildService();

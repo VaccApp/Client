@@ -10,24 +10,26 @@ export default function FamilyCard({ surname, parents, children, _id }) {
         <img src="/family.png" alt="family-pic" />
       </Link>
 
-      <h4>Family members: {parents.length + children.length}</h4>
-      <h4>Parents: {parents.length}</h4>
-      <h4>Children: {children.length}</h4>
+      <h4>Miembros de la familia: {parents.length + children.length}</h4>
+      <h4>Tutores: {parents.length}</h4>
+      <Link to={`/family/${_id}/children`}>
+        <h4>Menores: {children.length}</h4>
+      </Link>
 
       {parents.map((each) => (
         <div key={each._id} {...each}>
-          <h4>Parent's name:</h4>
+          <h4>Nombre tutor:</h4>
           <p>{each.name}</p>
-          <h4>Parent's contact:</h4>
+          <h4>Contacto tutor:</h4>
           <p>{each.email}</p>
         </div>
       ))}
 
-      <h4>Children:</h4>
+      <h4>Menores:</h4>
       {children.map((eachChild) => (
         <div key={eachChild._id} {...eachChild}>
           <p>{eachChild.name}</p>
-          <p>{eachChild.email}</p>
+          <p>{eachChild.birthdate.slice(0, 10)}</p>
         </div>
       ))}
     </div>

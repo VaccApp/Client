@@ -7,15 +7,15 @@ class FamilyService {
     });
 
     // Automatically set JWT token in the headers for every request
-    this.api.interceptors.request.use(config => {
-        const token = localStorage.getItem('authToken');
-      
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-      
-        return config;
-      });
+    this.api.interceptors.request.use((config) => {
+      const token = localStorage.getItem("authToken");
+
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+
+      return config;
+    });
   }
 
   // POST /family
@@ -29,13 +29,18 @@ class FamilyService {
   };
 
   // GET /family/:id
-  detail = async (id) => {
-    return this.api.get(`/family/${id}`);
+  detail = async (familyId) => {
+    return this.api.get(`/family/${familyId}`);
   };
 
   // PUT /family/:id
-  edit = async (id, requestBody) => {
-    return this.api.put(`/family/${id}`, requestBody);
+  edit = async (familyId, requestBody) => {
+    return this.api.put(`/family/${familyId}`, requestBody);
+  };
+
+  // GET /family/:familyId/children
+  children = async (familyId) => {
+    return this.api.get(`/family/${familyId}/children`);
   };
 
   // DELETE /family/:id

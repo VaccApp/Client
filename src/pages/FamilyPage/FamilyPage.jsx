@@ -5,6 +5,7 @@ import FamilyCard from "../../components/Family/FamilyCard";
 import familyService from "../../services/family.service";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
+import "./FamilyPage.css";
 
 export default function FamilyPage() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -17,7 +18,7 @@ export default function FamilyPage() {
       .catch((error) => console.log(error));
   };
 
-  console.log("USER12", user);
+  // console.log("USER12", user);
 
   useEffect(() => {
     getAllFamilies();
@@ -29,9 +30,9 @@ export default function FamilyPage() {
 
   return (
     <div>
-      <h1>Family Page</h1>
-      <button>
-        <Link to="/family/create">Crear Familia</Link>
+      {/* <h1>Family Page</h1> */}
+      <button className="addButton">
+        <Link to="/family/create">+</Link>
       </button>
       {family.length > 0 ? (
         renderFamily()

@@ -1,0 +1,19 @@
+a {
+    text-decoration: none;
+}
+
+.addButton {
+    background-color: red;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 90px;
+    right: 40px;
+}
+
+.addButton a {
+    text-decoration: none;
+    color: white;
+font-size: 3em;
+}

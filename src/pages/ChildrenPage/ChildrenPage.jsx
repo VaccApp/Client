@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import FamilyCard from "../../components/Family/FamilyCard";
+import { Link, useParams } from "react-router-dom";
+import ChildCard from "../../components/Child/ChildCard";
+import childService from "../../services/child.service";
 import familyService from "../../services/family.service";
-
-const API_URL = "http://localhost:5005";
 
 export default function ChildrenPage() {
   const [children, setChildren] = useState([]);
+  const { familyId } = useParams();
 
   const getAllChildren = () => {
-    axios
-      .get(`${API_URL}/child`)
+    familyService
+      .children(familyId)
       .then((response) => setChildren(response.data))
       .catch((error) => console.log(error));
   };
@@ -20,9 +20,21 @@ export default function ChildrenPage() {
     getAllChildren();
   }, []);
 
+  // console.log("CHILDRENENENENE", children);
+
+  const renderChildren = () => {
+    return children.map((child) => <ChildCard key={child._id} {...child} />);
+  };
+
   return (
-    <>
-      {children.map((child) => (
+    <div>
+      <h1>Children Page</h1>
+      {children.length > 0 ? (
+        renderChildren()
+      ) : (
+        <p>Aún no hay miembros en la unidad familiar.</p>
+      )}
+      {/* {children.map((child) => (
         <div key={child._id} {...child}>
           <Link to={`/child/${child._id}`}>
             <h4>{child.name}</h4>
@@ -35,7 +47,7 @@ export default function ChildrenPage() {
             </div>
           ))}
         </div>
-      ))}
-    </>
+      ))} */}
+    </div>
   );
 }
