@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import FamilyCard from "../../components/Family/FamilyCard";
+import familyService from "../../services/family.service";
 
 const API_URL = "http://localhost:5005";
 

@@ -25,15 +25,20 @@ export default function FamilyDetails(props) {
       <div>
         <h1>Detalles de la familia {family.surname}:</h1>
         <h2>Padres:</h2>
-        <p>Name: {family.parents[0].name}</p>
-        <p>Email: {family.parents[0].email}</p>
+        {family.parents.map((parent) => (
+          <div key={parent._id} {...parent}>
+            <p>Name: {parent.name}</p>
+            <p>Email: {parent.email}</p>
+          </div>
+        ))}
+
         <h2>Hijos:</h2>
-        <p>Name: {family.children[0].name}</p>
-        <p>Birth date: {family.children[0].birtdhate}</p>
-        <p>Birth date: {family.children[0].birthDate}</p>
-        <p>Name: {family.children[1].name}</p>
-        <p>Birth date: {family.children[1].birthdate}</p>
-        <p>Birth date: {family.children[0].birthDate}</p>
+        {family.children.map((child) => (
+          <div key={child._id} {...child}>
+            <p>Name: {child.name}</p>
+            <p>Birth Date: {child.birthdate.slice(0, 10)}</p>
+          </div>
+        ))}
       </div>
     )
   );

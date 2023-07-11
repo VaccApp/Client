@@ -28,11 +28,14 @@ export default function ChildPage(props) {
   return (
     <>
       <h1>{child.name}:</h1>
-      {/* Esto es temporal en nuestra prueba. Como he cambiado el modelo (de birthDate a birthdate) pongo los dos para que siempre salga uno */}
       <p>{child.birthdate}</p>
-      <p>{child.birthDate}</p>
 
       <h3>Vacunas:</h3>
+      {/* {child.map((kid) => (
+        <div key={kid._id} {...kid}>
+          <p>{kid.vaccines}</p>
+        </div>
+      ))} */}
 
       <Link to={"/child"}>
         <button>Atrás</button>

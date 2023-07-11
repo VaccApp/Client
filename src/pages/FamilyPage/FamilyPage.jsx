@@ -3,8 +3,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import FamilyCard from "../../components/Family/FamilyCard";
 import familyService from "../../services/family.service";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 
 export default function FamilyPage() {
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const [family, setFamily] = useState([]);
 
   const getAllFamilies = () => {
@@ -13,6 +16,8 @@ export default function FamilyPage() {
       .then((response) => setFamily(response.data))
       .catch((error) => console.log(error));
   };
+
+  console.log("USER12", user);
 
   useEffect(() => {
     getAllFamilies();
