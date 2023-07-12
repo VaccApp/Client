@@ -28,6 +28,11 @@ class ChildService {
   getOne(id) {
     return this.api.get(`/child/${id}`);
   }
+
+  // GET child vaccines in a month
+  vaccinesAlert(childId) {
+    return this.api.get(`/child/${childId}/calendar`);
+  }
 }
 
 const childService = new ChildService();
