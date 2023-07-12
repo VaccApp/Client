@@ -26,12 +26,12 @@ export default function ChildDetails(props) {
       <div>
         <h1>Detalles de la familia {child.surname}:</h1>
         <h2>Padres:</h2>
-        {child.parents.map((parent) => (
+        {/* {child.parents.map((parent) => (
           <div key={parent._id} {...parent}>
             <p>Name: {parent.name}</p>
             <p>Email: {parent.email}</p>
           </div>
-        ))}
+        ))} */}
         <Link to={`/child/${child._id}/children`}>
           <h2>Hijos:</h2>
         </Link>

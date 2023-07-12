@@ -29,8 +29,8 @@ class FamilyService {
   };
 
   // GET /family/:id
-  detail = async (familyId) => {
-    return this.api.get(`/family/${familyId}`);
+  detail = async (id) => {
+    return this.api.get(`/family/${id}`);
   };
 
   // PUT /family/:id
