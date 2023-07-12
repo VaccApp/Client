@@ -44,6 +44,11 @@ function App() {
 
         <Route path="/family/:familyId/children" element={<ChildrenPage />} />
 
+        <Route
+          path="/family/:familyId/children/:childId"
+          element={<ChildDetailPage />}
+        />
+
         <Route path="/child/:childId" element={<ChildDetails />} />
 
         <Route path="/vaccines" element={<VaccinesPage />} />

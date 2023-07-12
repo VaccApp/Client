@@ -11,7 +11,7 @@ export default function VaccinePage(props) {
 
   const getAVaccine = () => {
     axios
-      .get(`${API_URL}/vaccines/${vaccineId}`)
+      .get(`${API_URL}/vaccines`)
       .then((response) => {
         const oneVaccine = response.data;
         setVaccine(oneVaccine);

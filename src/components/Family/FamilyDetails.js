@@ -10,7 +10,7 @@ export default function FamilyDetails(props) {
   const { familyId } = useParams();
   // console.log("props", props);
 
-  const getAFamily = (familyId) => {
+  const getAFamily = (id) => {
     familyService
       .detail(familyId)
       .then((response) => {
@@ -33,24 +33,24 @@ export default function FamilyDetails(props) {
       <div>
         <h1>Detalles de la familia {oneFamily.surname}:</h1>
         <h2>Padres:</h2>
-        {/* {family.parents.map((parent) => (
+        {oneFamily.parents.map((parent) => (
           <div key={parent._id} {...parent}>
             <p>Name: {parent.name}</p>
             <p>Email: {parent.email}</p>
           </div>
-        ))} */}
-        {/* <Link to={`/family/${family._id}/children`}>
+        ))}
+        <Link to={`/family/${oneFamily._id}/children`}>
           <h2>Hijos:</h2>
-        </Link> */}
-        {/* {family.children.map((child) => (
+        </Link>
+        {oneFamily.children.map((child) => (
           <div key={child._id} {...child}>
             <p>Name: {child.name}</p>
             <p>Birth Date: {child.birthdate.slice(0, 10)}</p>
-            <Link to={`/family/${family._id}/children/${child._id}`}>
+            <Link to={`/family/${oneFamily._id}/children/${child._id}`}>
               <button>Ver</button>
             </Link>
           </div>
-        ))} */}
+        ))}
       </div>
     )
   );
