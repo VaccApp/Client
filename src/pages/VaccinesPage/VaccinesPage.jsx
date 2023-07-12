@@ -2,7 +2,6 @@ import "./Vaccines.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import VaccineCard from "../../components/Vaccine/VaccineCard";
 import ApiVaccine from "../../components/Vaccine/ApiVaccine";
 
 const API_URL = "http://localhost:5005";
@@ -14,43 +13,44 @@ export default function VaccinesPage() {
   const getAllVaccines = () => {
     axios
       .get(`${REALAPI_URL}/vaccines`)
-      .then((response) => {
-        const sortedVaccines = response.data;
-        sortedVaccines.sort(function (a, b) {
-          if (a.vaccinationAge > b.vaccinationAge) {
-            return 1;
+      .then(({ data }) => {
+        const sortedVaccines = data.reduce((acc, val) => {
+          if (acc.hasOwnProperty(val.vaccinationAge)) {
+            acc[val.vaccinationAge].push(val);
+          } else {
+            acc[val.vaccinationAge] = [];
+            acc[val.vaccinationAge].push(val);
           }
-          if (a.vaccinationAge < b.vaccinationAge) {
-            return -1;
-          }
-          return 0;
-        });
+          return acc;
+        }, {});
         setVaccines(sortedVaccines);
       })
 
       .catch((error) => console.log(error));
   };
+  const wuwu = Object.entries(vaccines);
 
   useEffect(() => {
     getAllVaccines();
   }, []);
 
-  const renderVaccines = () => {
-    return vaccines.map((vaccine) => (
-      <div key={vaccine._id} {...vaccine} className="vaccine">
-        <h4>{vaccine.vaccineName}</h4>
-        <p>Descripción: {vaccine.description}</p>
-        <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
-      </div>
-      // esto no se si va aquí: refreshVaccines={getAllVaccines}
-    ));
-  };
+  // const renderVaccines = () => {
+  //   return wuwu.map((vaccine) => (
+  //     <div key={vaccine._id} {...vaccine} className="vaccine">
+  //       <h4>{vaccine.vaccineName}</h4>
+  //       <p>Descripción: {vaccine.description}</p>
+  //       <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
+  //     </div>
+  //   ));
+  // };
 
   return (
     <div>
-      <ApiVaccine />
+      {wuwu.map((elm, idx) => {
+        return <ApiVaccine key={idx} wuwu={elm} />;
+      })}
       <h1>Vaccines Page</h1>
-      {vaccines.length > 0 ? renderVaccines() : <p>No hay vacunas.</p>}
+      {/* {vaccines ? renderVaccines() : <p>No hay vacunas.</p>} */}
     </div>
   );
 }

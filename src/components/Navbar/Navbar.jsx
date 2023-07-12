@@ -9,19 +9,19 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <Link to="/">
-        <button class="btn btn-light">Home</button>
+        <button className="btn btn-light">Home</button>
       </Link>
 
       {isLoggedIn && (
         <>
-          <button class="btn btn-light" onClick={logOutUser}>
+          <button className="btn btn-light" onClick={logOutUser}>
             Cerrar sesión
           </button>
 
           <Link to="/profile">
-            <button class="btn btn-light">Perfil</button>
+            <button className="btn btn-light">Perfil</button>
             {/* <img
               src="https://picsum.photos/id/402/200/300"
               style={{ width: 50, height: 50, borderRadius: 25 }}
@@ -30,15 +30,15 @@ function Navbar() {
           </Link>
 
           <Link to="/family">
-            <button class="btn btn-light">Familia</button>
+            <button className="btn btn-light">Familia</button>
           </Link>
 
           <Link to="/child">
-            <button class="btn btn-light">Descendientes</button>
+            <button className="btn btn-light">Descendientes</button>
           </Link>
 
           <Link to="/vaccines">
-            <button class="btn btn-light">Vacunas</button>
+            <button className="btn btn-light">Vacunas</button>
           </Link>
 
           <span className="userIcon">{user && user.name}</span>
@@ -49,11 +49,11 @@ function Navbar() {
         <>
           <Link to="/signup">
             {" "}
-            <button class="btn btn-light">Registrarse</button>{" "}
+            <button className="btn btn-light">Registrarse</button>{" "}
           </Link>
           <Link to="/login">
             {" "}
-            <button class="btn btn-light">Iniciar sesión</button>{" "}
+            <button className="btn btn-light">Iniciar sesión</button>{" "}
           </Link>
         </>
       )}
