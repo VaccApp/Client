@@ -1,8 +1,6 @@
 import "./JoinFamily.css";
-import { useState, useContext, useEffect } from "react";
-import { AuthContext } from "../../context/auth.context";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import familyService from "../../services/family.service";
 import logo from "../../images/family-care-logo.png";
 
@@ -14,6 +12,7 @@ function JoinFamily() {
   const [surname, setSurname] = useState("");
   const [dni, setDni] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [familySurname, setFamilySurname] = useState("");
 
   const navigate = useNavigate();
 
@@ -38,9 +37,18 @@ function JoinFamily() {
       });
   };
 
+  useEffect(() => {
+    familyService
+      .detail(familyId)
+      .then((response) => {
+        setFamilySurname(response.data.surname);
+      })
+      .catch((error) => console.log(error));
+  }, [familyId]);
+
   return (
     <div className="JoinFamily">
-      <h1>Unirse a la familia</h1>
+      <h1>Unirse a la familia {familySurname}</h1>
       <img src={logo} alt="familyCare logo" className="logo" />
       <form onSubmit={handleSignupSubmit}>
         <label className="form-label">Email</label>
