@@ -32,7 +32,6 @@ export default function ChildCard({ name, birthdate, healthcard, vaccines }) {
             <hr />
           </div>
         ))}
-        <Link to={`/family/${familyId}/children/`}>Volver a hijos</Link>
       </div>
     )
   );

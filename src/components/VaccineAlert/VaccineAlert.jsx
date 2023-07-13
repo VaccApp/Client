@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/auth.context";
 import { useNavigate, useParams } from "react-router-dom";
 import childService from "../../services/child.service";
 
-function VaccineAlert({ childId }) {
+function VaccineAlert({ childId, childName }) {
   const [vaccines, setVaccines] = useState([]);
 
   console.log(vaccines);
@@ -20,25 +20,33 @@ function VaccineAlert({ childId }) {
     getVaccines();
   }, [childId]);
 
-    const renderVaccine = () => {
-      return (
-        vaccines && (
-          <div>
-            {vaccines.map((vaccine) => (
-              <div key={vaccine._id} {...vaccine}>
-                <p>Vacuna: {vaccine.vaccineName}</p>
-              </div>
-            ))}
-          </div>
-        )
-      );
-    };
+  const renderVaccine = () => {
+    return (
+      vaccines && (
+        <div>
+          {vaccines.map((vaccine) => (
+            <div key={vaccine._id} {...vaccine}>
+              <p>💉 {vaccine.vaccineName}</p>
+            </div>
+          ))}
+        </div>
+      )
+    );
+  };
 
   return (
     vaccines && (
       <div>
-        <h1>Vaccine Alert</h1>
-        {vaccines && renderVaccine()}
+        {vaccines.length === 0 && (
+          <h3>No hay vacunación el próximo mes para {childName}</h3>
+        )}
+        {vaccines.length > 0 && (
+          <div>
+            <h3>Próximas vacunas de {childName}</h3>
+            {renderVaccine()}
+          </div>
+        )}
+        <Link to="/citas">Ver citas</Link>
       </div>
     )
   );
