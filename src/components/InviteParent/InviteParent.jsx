@@ -1,8 +1,6 @@
 import "./InviteParent.css";
-import { useState, useContext, useEffect } from "react";
-import { AuthContext } from "../../context/auth.context";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import familyService from "../../services/family.service";
 
 function InviteParent() {

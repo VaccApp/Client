@@ -1,8 +1,6 @@
 import "./VaccineAlert.css";
 import { Link } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
-import { AuthContext } from "../../context/auth.context";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import childService from "../../services/child.service";
 
 function VaccineAlert({ childId, childName }) {
