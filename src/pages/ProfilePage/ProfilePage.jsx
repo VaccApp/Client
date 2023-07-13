@@ -26,7 +26,7 @@ function ProfilePage() {
         <div>
           <div className="profileHeader">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/5348/5348883.png"
+              src={profile.profilePic}
               alt="Profile"
               className="profilePic"
             />

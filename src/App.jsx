@@ -23,6 +23,7 @@ import ChildDetailPage from "./pages/ChildDetailPage/ChildDetailPage";
 import FamilyCreateForm from "./pages/FamilyCreateForm/FamilyCreateForm";
 import EditVaccinePage from "./pages/VaccinesPage/EditVaccinePage";
 import JoinFamily from "./pages/JoinFamily/JoinFamily";
+import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 
 function App() {
   return (
@@ -61,6 +62,8 @@ function App() {
             </IsPrivate>
           }
         />
+
+        <Route path="/profile/:userId/edit" element={<EditProfilePage />} />
 
         <Route
           path="/signup"

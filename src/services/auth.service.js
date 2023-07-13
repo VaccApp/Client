@@ -40,6 +40,14 @@ class AuthService {
   profile = (id) => {
     return this.api.get(`/auth/${id}`);
   };
+
+  edit = (id, requestBody) => {
+    return this.api.put(`/auth/${id}`, requestBody);
+  }
+
+  delete = (id) => {
+    return this.api.delete(`/auth/${id}`);
+  }
 }
 
 // Create one instance (object) of the service
