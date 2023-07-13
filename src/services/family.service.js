@@ -43,6 +43,11 @@ class FamilyService {
     return this.api.post(`/family/${familyId}/invite`, requestBody);
   };
 
+  // POST /family/join
+  joinFamily = async (familyId, requestBody) => {
+    return this.api.post(`/auth/join-family/${familyId}`, requestBody);
+  };
+
   // DELETE /family/:id
   delete = async (id) => {
     return this.api.delete(`/family/${id}`);

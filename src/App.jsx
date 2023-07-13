@@ -22,6 +22,7 @@ import AddChildPage from "./pages/AddChildPage/AddChildPage";
 import ChildDetailPage from "./pages/ChildDetailPage/ChildDetailPage";
 import FamilyCreateForm from "./pages/FamilyCreateForm/FamilyCreateForm";
 import EditVaccinePage from "./pages/VaccinesPage/EditVaccinePage";
+import JoinFamily from "./pages/JoinFamily/JoinFamily";
 
 function App() {
   return (
@@ -31,12 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route
-          path="/family"
-          element={
-              <FamilyPage />
-          }
-        />
+        <Route path="/family" element={<FamilyPage />} />
 
         <Route path="/family/create" element={<FamilyCreateForm />} />
 
@@ -46,7 +42,10 @@ function App() {
 
         <Route path="/child" element={<ChildrenPage />} />
 
-        <Route path="family/:familyId/children/:id" element={<ChildDetailPage />} />
+        <Route
+          path="family/:familyId/children/:id"
+          element={<ChildDetailPage />}
+        />
 
         <Route path="/vaccines" element={<VaccinesPage />} />
 
@@ -79,7 +78,7 @@ function App() {
             </IsAnon>
           }
         />
-
+        <Route path="/join-family/:familyId" element={<JoinFamily />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
