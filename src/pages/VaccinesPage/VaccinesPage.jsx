@@ -28,14 +28,15 @@ export default function VaccinesPage() {
 
       .catch((error) => console.log(error));
   };
-  const wuwu = Object.entries(vaccines);
+  const apiVaccines = Object.entries(vaccines);
+  console.log(apiVaccines);
 
   useEffect(() => {
     getAllVaccines();
   }, []);
 
   // const renderVaccines = () => {
-  //   return wuwu.map((vaccine) => (
+  //   return apiVaccines.map((vaccine) => (
   //     <div key={vaccine._id} {...vaccine} className="vaccine">
   //       <h4>{vaccine.vaccineName}</h4>
   //       <p>Descripción: {vaccine.description}</p>
@@ -46,11 +47,11 @@ export default function VaccinesPage() {
 
   return (
     <div>
-      {wuwu.map((elm, idx) => {
-        return <ApiVaccine key={idx} wuwu={elm} />;
+      <h1>Vacunación en la comunidad de Madrid</h1>
+
+      {apiVaccines.map((elm, idx) => {
+        return <ApiVaccine key={idx} apiVaccines={elm} />;
       })}
-      <h1>Vaccines Page</h1>
-      {/* {vaccines ? renderVaccines() : <p>No hay vacunas.</p>} */}
     </div>
   );
 }

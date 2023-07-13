@@ -1,15 +1,46 @@
+a {
+    font-size: 14px;
+}
+
 nav {
-    background-color: aquamarine;
-    padding: 40px;
+    border-top: 1px solid #AEB4A9;
 }
 
-nav button, span {
-    margin: 10px;
-    border-radius: 24%;
 
+.navbar-img {
+    height: 40px;
+    margin: 8px;
 }
 
-.userIcon {
-    background-color: #fdd226;
-    padding: 6px;
+.navbar-el p {
+    text-decoration: none;
+    margin: 8px;
+    text-align: center;
+}
+
+.navbar {
+    background-color: white;
+}
+
+.navbar button:hover {
+    color: black;
+    font-size: 16px;
+}
+
+.navbar img:hover {
+    color: red;
+}
+
+button{
+    border: 0;
+    text-decoration: none;
+    color: #AEB4A9;
+}
+
+.navbar-text {
+    background-color: white;
+}
+  
+  .navbar-img:hover {
+    filter: invert(50%) sepia(67%) saturate(1534%) hue-rotate(324deg) brightness(86%) contrast(123%);    
 }

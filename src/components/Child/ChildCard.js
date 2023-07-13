@@ -12,18 +12,24 @@ export default function ChildCard({
 }) {
   // const { childId } = useParams();
   return (
-    <div>
-      <Link to={`/child/${_id}`}>Ver</Link>
-      <h1>{name}</h1>
-      <h3>Fecha de nacimiento: {birthdate}</h3>
-      <h4>Tarjeta sanitaria: {healthcard}</h4>
-      <h4>Vacunas:</h4>
-      {vaccines.map((vaccine) => (
-        <div key={vaccine._id} {...vaccine}>
-          <h4>{vaccine.name}</h4>
-          <p>{vaccine.status}</p>
+    <div className="childCard">
+      <Link to={`/child/${_id}`}>
+        <div className="pic">
+          <img src="/childPic.png" alt="child pic" />
         </div>
-      ))}
+
+        <h2>{name}</h2>
+        <p>Fecha de nacimiento: {birthdate.slice(0, 10)}</p>
+        <p>Próxima cita: </p>
+        {/* <h4>Tarjeta sanitaria: {healthcard}</h4> */}
+        {/* <h4>Vacunas:</h4>
+        {vaccines.map((vaccine) => (
+          <div key={vaccine._id} {...vaccine}>
+            <h4>{vaccine.name}</h4>
+            <p>{vaccine.status}</p>
+          </div>
+        ))} */}
+      </Link>
       {/* <Link to={`/family/${family}/children/`}>Volver a hijos</Link> */}
     </div>
   );

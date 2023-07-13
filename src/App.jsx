@@ -27,8 +27,6 @@ import ChildDetails from "./components/Child/ChildDetails";
 function App() {
   return (
     <div className="App">
-      <Navbar />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
 
@@ -85,6 +83,8 @@ function App() {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
+      <Navbar />
     </div>
   );
 }

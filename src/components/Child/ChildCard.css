@@ -1,0 +1,21 @@
+.childCard {
+    border: 1px solid black;
+    margin: 12px;
+    display: flex;
+    flex-direction: column;
+}
+.childCard a {
+    text-decoration: none;
+    color: black;
+}
+
+.childCard p, h2 {
+    margin: 6px;
+    text-align: left;
+    align-items: center;
+}
+
+.pic {
+float: left;
+margin: 12px;
+}

@@ -31,9 +31,11 @@ export default function FamilyPage() {
   return (
     <div>
       {/* <h1>Family Page</h1> */}
-      <button className="addButton">
-        <Link to="/family/create">+</Link>
-      </button>
+
+      <Link to="/family/create">
+        <img src="/Añadir.png" alt="Add family" className="addButton" />
+      </Link>
+
       {family.length > 0 ? (
         renderFamily()
       ) : (

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
+const REALAPI_URL = "http://localhost:4001/api";
 
 export default function VaccinePage(props) {
   const [vaccine, setVaccine] = useState([]);
@@ -11,7 +12,7 @@ export default function VaccinePage(props) {
 
   const getAVaccine = () => {
     axios
-      .get(`${API_URL}/vaccines`)
+      .get(`${REALAPI_URL}/vaccines/${vaccineId}`)
       .then((response) => {
         const oneVaccine = response.data;
         setVaccine(oneVaccine);
@@ -23,38 +24,23 @@ export default function VaccinePage(props) {
     getAVaccine();
   }, []);
 
-  console.log(vaccineId);
+  console.log(vaccine);
 
   return (
     <div className="vaccineDetails">
       <table className="vaccine">
         <tbody>
           <tr>
-            <td>Nombre:</td>
-            <td>Enfermedad:</td>
-            <td>Dosis:</td>
-          </tr>
-          <tr>
-            <td>{vaccine.name}</td>
-            <td>{vaccine.disease}</td>
-            <td>{vaccine.dose}</td>
-          </tr>
-          <tr>
-            <td>Fabricante:</td>
-            <td>Nº serie:</td>
-            <td>Caducidad:</td>
-          </tr>
-          <tr>
-            <td>{vaccine.creator}</td>
-            <td>{vaccine.batch}</td>
-            <td>{vaccine.expires}</td>
+            <td>Nombre: {vaccine.vaccineName}</td>
+            <td>Descripción: {vaccine.description}</td>
+            <td>Edad de vacunación: {vaccine.vaccinationAge}</td>
           </tr>
         </tbody>
       </table>
 
-      <Link to={`/vaccines/${vaccineId}/edit`}>
+      {/* <Link to={`/vaccines/${vaccineId}/edit`}>
         <button className="volver">Editar</button>
-      </Link>
+      </Link> */}
 
       <Link to={"/vaccines"}>
         <button className="volver">Atrás</button>
