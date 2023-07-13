@@ -2,6 +2,7 @@ import "./ChildDetailPage.css";
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import childService from "../../services/child.service";
 import ChildCard from "../../components/Child/ChildCard";
 import VaccineAlert from "../../components/VaccineAlert/VaccineAlert";
@@ -28,9 +29,10 @@ function ChildDetailPage() {
 
   return (
     <div>
+      <Link to={`/family/${familyId}/children/`}>Volver a hijos</Link>
       <h1>Child Detail Page</h1>
       {child && renderChild()}
-      <VaccineAlert childId={id} />
+      <VaccineAlert childId={id} childName={child.name} />
     </div>
   );
 }
