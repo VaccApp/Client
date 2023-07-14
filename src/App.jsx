@@ -25,6 +25,7 @@ import EditVaccinePage from "./pages/VaccinesPage/EditVaccinePage";
 import JoinFamily from "./pages/JoinFamily/JoinFamily";
 import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import EditChildPage from "./pages/EditChildPage/EditChildPage";
+import CentersPage from "./pages/CentersPage/CentersPage";
 
 function App() {
   return (
@@ -88,6 +89,9 @@ function App() {
           }
         />
         <Route path="/join-family/:familyId" element={<JoinFamily />} />
+
+        <Route path="/centers" element={<CentersPage />} />
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
