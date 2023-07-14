@@ -8,18 +8,18 @@ import VaccineAlert from "../../components/VaccineAlert/VaccineAlert";
 
 function ChildDetailPage() {
   const [child, setChild] = useState([]);
-  const { id } = useParams();
+  const { childId } = useParams();
   const { familyId } = useParams();
 
   useEffect(() => {
     const getChild = () => {
       childService
-        .getOne(id)
+        .getOne(childId)
         .then((response) => setChild(response.data))
         .catch((error) => console.log(error));
     };
     getChild();
-  }, [id]);
+  }, [childId]);
 
   const renderChild = () => {
     return <ChildCard key={child._id} {...child} />;
@@ -28,9 +28,13 @@ function ChildDetailPage() {
   return (
     <div>
       <Link to={`/family/${familyId}/children/`}>Volver a hijos</Link>
+      <br />
+      <Link to={`/family/${familyId}/children/${childId}/edit`}>
+        Editar hijo
+      </Link>
       <h1>Child Detail Page</h1>
       {child && renderChild()}
-      <VaccineAlert childId={id} childName={child.name} />
+      <VaccineAlert childId={childId} childName={child.name} />
     </div>
   );
 }
