@@ -1,15 +1,16 @@
 import "./ChildCard.css";
 
-export default function ChildCard({ name, birthdate, healthcard, vaccines }) {
+export default function ChildCard({ name, birthdate, childPic, healthcard, vaccines }) {
   return (
     name &&
     birthdate &&
+    childPic &&
     healthcard &&
     vaccines && (
       <div>
         <h1>{name}</h1>
         <img
-          src="https://cdn3.iconfinder.com/data/icons/materia-human/24/013_042_newborn_infant_child_baby-512.png"
+          src={childPic}
           alt="child"
         />
         <p>📅 Fecha de nacimiento: {birthdate.slice(0, 10)}</p>

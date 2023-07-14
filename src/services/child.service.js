@@ -25,13 +25,18 @@ class ChildService {
   }
 
   // GET /child
-  getOne(id) {
-    return this.api.get(`/child/${id}`);
+  getOne(childId) {
+    return this.api.get(`/child/${childId}`);
   }
 
   // GET child vaccines in a month
   vaccinesAlert(childId) {
     return this.api.get(`/child/${childId}/calendar`);
+  }
+
+  // PUT /child/:id
+  edit(childId, requestBody) {
+    return this.api.put(`/child/${childId}`, requestBody);
   }
 }
 
