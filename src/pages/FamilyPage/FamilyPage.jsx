@@ -15,7 +15,7 @@ export default function FamilyPage() {
   const getAllFamilies = () => {
     familyService
       .list()
-      .then((response) => setFamilies(response.data[0]))
+      .then((response) => setFamilies(response.data))
       .catch((error) => console.log(error));
   };
 
@@ -29,11 +29,11 @@ export default function FamilyPage() {
   // const parents = families.parents;
 
   const renderFamily = () => {
-    families.map((fam) => (
+    return families.map((fam) => (
       <FamilyCard
         key={fam._id}
-        children={children}
-        parents={parents}
+        // children={children}
+        // parents={parents}
         {...fam}
       />
     ));
@@ -42,28 +42,30 @@ export default function FamilyPage() {
   console.log("EEEEEEEEE", families);
 
   return (
-    <div>
-      {/* <h1>Family Page</h1> */}
+    families && (
+      <div>
+        {/* <h1>Family Page</h1> */}
 
-      <Link to="/family/create">
-        <img src="/Añadir.png" alt="Add family" className="addButton" />
-      </Link>
+        <Link to="/family/create">
+          <img src="/Añadir.png" alt="Add family" className="addButton" />
+        </Link>
 
-      {families.length > 0 ? (
-        renderFamily()
-      ) : (
-        <div>
-          <img
-            src="/noFamily.png"
-            alt="Kid don't know"
-            className="kidDefaultPic"
-          />
-          <p>Aún no has añadido a ningún hijo.</p>
-          <button className="addChildButton">
-            <Link to="/family/:familyId/add-child">+</Link>
-          </button>
-        </div>
-      )}
-    </div>
+        {families.length > 0 ? (
+          renderFamily()
+        ) : (
+          <div>
+            <img
+              src="/noFamily.png"
+              alt="Kid don't know"
+              className="kidDefaultPic"
+            />
+            <p>Aún no has añadido a ningún hijo.</p>
+            <button className="addChildButton">
+              <Link to="/family/:familyId/add-child">+</Link>
+            </button>
+          </div>
+        )}
+      </div>
+    )
   );
 }

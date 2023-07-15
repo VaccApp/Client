@@ -11,17 +11,19 @@ export default function ChildVaccinePage() {
   const [data, setData] = useState();
   const { vaccineId } = useParams();
 
+  console.log(vaccineId);
+
   const getChildAndVaccine = () => {
     childService
       .getBoth(vaccineId)
-      .then((response) => setData(response.data))
+      .then((response) => setData("respues", response.data))
       .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     getChildAndVaccine();
   }, []);
-  console.log(data);
+  console.log("222", data);
 
   const child = data[0][0];
 
