@@ -6,8 +6,6 @@ import childService from "../../services/child.service";
 function VaccineAlert({ childId, childName }) {
   const [vaccines, setVaccines] = useState([]);
 
-  console.log(vaccines);
-
   useEffect(() => {
     const getVaccines = () => {
       childService
@@ -17,6 +15,8 @@ function VaccineAlert({ childId, childName }) {
     };
     getVaccines();
   }, [childId]);
+
+  console.log("Vacunas", vaccines);
 
   const renderVaccine = () => {
     return (
