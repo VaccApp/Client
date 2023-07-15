@@ -22,7 +22,7 @@ export default function VaccinePage(props) {
 
   useEffect(() => {
     getAVaccine();
-  }, []);
+  }, [vaccineId]);
 
   console.log(vaccine);
 
