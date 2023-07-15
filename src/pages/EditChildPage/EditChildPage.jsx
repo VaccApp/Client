@@ -73,7 +73,7 @@ function EditChildPage() {
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <Link
-        to={`/family/${familyId}/child/${childId}`}
+        to={`/family/${familyId}/children/${childId}`}
         className="btn btn-dark"
       >
         Volver

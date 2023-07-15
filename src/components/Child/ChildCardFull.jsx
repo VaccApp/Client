@@ -1,6 +1,6 @@
 import "./ChildCard.css";
 
-export default function ChildCard({ name, birthdate, childPic, healthcard, vaccines }) {
+export default function ChildCardFull({ name, birthdate, childPic, healthcard, vaccines }) {
   return (
     name &&
     birthdate &&
