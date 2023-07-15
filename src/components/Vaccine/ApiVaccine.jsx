@@ -14,7 +14,8 @@ export default function ApiVaccine({ apiVaccines }) {
             alt="Vaccination Period"
             className="vaccinePic"
           ></img>
-          {age} meses
+          {/* {age} meses */}
+          {age > 15 ? age / 12 + " años" : age + " meses"}
         </button>
         <div className="dropdown-content">
           {vaccines.map((vaccine) => {

@@ -33,6 +33,11 @@ class FamilyService {
     return this.api.get(`/family/${id}`);
   };
 
+  // GET /family/:id
+  appointments = async (familyId) => {
+    return this.api.get(`/family/${familyId}/appointments`);
+  };
+
   // PUT /family/:id
   edit = async (familyId, requestBody) => {
     return this.api.put(`/family/${familyId}`, requestBody);

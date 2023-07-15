@@ -26,7 +26,12 @@ class ChildService {
 
   //GET /child (para traer los hijos de una familia)
   getAll = (familyId) => {
-    return this.api.get(`/family/${familyId}/children)`);
+    return this.api.get(`/family/${familyId}/children`);
+  };
+
+  //GET Child and Vaccine
+  getBoth = (vaccineId) => {
+    return this.api.get(`/child/vaccine/${vaccineId}`);
   };
 
   // GET /child/:childId

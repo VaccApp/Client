@@ -9,13 +9,15 @@ export default function VaccineCard({
   expires,
   batch,
   status,
+  vaccinationDate,
+  vaccinationAge,
   _id,
 }) {
   return (
     <div>
       <table className="vaccines">
         {/* <div key={_id} {..._id} className="vaccine"> */}
-        <tbody key={_id} {..._id} className="vaccine">
+        <tbody key={_id} className="vaccine">
           <tr>
             <td>Vacuna: {name}</td>
             <td>Dosis: {dose}</td>
@@ -29,10 +31,19 @@ export default function VaccineCard({
             <td>Lote: {batch}</td>
           </tr>
           <tr>
+            <td>
+              Edad de vacunación:{" "}
+              {vaccinationAge > 15
+                ? vaccinationAge / 12 + " años"
+                : vaccinationAge + " meses"}
+            </td>
+          </tr>
+          <tr>
+            <td>Fecha de vacunación: {vaccinationDate}</td>
             <td>Estado: {status}</td>
           </tr>
         </tbody>
-        <Link to={`/vaccines/${_id}`}>Ver vacuna</Link>
+        <Link to={`/child/vaccine/${_id}`}>Ver vacuna</Link>
 
         {/* </div> */}
       </table>

@@ -18,7 +18,7 @@ function Navbar() {
             </button> */}
 
             <div className="navbar navbar-el">
-              <Link to="/">
+              <Link to="/:familyId/appointments">
                 <img
                   src="/Calendar.png"
                   alt="calendar"

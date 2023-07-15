@@ -38,7 +38,7 @@ export default function ChildDetails(props) {
     getAChild();
   }, []);
 
-  console.log("Child details", child.vaccines);
+  console.log("Child details", child);
   return (
     child && (
       <div>
