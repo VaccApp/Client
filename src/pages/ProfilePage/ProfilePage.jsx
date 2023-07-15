@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/auth.context";
 import authService from "../../services/auth.service";
 
 function ProfilePage() {
-  const { user } = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
   const [profile, setProfile] = useState([]);
 
   useEffect(() => {
@@ -33,10 +33,18 @@ function ProfilePage() {
             <h1>Hola, {user.name}</h1>
           </div>
           <h2>Información personal</h2>
-          <p><b>Nombre:</b> {profile.name}</p>
-          <p><b>Apellido:</b> {profile.surname}</p>
-          <p><b>Email:</b> {user.email}</p>
-          <p><b>DNI:</b> {profile.dni}</p>
+          <p>
+            <b>Nombre:</b> {profile.name}
+          </p>
+          <p>
+            <b>Apellido:</b> {profile.surname}
+          </p>
+          <p>
+            <b>Email:</b> {user.email}
+          </p>
+          <p>
+            <b>DNI:</b> {profile.dni}
+          </p>
         </div>
         <hr />
         <div>
@@ -63,14 +71,13 @@ function ProfilePage() {
             Editar perfil
           </Link>
           <br />
-          <Link
-            to={`/profile/${user._id}/delete`}
-            role="button"
+          <button
+            onClick={logOutUser}
             className="btn btn-danger"
             style={{ marginLeft: "30px", marginBottom: "10px" }}
           >
-            Eliminar cuenta
-          </Link>
+            Desconectarse
+          </button>
         </div>
       </div>
     )
