@@ -6,12 +6,11 @@ import FamilyCard from "../../components/Family/FamilyCard";
 import "./FamilyPage.css";
 import familyService from "../../services/family.service";
 import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
 import "./FamilyPage.css";
 
 export default function FamilyPage() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-  const [family, setFamily] = useState([]);
+  const [families, setFamilies] = useState([]);
 
   const getAllFamilies = () => {
     familyService
@@ -26,33 +25,47 @@ export default function FamilyPage() {
     getAllFamilies();
   }, []);
 
+  // const children = families.children;
+  // const parents = families.parents;
+
   const renderFamily = () => {
-    families.map((fam) => <FamilyCard key={fam._id} {...fam} />);
+    return families.map((fam) => (
+      <FamilyCard
+        key={fam._id}
+        // children={children}
+        // parents={parents}
+        {...fam}
+      />
+    ));
   };
 
+  console.log("EEEEEEEEE", families);
+
   return (
-    <div>
-      {/* <h1>Family Page</h1> */}
+    families && (
+      <div>
+        {/* <h1>Family Page</h1> */}
 
-      <Link to="/family/create">
-        <img src="/Añadir.png" alt="Add family" className="addButton" />
-      </Link>
+        <Link to="/family/create">
+          <img src="/Añadir.png" alt="Add family" className="addButton" />
+        </Link>
 
-      {family.length > 0 ? (
-        renderFamily()
-      ) : (
-        <div>
-          <img
-            src="/noFamily.png"
-            alt="Kid don't know"
-            className="kidDefaultPic"
-          />
-          <p>Aún no has añadido a ningún hijo.</p>
-          <button className="addChildButton">
-            <Link to="/family/:familyId/add-child">+</Link>
-          </button>
-        </div>
-      )}
-    </div>
+        {families.length > 0 ? (
+          renderFamily()
+        ) : (
+          <div>
+            <img
+              src="/noFamily.png"
+              alt="Kid don't know"
+              className="kidDefaultPic"
+            />
+            <p>Aún no has añadido a ningún hijo.</p>
+            <button className="addChildButton">
+              <Link to="/family/:familyId/add-child">+</Link>
+            </button>
+          </div>
+        )}
+      </div>
+    )
   );
 }
