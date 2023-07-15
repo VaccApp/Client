@@ -6,17 +6,16 @@ import FamilyCard from "../../components/Family/FamilyCard";
 import "./FamilyPage.css";
 import familyService from "../../services/family.service";
 import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
 import "./FamilyPage.css";
 
 export default function FamilyPage() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-  const [family, setFamily] = useState([]);
+  const [families, setFamilies] = useState([]);
 
   const getAllFamilies = () => {
     familyService
       .list()
-      .then((response) => setFamilies(response.data))
+      .then((response) => setFamilies(response.data[0]))
       .catch((error) => console.log(error));
   };
 
@@ -26,9 +25,21 @@ export default function FamilyPage() {
     getAllFamilies();
   }, []);
 
+  // const children = families.children;
+  // const parents = families.parents;
+
   const renderFamily = () => {
-    families.map((fam) => <FamilyCard key={fam._id} {...fam} />);
+    families.map((fam) => (
+      <FamilyCard
+        key={fam._id}
+        children={children}
+        parents={parents}
+        {...fam}
+      />
+    ));
   };
+
+  console.log("EEEEEEEEE", families);
 
   return (
     <div>
@@ -38,7 +49,7 @@ export default function FamilyPage() {
         <img src="/Añadir.png" alt="Add family" className="addButton" />
       </Link>
 
-      {family.length > 0 ? (
+      {families.length > 0 ? (
         renderFamily()
       ) : (
         <div>
