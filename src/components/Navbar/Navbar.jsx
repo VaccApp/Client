@@ -9,56 +9,92 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <Link to="/">
-        <button class="btn btn-light">Home</button>
-      </Link>
+    <nav className="navbar fixed-bottom">
+      <div className="container-fluid">
+        {isLoggedIn && (
+          <>
+            {/* <button className="btn btn-light" onClick={logOutUser}>
+              Cerrar sesión
+            </button> */}
 
-      {isLoggedIn && (
-        <>
-          <button class="btn btn-light" onClick={logOutUser}>
-            Cerrar sesión
-          </button>
+            <div className="navbar navbar-el">
+              <Link to="/:familyId/appointments">
+                <img
+                  src="/Calendar.png"
+                  alt="calendar"
+                  className="navbar-img"
+                />
+                <br></br>
+                <button className=" navbar-text">Citas</button>
+              </Link>
+            </div>
+            <div className="navbar navbar-el">
+              <Link to="/family">
+                <img src="/Family.png" alt="calendar" className="navbar-img" />
+                <br></br>
+                <button className=" navbar-text">Familia</button>
+              </Link>
+            </div>
+            <div className="navbar-el">
+              <Link to="/:familyId/vaccines">
+                <img src="/Add.png" alt="calendar" className="navbar-img" />
+                <br></br>
+                <button className=" navbar-text">Vacunar</button>
+              </Link>
+            </div>
+            <div className="navbar navbar-el">
+              <Link to="/vaccines">
+                <img src="/vacuna.png" alt="calendar" className="navbar-img" />
+                <br></br>
+                <button className="navbar-text">Info</button>
+              </Link>
+            </div>
+            <div className="navbar navbar-el">
+              <Link to="/profile">
+                <img src="/usuario.png" alt="calendar" className="navbar-img" />
+                <br></br>
+                <button className="navbar-text">Perfil</button>
+              </Link>
+            </div>
 
-          <Link to="/profile">
-            <button class="btn btn-light">Perfil</button>
-            {/* <img
-              src="https://picsum.photos/id/402/200/300"
-              style={{ width: 50, height: 50, borderRadius: 25 }}
-              alt="profile"
-            /> */}
-          </Link>
+            {/* <span classNameName="userIcon">{user && user.name}</span> */}
+          </>
+        )}
 
-          <Link to="/family">
-            <button class="btn btn-light">Familia</button>
-          </Link>
-
-          <Link to="/child">
-            <button class="btn btn-light">Descendientes</button>
-          </Link>
-
-          <Link to="/vaccines">
-            <button class="btn btn-light">Vacunas</button>
-          </Link>
-
-          <span className="userIcon">{user && user.name}</span>
-        </>
-      )}
-
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            {" "}
-            <button class="btn btn-light">Registrarse</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button class="btn btn-light">Iniciar sesión</button>{" "}
-          </Link>
-        </>
-      )}
+        {!isLoggedIn && (
+          <>
+            <Link to="/signup">
+              {" "}
+              <button className="btn btn-light">Registrarse</button>{" "}
+            </Link>
+            <Link to="/login">
+              {" "}
+              <button className="btn btn-light">Iniciar sesión</button>{" "}
+            </Link>
+          </>
+        )}
+      </div>
     </nav>
   );
 }
 
 export default Navbar;
+
+{
+  /* <Link to="/">
+          <button className="btn btn-light">Home</button>
+        </Link> */
+}
+
+// {!isLoggedIn && (
+//   <>
+//     <Link to="/signup">
+//       {" "}
+//       <button className="btn btn-light">Registrarse</button>{" "}
+//     </Link>
+//     <Link to="/login">
+//       {" "}
+//       <button className="btn btn-light">Iniciar sesión</button>{" "}
+//     </Link>
+//   </>
+// )}

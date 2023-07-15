@@ -26,12 +26,13 @@ import JoinFamily from "./pages/JoinFamily/JoinFamily";
 import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import EditChildPage from "./pages/EditChildPage/EditChildPage";
 import CentersPage from "./pages/CentersPage/CentersPage";
+import ChildDetails from "./components/Child/ChildDetails";
+import AppointmentsPage from "./pages/AppointmentsPage/AppointmentsPage";
+import ChildVaccinePage from "./pages/ChildrenPage/ChildVaccinePage";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
 
@@ -43,7 +44,7 @@ function App() {
 
         <Route path="/family/:familyId/add-child" element={<AddChildPage />} />
 
-        <Route path="/child" element={<ChildrenPage />} />
+        {/* <Route path="/child" element={<ChildrenPage />} /> */}
 
         <Route
           path="family/:familyId/children/:childId"
@@ -54,12 +55,25 @@ function App() {
           path="/family/:familyId/children/:childId/edit"
           element={<EditChildPage />}
         />
+        <Route path="/family/:familyId/children" element={<ChildrenPage />} />
+
+        <Route path="/child/:childId" element={<ChildDetails />} />
+
+        <Route path="/vaccines/:vaccineId/edit" element={<EditVaccinePage />} />
 
         <Route path="/vaccines" element={<VaccinesPage />} />
 
         <Route path="/vaccines/:vaccineId" element={<VaccinePage />} />
 
-        <Route path="/vaccines/:vaccineId/edit" element={<EditVaccinePage />} />
+        <Route
+          path="/child/vaccine/:vaccineId"
+          element={<ChildVaccinePage />}
+        />
+
+        <Route
+          path="/family/:familyId/appointments"
+          element={<AppointmentsPage />}
+        />
 
         <Route
           path="/profile"
@@ -94,6 +108,8 @@ function App() {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
+      <Navbar />
     </div>
   );
 }

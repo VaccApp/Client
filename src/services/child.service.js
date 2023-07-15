@@ -24,11 +24,6 @@ class ChildService {
     return this.api.post(`family/${familyId}`, requestBody);
   }
 
-  // GET /child
-  getOne(childId) {
-    return this.api.get(`/child/${childId}`);
-  }
-
   // GET child vaccines in a month
   vaccinesAlert(childId) {
     return this.api.get(`/child/${childId}/calendar`);
@@ -38,6 +33,20 @@ class ChildService {
   edit(childId, requestBody) {
     return this.api.put(`/child/${childId}`, requestBody);
   }
+  //GET /child (para traer los hijos de una familia)
+  getAll = (familyId) => {
+    return this.api.get(`/family/${familyId}/children`);
+  };
+
+  //GET Child and Vaccine
+  getBoth = (vaccineId) => {
+    return this.api.get(`/child/vaccine/${vaccineId}`);
+  };
+
+  // GET /child/:childId
+  getOne = (childId) => {
+    return this.api.get(`/child/${childId}`);
+  };
 }
 
 const childService = new ChildService();

@@ -1,20 +1,12 @@
-.kidDefaultPic {
-    width: 600px;
-    height: auto;
+a {
+    text-decoration: none;
 }
 
-.addChildButton {
-    color: white;
-    text-decoration: none;
-    background-color: red;
-    border-radius: 100%;
-    width: 60px;
-    height: 60px;
-    
-}
-
-.addChildButton a{
-    color: white;
-    text-decoration: none;
-    font-size: 3em;
+.addButton {
+ 
+    width: 80px;
+    height: 80px;
+    position: fixed;
+    bottom: 150px;
+    right: 40px;
 }
