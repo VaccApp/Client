@@ -8,42 +8,27 @@ const API_URL = "http://localhost:5005";
 const REALAPI_URL = "http://localhost:4001/api";
 
 export default function ChildVaccinePage() {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const { vaccineId } = useParams();
-
-  console.log(vaccineId);
 
   const getChildAndVaccine = () => {
     childService
       .getBoth(vaccineId)
-      .then((response) => setData("respues", response.data))
+      .then((response) => setData(response.data))
       .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     getChildAndVaccine();
-  }, []);
-  console.log("222", data);
+  }, [vaccineId]);
 
-  const child = data[0][0];
-
-  const vaccine = data[1];
-  console.log("vacunamatata", vaccine, "niñodejavivir", child);
-  // function getAge() {
-  //   let hoy = new Date();
-  //   let cumple = new Date(child.birthdate);
-  //   let edad = hoy.getFullYear() - cumple.getFullYear();
-  //   var m = hoy.getMonth() - cumple.getMonth();
-
-  //   if (m < 0 || (m === 0 && hoy.getDate() < cumple.getDate())) {
-  //     edad--;
-  //   }
-  //   return edad;
-  // }
+  const [child, vaccine] = data;
+  // console.log("vacunamatata", vaccine, "niñodejavivir", child);
+  console.log(data);
 
   function edad(b) {
     let a = moment();
-    b = moment(child.birthdate.slice(0, 10));
+    b = moment(child?.birthdate.slice(0, 10));
 
     let years = a.diff(b, "year");
     let months = a.diff(b, "months");
@@ -59,14 +44,16 @@ export default function ChildVaccinePage() {
     return diffObj;
   }
 
-  let as = edad(child.birthdate.slice(0, 10));
+  let as = edad(child?.birthdate.slice(0, 10));
 
   console.log("as", as);
 
   // let nextVaccine = as.months -
 
   return (
-    data && (
+    data &&
+    child &&
+    vaccine && (
       <div>
         <h1>
           Vacuna {vaccine.name} de {child.name}
