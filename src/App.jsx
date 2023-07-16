@@ -29,6 +29,7 @@ import CentersPage from "./pages/CentersPage/CentersPage";
 import ChildDetails from "./components/Child/ChildDetails";
 import AppointmentsPage from "./pages/AppointmentsPage/AppointmentsPage";
 import ChildVaccinePage from "./pages/ChildrenPage/ChildVaccinePage";
+import VaccinationForm from "./pages/VaccinationForm/VaccinationForm";
 
 function App() {
   return (
@@ -58,6 +59,8 @@ function App() {
         <Route path="/family/:familyId/children" element={<ChildrenPage />} />
 
         <Route path="/child/:childId" element={<ChildDetails />} />
+
+        <Route path="/child/:childId/vaccinate" element={<VaccinationForm />} />
 
         <Route path="/vaccines/:vaccineId/edit" element={<EditVaccinePage />} />
 

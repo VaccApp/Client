@@ -27,7 +27,7 @@ export default function VaccineCard({
             <td>Farmacéutica: {creator}</td>
           </tr>
           <tr>
-            <td>Fecha de expiración: {expires}</td>
+            <td>Fecha de expiración: {expires.slice(0, 10)}</td>
             <td>Lote: {batch}</td>
           </tr>
           <tr>
@@ -39,7 +39,7 @@ export default function VaccineCard({
             </td>
           </tr>
           <tr>
-            <td>Fecha de vacunación: {vaccinationDate}</td>
+            <td>Fecha de vacunación: {vaccinationDate.slice(0, 10)}</td>
             <td>Estado: {status}</td>
           </tr>
         </tbody>
