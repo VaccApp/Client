@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.module.css";
 import childService from "../../services/child.service";
 
 const API_URL = "http://localhost:5005";
@@ -9,7 +11,10 @@ const REALAPI_URL = "http://localhost:4001/api";
 
 export default function ChildVaccinePage() {
   const [data, setData] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
   const { vaccineId } = useParams();
+
+  const navigate = useNavigate();
 
   const getChildAndVaccine = () => {
     childService
@@ -18,9 +23,18 @@ export default function ChildVaccinePage() {
       .catch((error) => console.log(error));
   };
 
+  const setDate = () => {
+    childService
+      .addDate(vaccineId, selectedDate)
+      .then(() => navigate("/"))
+      .catch((error) => console.log(error));
+  };
+
   useEffect(() => {
     getChildAndVaccine();
   }, [vaccineId]);
+
+  console.log(selectedDate);
 
   const [child, vaccine] = data;
   // console.log("vacunamatata", vaccine, "niñodejavivir", child);
@@ -46,7 +60,14 @@ export default function ChildVaccinePage() {
 
   let as = edad(child?.birthdate.slice(0, 10));
 
-  console.log("as", as);
+  console.log(
+    "as",
+    as,
+    "selectedDate",
+    selectedDate,
+    "vaccinationDate",
+    vaccine
+  );
 
   // let nextVaccine = as.months -
 
@@ -73,6 +94,27 @@ export default function ChildVaccinePage() {
             : vaccine.vaccinationAge + " meses"}
         </p>
         <p>{as.months}</p>
+
+        <p>Vacuna: {vaccine.name}</p>
+        <p>Dosis: {vaccine.dose}</p>
+        <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
+        <h4>Cita vacunación</h4>
+        <form action="post">
+          <DatePicker
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            dateFormat={"dd/MM/yyyy"}
+            minDate={new Date()}
+            filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
+            isClearable
+          />
+          <input type="submit" onClick={setDate} value="submit" />
+        </form>
+        {/* <p>
+          Cita vacunación:{" "}
+          {/* {selectedDate ? selectedDate : vaccine.vaccinationDate} */}
+        {/* {selectedDate === null ? vaccine.vaccinationDate : selectedDate} */}
+        {/* </p> */}
       </div>
     )
   );
