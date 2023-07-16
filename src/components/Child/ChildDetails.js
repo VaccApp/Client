@@ -45,6 +45,13 @@ export default function ChildDetails(props) {
         <h1>Información de {child.name}:</h1>
         <h2>Fecha de nacimiento: {child.birthdate.slice(0, 10)}</h2>
         <h2>Edad: {getAge()} años</h2>
+        <Link
+          to={`/child/${child._id}/vaccinate`}
+          role="button"
+          className="btn btn-primary"
+        >
+          Vacunar
+        </Link>
         <h3>Vacunas: </h3>
         {child.vaccines.map((vaccine) => {
           return <VaccineCard key={vaccine._id} {...vaccine} />;

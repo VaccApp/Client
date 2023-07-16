@@ -27,11 +27,19 @@ function ChildDetailPage() {
 
   return (
     <div>
-      <Link to={`/family/${familyId}/children/`}>Volver a hijos</Link>
+      <Link to={`/family/${familyId}`}>Volver a familia</Link>
       <br />
       <Link to={`/family/${familyId}/children/${childId}/edit`}>
         Editar hijo
       </Link>
+      <br />
+      <Link
+          to={`/child/${child._id}/vaccinate`}
+          role="button"
+          className="btn btn-primary"
+        >
+          Vacunar
+        </Link>
       <h1>Child Detail Page</h1>
       {child && renderChild()}
       <VaccineAlert childId={childId} childName={child.name} />

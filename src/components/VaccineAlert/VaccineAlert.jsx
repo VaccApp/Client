@@ -16,8 +16,6 @@ function VaccineAlert({ childId, childName }) {
     getVaccines();
   }, [childId]);
 
-  console.log("Vacunas", vaccines);
-
   const renderVaccine = () => {
     return (
       vaccines && (
