@@ -32,7 +32,7 @@ import AppointmentsPage from "./pages/AppointmentsPage/AppointmentsPage";
 import ChildVaccinePage from "./pages/ChildrenPage/ChildVaccinePage";
 import VaccinationForm from "./pages/VaccinationForm/VaccinationForm";
 import EditVaccineForm from "./pages/EditVaccineForm/EditVaccineForm";
-import QRreader from "./pages/qr-reader/Qr-reader";
+import QRreader from "./pages/QRreader/QRreader";
 
 function App() {
   return (
