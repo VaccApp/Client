@@ -32,6 +32,7 @@ import AppointmentsPage from "./pages/AppointmentsPage/AppointmentsPage";
 import ChildVaccinePage from "./pages/ChildrenPage/ChildVaccinePage";
 import VaccinationForm from "./pages/VaccinationForm/VaccinationForm";
 import EditVaccineForm from "./pages/EditVaccineForm/EditVaccineForm";
+import QRreader from "./pages/qr-reader/Qr-reader";
 
 function App() {
   return (
@@ -63,6 +64,8 @@ function App() {
         <Route path="/child/:childId" element={<ChildDetails />} />
 
         <Route path="/child/:childId/vaccinate" element={<VaccinationForm />} />
+
+        <Route path="/child/:childId/qr" element={<QRreader />} />
 
         <Route path="/child/:childId/vaccinate/:vaccineId/edit" element={<EditVaccineForm />} />
 

@@ -13,9 +13,9 @@ function Navbar() {
       <div className="container-fluid">
         {isLoggedIn && (
           <>
-            <button className="btn btn-light" onClick={logOutUser}>
+            {/* <button className="btn btn-light" onClick={logOutUser}>
               Cerrar sesión
-            </button>
+            </button> */}
 
             <div className="navbar navbar-el">
               <Link to="/:familyId/appointments">

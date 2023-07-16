@@ -50,11 +50,20 @@ export default function ChildDetails(props) {
           role="button"
           className="btn btn-primary"
         >
-          Vacunar
+          Vacunar con formulario
+        </Link>
+        <Link
+          to={`/child/${child._id}/qr`}
+          role="button"
+          className="btn btn-danger"
+        >
+          Vacunar con QR
         </Link>
         <h3>Vacunas: </h3>
         {child.vaccines.map((vaccine) => {
-          return <VaccineCard key={vaccine._id} {...vaccine} childId={childId} />;
+          return (
+            <VaccineCard key={vaccine._id} {...vaccine} childId={childId} />
+          );
         })}
 
         <Link to={`/child/${child._id}/children`}>
