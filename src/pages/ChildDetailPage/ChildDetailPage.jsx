@@ -27,7 +27,7 @@ function ChildDetailPage() {
 
   return (
     <div>
-      <Link to={`/family/${familyId}/children/`}>Volver a hijos</Link>
+      <Link to={`/family/${familyId}`}>Volver a familia</Link>
       <br />
       <Link to={`/family/${familyId}/children/${childId}/edit`}>
         Editar hijo
