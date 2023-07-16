@@ -46,21 +46,20 @@ function QRreader() {
     console.log("Objeto", result.text);
   }
 
-  //   result.text es un objeto con las propiedades name, dose, disease, creator, vaccinationAge, batch, expires
-  //   setea el estado de cada propiedad con el valor de cada propiedad de result.text
-  //   si result.text es null, no se setea el estado de cada propiedad con el valor de cada propiedad de result.text
-
-  const handleResult = () => {
-    if (result !== null) {
-      setName(result.text.name);
-      setDose(result.text.dose);
-      setDisease(result.text.disease);
-      setCreator(result.text.creator);
-      setVaccinationAge(result.text.vaccinationAge);
-      setBatch(result.text.batch);
-      setExpires(result.text.expires);
-    }
-  };
+//   useEffect(() => {
+//     const handleResult = () => {
+//       if (result !== null) {
+//         setName(result.text.name);
+//         setDose(result.text.dose);
+//         setDisease(result.text.disease);
+//         setCreator(result.text.creator);
+//         setVaccinationAge(result.text.vaccinationAge);
+//         setBatch(result.text.batch);
+//         setExpires(result.text.expires);
+//       }
+//     };
+//     handleResult();
+//   }, [result]);
 
   const handleStatus = (e) => setStatus(e.target.value);
   const handleVaccinationDate = (e) => setVaccinationDate(e.target.value);
