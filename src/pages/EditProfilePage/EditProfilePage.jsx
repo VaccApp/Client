@@ -1,5 +1,5 @@
 import "./EditProfilePage.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -35,6 +35,20 @@ function EditProfilePage() {
         setErrorMessage(errorDescription);
       });
   };
+
+  useEffect(() => {
+    const getProfile = () => {
+      authService
+        .profile(userId)
+        .then((response) => {
+          setName(response.data.name);
+          setSurname(response.data.surname);
+          setProfilePic(response.data.profilePic);
+        })
+        .catch((error) => console.log(error));
+    };
+    getProfile();
+  }, [userId]);
 
   return (
     <div className="EditProfilePage">
