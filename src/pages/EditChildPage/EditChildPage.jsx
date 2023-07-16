@@ -1,5 +1,5 @@
 import "./EditChildPage.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -37,6 +37,20 @@ function EditChildPage() {
       });
   };
 
+  useEffect(() => {
+    const getChild = () => {
+      childService
+        .getOne(childId)
+        .then((response) => {
+          setName(response.data.name);
+          setBirthdate(response.data.birthdate);
+          setChildPic(response.data.childPic);
+        })
+        .catch((error) => console.log(error));
+    };
+    getChild();
+  }, [childId]);
+
   return (
     <div className="EditChildPage">
       <h1>Editar child</h1>
@@ -54,7 +68,7 @@ function EditChildPage() {
         <input
           type="date"
           name="birthdate"
-          value={birthdate}
+          value={birthdate.slice(0, 10)}
           onChange={handleBirthdate}
           className="form-control"
           required={true}
