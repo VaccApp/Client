@@ -30,6 +30,7 @@ import ChildDetails from "./components/Child/ChildDetails";
 import AppointmentsPage from "./pages/AppointmentsPage/AppointmentsPage";
 import ChildVaccinePage from "./pages/ChildrenPage/ChildVaccinePage";
 import VaccinationForm from "./pages/VaccinationForm/VaccinationForm";
+import EditVaccineForm from "./pages/EditVaccineForm/EditVaccineForm";
 
 function App() {
   return (
@@ -61,6 +62,8 @@ function App() {
         <Route path="/child/:childId" element={<ChildDetails />} />
 
         <Route path="/child/:childId/vaccinate" element={<VaccinationForm />} />
+
+        <Route path="/child/:childId/vaccinate/:vaccineId/edit" element={<EditVaccineForm />} />
 
         <Route path="/vaccines/:vaccineId/edit" element={<EditVaccinePage />} />
 

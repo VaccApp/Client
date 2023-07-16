@@ -54,7 +54,7 @@ export default function ChildDetails(props) {
         </Link>
         <h3>Vacunas: </h3>
         {child.vaccines.map((vaccine) => {
-          return <VaccineCard key={vaccine._id} {...vaccine} />;
+          return <VaccineCard key={vaccine._id} {...vaccine} childId={childId} />;
         })}
 
         <Link to={`/child/${child._id}/children`}>
