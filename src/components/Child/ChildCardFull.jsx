@@ -1,6 +1,12 @@
 import "./ChildCard.css";
 
-export default function ChildCardFull({ name, birthdate, childPic, healthcard, vaccines }) {
+export default function ChildCardFull({
+  name,
+  birthdate,
+  childPic,
+  healthcard,
+  vaccines,
+}) {
   return (
     name &&
     birthdate &&
@@ -9,10 +15,7 @@ export default function ChildCardFull({ name, birthdate, childPic, healthcard, v
     vaccines && (
       <div>
         <h1>{name}</h1>
-        <img
-          src={childPic}
-          alt="child"
-        />
+        <img src={childPic} alt="child" />
         <p>📅 Fecha de nacimiento: {birthdate.slice(0, 10)}</p>
         <p>🪪 Tarjeta sanitaria: {healthcard}</p>
         <h4>💉 Vacunas:</h4>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import childService from "../../services/child.service";
 
 function VaccineAlert({ childId, childName }) {
-  const [vaccines, setVaccines] = useState("");
+  const [vaccines, setVaccines] = useState([]);
 
   useEffect(() => {
     const getVaccines = () => {
@@ -15,8 +15,6 @@ function VaccineAlert({ childId, childName }) {
     };
     getVaccines();
   }, [childId]);
-
-  console.log("Vacunas", vaccines);
 
   const renderVaccine = () => {
     return (
