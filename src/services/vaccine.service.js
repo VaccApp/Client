@@ -19,9 +19,19 @@ class VaccineService {
     });
   }
 
+  // GET /vaccine
+  getOne(vaccineId) {
+    return this.api.get(`vaccines/${vaccineId}`);
+  }
+  
   // POST /vaccine
   vaccinate(childId, requestBody) {
     return this.api.post(`vaccines/${childId}`, requestBody);
+  }
+
+  // PUT /vaccine/:id
+  edit(vaccineId, requestBody) {
+    return this.api.put(`vaccines/${vaccineId}`, requestBody);
   }
 }
 

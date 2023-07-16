@@ -12,6 +12,7 @@ export default function VaccineCard({
   vaccinationDate,
   vaccinationAge,
   _id,
+  childId,
 }) {
   return (
     <div>
@@ -44,6 +45,7 @@ export default function VaccineCard({
           </tr>
         </tbody>
         <Link to={`/child/vaccine/${_id}`}>Ver vacuna</Link>
+        <Link to={`/child/${childId}/vaccinate/${_id}/edit`}>Editar vacuna</Link>
 
         {/* </div> */}
       </table>
