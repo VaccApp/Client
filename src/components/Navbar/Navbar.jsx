@@ -7,6 +7,7 @@ function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  console.log("user", user);
 
   return (
     <nav className="navbar fixed-bottom">
@@ -18,7 +19,7 @@ function Navbar() {
             </button> */}
 
             <div className="navbar navbar-el">
-              <Link to="/:familyId/appointments">
+              <Link to="/family/:familyId/appointments">
                 <img
                   src="/Calendar.png"
                   alt="calendar"
@@ -79,22 +80,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-{
-  /* <Link to="/">
-          <button className="btn btn-light">Home</button>
-        </Link> */
-}
-
-// {!isLoggedIn && (
-//   <>
-//     <Link to="/signup">
-//       {" "}
-//       <button className="btn btn-light">Registrarse</button>{" "}
-//     </Link>
-//     <Link to="/login">
-//       {" "}
-//       <button className="btn btn-light">Iniciar sesión</button>{" "}
-//     </Link>
-//   </>
-// )}

@@ -34,6 +34,8 @@ import VaccinationForm from "./pages/VaccinationForm/VaccinationForm";
 import EditVaccineForm from "./pages/EditVaccineForm/EditVaccineForm";
 import QRreader from "./pages/QRreader/QRreader";
 
+import { AuthContext } from "./context/auth.context";
+
 function App() {
   return (
     <div className="App">
@@ -67,7 +69,10 @@ function App() {
 
         <Route path="/child/:childId/qr" element={<QRreader />} />
 
-        <Route path="/child/:childId/vaccinate/:vaccineId/edit" element={<EditVaccineForm />} />
+        <Route
+          path="/child/:childId/vaccinate/:vaccineId/edit"
+          element={<EditVaccineForm />}
+        />
 
         <Route path="/vaccines/:vaccineId/edit" element={<EditVaccinePage />} />
 

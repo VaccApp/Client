@@ -1,0 +1,27 @@
+.profile {
+    margin: 20px;
+}
+
+.vaccines {
+    border-bottom: 1px solid grey;
+    margin: 20px 0 20px 0;
+    padding-bottom: 20px;
+}
+
+.vacuna img {
+    width: 60px;
+    margin: 0 20px 0 60px;
+}
+
+.tituloVacuna {
+    text-align: left;
+}
+.tituloVacuna a{
+    text-align: left;
+    margin-left: 40px;
+    color: grey;
+}
+.tituloVacuna img{
+    float: right;
+    margin-right: 40px;
+}

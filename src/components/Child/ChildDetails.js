@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import childService from "../../services/child.service";
 import VaccineCard from "../Vaccine/VaccineCard";
+import "./ChildDetails.css";
 
 const API_URL = "http://localhost:5005";
 
@@ -42,9 +43,12 @@ export default function ChildDetails(props) {
   return (
     child && (
       <div>
-        <h1>Información de {child.name}:</h1>
-        <h2>Fecha de nacimiento: {child.birthdate.slice(0, 10)}</h2>
-        <h2>Edad: {getAge()} años</h2>
+        <img src={child.childPic} alt="Child" className="profile" />
+        <h1>Vacunas {child.name}:</h1>
+        <p>
+          {child.birthdate.slice(0, 10)} - {getAge()} años
+        </p>
+
         <Link
           to={`/child/${child._id}/vaccinate`}
           role="button"
@@ -62,13 +66,22 @@ export default function ChildDetails(props) {
         <h3>Vacunas: </h3>
         {child.vaccines.map((vaccine) => {
           return (
-            <VaccineCard key={vaccine._id} {...vaccine} childId={childId} />
+            <div
+              key={vaccine._id}
+              {...vaccine}
+              childId={childId}
+              className="vaccines"
+            >
+              <div className="tituloVacuna">
+                <img src="/Syringe.png" alt="vacuna" className="vacuna" />
+
+                <h4>{vaccine.name}</h4>
+                <Link to={`/vaccines/`}>Ver info de la vacuna</Link>
+                {console.log(vaccine)}
+              </div>
+            </div>
           );
         })}
-
-        <Link to={`/child/${child._id}/children`}>
-          <h2>Hijos:</h2>
-        </Link>
       </div>
     )
   );
