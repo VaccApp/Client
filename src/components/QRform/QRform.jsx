@@ -21,22 +21,32 @@ function QRform({ result }) {
   const [child, setChild] = useState([]);
   const navigate = useNavigate();
 
-
-//   qr "name: Hexavalente, dose: 1, disease: 6 enf, creator: Pfizer, vaccinationAge: 2, batch: ADW3010, expires: 2025-12-31"
-//   useEffect(() => {
-//     const handleResult = () => {
-//       if (result !== null) {
-//         setName(result.text.slice(7,18));
-//         setDose(result.text.slice(26,27));
-//         setDisease(result.text.slice(38,43));
-//         setCreator(result.text.slice(54,60));
-//         setVaccinationAge(result.text.slice(78,79));
-//         setBatch(result.text.slice(88,95));
-//         setExpires(result.text.slice(106,116));
-//       }
-//     };
-//     handleResult();
-//   }, [result]);
+  console.log("Result", result);
+  //   qr "name: Hexavalente, dose: 1, disease: 6 enf, creator: Pfizer, vaccinationAge: 2, batch: ADW3010, expires: 2025-12-31"
+  useEffect(() => {
+    const handleResult = () => {
+      if (result === null || result === undefined) {
+        setName("Sin datos");
+        setDose("Sin datos");
+        setDisease("Sin datos");
+        setCreator("Sin datos");
+        setVaccinationAge("Sin datos");
+        setBatch("Sin datos");
+        setExpires("Sin datos");
+        return;
+      }
+    //     else if (result !== null && result !== undefined) {
+    //     setName(result.text.slice(7, 18));
+    //     setDose(result.text.slice(26, 27));
+    //     setDisease(result.text.slice(38, 43));
+    //     setCreator(result.text.slice(54, 60));
+    //     setVaccinationAge(result.text.slice(78, 79));
+    //     setBatch(result.text.slice(88, 95));
+    //     setExpires(result.text.slice(106, 116));
+    //   }
+    };
+    handleResult();
+  }, [result]);
 
   const handleStatus = (e) => setStatus(e.target.value);
   const handleVaccinationDate = (e) => setVaccinationDate(e.target.value);
