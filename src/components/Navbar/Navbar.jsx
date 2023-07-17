@@ -79,22 +79,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-{
-  /* <Link to="/">
-          <button className="btn btn-light">Home</button>
-        </Link> */
-}
-
-// {!isLoggedIn && (
-//   <>
-//     <Link to="/signup">
-//       {" "}
-//       <button className="btn btn-light">Registrarse</button>{" "}
-//     </Link>
-//     <Link to="/login">
-//       {" "}
-//       <button className="btn btn-light">Iniciar sesión</button>{" "}
-//     </Link>
-//   </>
-// )}

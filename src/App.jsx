@@ -32,6 +32,8 @@ import AppointmentsPage from "./pages/AppointmentsPage/AppointmentsPage";
 import ChildVaccinePage from "./pages/ChildrenPage/ChildVaccinePage";
 import VaccinationForm from "./pages/VaccinationForm/VaccinationForm";
 
+import { AuthContext } from "./context/auth.context";
+
 function App() {
   return (
     <div className="App">
