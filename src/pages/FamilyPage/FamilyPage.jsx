@@ -39,8 +39,6 @@ export default function FamilyPage() {
     ));
   };
 
-  console.log("EEEEEEEEE", families);
-
   return (
     families && (
       <div>

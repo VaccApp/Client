@@ -10,7 +10,6 @@ import moment from "moment";
 export default function AppointmentsPage() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const [children, setChildren] = useState([]);
-  // const [children, setChildren] = useState([]);
   const { familyId } = useParams();
 
   const getFamily = () => {
@@ -41,26 +40,30 @@ export default function AppointmentsPage() {
   // let as = edad(children?.birthdate.slice(0, 10));
 
   const renderChildren = () => {
-    return children.map((child) => (
-      <div key={child._id} {...child}>
-        <img src={child.childPic} alt="profile pic" />
-        <p>{child.name}</p>
-        {child.vaccines.map((vaccine) => (
-          <div key={vaccine._id} {...vaccine}>
-            <img src="/Syringe.png" alt="vaccine pic" />
-            <p>
-              {vaccine.name} - {vaccine.status}
-            </p>
-            <p>
-              Edad de vacunación: {vaccine.vaccinationAge} -{" "}
-              {vaccine.vaccinationDate
-                ? "Cita programada para " + vaccine.vaccinationDate.slice(0, 10)
-                : "Debes fijar la cita"}
-            </p>
-          </div>
-        ))}
-      </div>
-    ));
+    return (
+      children &&
+      children.map((child) => (
+        <div key={child._id} {...child}>
+          <img src={child.childPic} alt="profile pic" />
+          <p>{child.name}</p>
+          {child.vaccines.map((vaccine) => (
+            <div key={vaccine._id} {...vaccine}>
+              <img src="/Syringe.png" alt="vaccine pic" />
+              <p>
+                {vaccine.name} - {vaccine.status}
+              </p>
+              <p>
+                Edad de vacunación: {vaccine.vaccinationAge} -{" "}
+                {vaccine.vaccinationDate
+                  ? "Cita programada para " +
+                    vaccine.vaccinationDate.slice(0, 10)
+                  : "Debes fijar la cita"}
+              </p>
+            </div>
+          ))}
+        </div>
+      ))
+    );
   };
 
   useEffect(() => {
