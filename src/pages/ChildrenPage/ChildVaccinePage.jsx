@@ -37,7 +37,6 @@ export default function ChildVaccinePage() {
   console.log(selectedDate);
 
   const [child, vaccine] = data;
-  // console.log("vacunamatata", vaccine, "niñodejavivir", child);
   console.log(data);
 
   function edad(b) {
@@ -101,6 +100,7 @@ export default function ChildVaccinePage() {
         <h4>Cita vacunación</h4>
         <form action="post">
           <DatePicker
+            // value={selectedDate}
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             dateFormat={"dd/MM/yyyy"}

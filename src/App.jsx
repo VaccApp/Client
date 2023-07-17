@@ -34,6 +34,8 @@ import VaccinationForm from "./pages/VaccinationForm/VaccinationForm";
 import EditVaccineForm from "./pages/EditVaccineForm/EditVaccineForm";
 import QRreader from "./pages/QRreader/QRreader";
 
+import { AuthContext } from "./context/auth.context";
+
 function App() {
   return (
     <div className="App">

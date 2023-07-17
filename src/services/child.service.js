@@ -26,7 +26,7 @@ class ChildService {
 
   // POST vaccinationDate
   addDate(vaccineId, requestBody) {
-    return this.api.post(`/child/vaccine/${vaccineId}`, requestBody);
+    return this.api.put(`/child/vaccine/${vaccineId}`, requestBody);
   }
 
   // GET child vaccines in a month
