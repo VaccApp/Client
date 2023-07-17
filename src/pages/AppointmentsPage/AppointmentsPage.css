@@ -1,0 +1,32 @@
+.vaccine {
+    float: left;
+    
+}
+
+.status {
+    margin: 10px;
+}
+
+.dates {
+    text-align: left;
+    margin: 20px;
+    border: 1px solid grey;
+}
+
+.dates img {
+    margin: 10px 80px 0 40px;
+}
+
+.dates p {
+    margin: 0;
+}
+
+.saveBottom {
+    margin: 20px;
+    padding-bottom: 160px;
+}
+
+aside {
+    font-size: 8px;
+    text-align: right;
+}

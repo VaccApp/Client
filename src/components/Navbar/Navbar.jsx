@@ -7,6 +7,7 @@ function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  console.log("user", user);
 
   return (
     <nav className="navbar fixed-bottom">

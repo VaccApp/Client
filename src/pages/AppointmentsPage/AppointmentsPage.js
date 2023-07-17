@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/auth.context";
 import familyService from "../../services/family.service";
 import ChildCard from "../../components/Child/ChildCard";
 import moment from "moment";
+import "./AppointmentsPage.css";
 
 export default function AppointmentsPage() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -41,36 +42,43 @@ export default function AppointmentsPage() {
 
   const renderChildren = () => {
     return (
-      children &&
-      children.map((child) => (
-        <div key={child._id} {...child}>
-          <img src={child.childPic} alt="profile pic" />
-          <p>{child.name}</p>
-          {child.vaccines.map((vaccine) => (
-            <div key={vaccine._id} {...vaccine}>
-              <img src="/Syringe.png" alt="vaccine pic" />
-              <p>
-                {vaccine.name} - {vaccine.status}
-              </p>
-              <p>
-                Edad de vacunación: {vaccine.vaccinationAge} -{" "}
-                {vaccine.vaccinationDate
-                  ? "Cita programada para " +
-                    vaccine.vaccinationDate.slice(0, 10)
-                  : "Debes fijar la cita"}
-              </p>
+      children && (
+        <div className="saveBottom">
+          <h2>Próximas citas:</h2>
+          {children.map((child) => (
+            <div key={child._id} {...child}>
+              {/* <img src={child.childPic} alt="profile pic" />
+          <p>{child.name}</p> */}
+              {child.vaccines.map((vaccine) => (
+                <div key={vaccine._id} {...vaccine} className="dates">
+                  <img
+                    src="/Syringe.png"
+                    alt="vaccine pic"
+                    className="vaccine"
+                  />
+                  <p className="status">{vaccine.status}</p>
+                  <p>
+                    {child.name}
+                    {/* Edad de vacunación: {vaccine.vaccinationAge} -{" "} */}
+                  </p>
+                  <p>
+                    {vaccine.vaccinationDate
+                      ? "🗓 " + vaccine.vaccinationDate.slice(0, 10)
+                      : "Debes fijar la cita"}
+                  </p>
+                </div>
+              ))}
             </div>
           ))}
+          <aside>*Powered by VaccApp</aside>
         </div>
-      ))
+      )
     );
   };
 
   useEffect(() => {
     getFamily();
   }, []);
-
-  console.log("children", children);
 
   return children && renderChildren();
 }

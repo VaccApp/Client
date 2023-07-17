@@ -7,24 +7,31 @@ function HomePage() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <div>
-      <h1>VaccApp</h1>
-      <div>
+    <div id="header">
+      <img
+        src="/FamilyCareLogoBig.png"
+        alt="logo de Family Care"
+        className="logo"
+      />
+
+      <div className="main">
         <h4>
           Tu herramienta digital para planificar y hacer seguimiento de la
           vacunación de tus hijos.
         </h4>
+      </div>
+      <div className="menu">
         {isLoggedIn && (
           <>
-            <Link to={"/family"}>
+            <Link to={"/family"} className="btn btn-primary">
               <p>Tu familia</p>
             </Link>
 
-            <Link to={"/profile"}>
+            <Link to={"/profile"} className="btn btn-primary">
               <p>Tu perfil</p>
             </Link>
 
-            <Link to={"/vaccines"}>
+            <Link to={"/vaccines"} className="btn btn-primary">
               <p>Vacunación</p>
             </Link>
           </>

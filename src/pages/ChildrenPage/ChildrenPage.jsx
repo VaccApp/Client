@@ -48,6 +48,9 @@ export default function ChildrenPage() {
           ))}
         </div>
       ))} */}
+      <Link to={`/family/${familyId}/add-child`}>
+        <img src="/Añadir.png" alt="Add family" className="addButton" />
+      </Link>
     </div>
   );
 }

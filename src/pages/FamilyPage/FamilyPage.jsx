@@ -19,31 +19,17 @@ export default function FamilyPage() {
       .catch((error) => console.log(error));
   };
 
-  // console.log("USER12", user);
-
   useEffect(() => {
     getAllFamilies();
   }, []);
 
-  // const children = families.children;
-  // const parents = families.parents;
-
   const renderFamily = () => {
-    return families.map((fam) => (
-      <FamilyCard
-        key={fam._id}
-        // children={children}
-        // parents={parents}
-        {...fam}
-      />
-    ));
+    return families.map((fam) => <FamilyCard key={fam._id} {...fam} />);
   };
 
   return (
     families && (
       <div>
-        {/* <h1>Family Page</h1> */}
-
         <Link to="/family/create">
           <img src="/Añadir.png" alt="Add family" className="addButton" />
         </Link>
@@ -59,7 +45,9 @@ export default function FamilyPage() {
             />
             <p>Aún no has añadido a ningún hijo.</p>
             <button className="addChildButton">
-              <Link to="/family/:familyId/add-child">+</Link>
+              <Link to="/family/create">
+                <img src="/Añadir.png" alt="Add family" className="addButton" />
+              </Link>
             </button>
           </div>
         )}

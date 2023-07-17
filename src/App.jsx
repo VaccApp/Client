@@ -69,7 +69,10 @@ function App() {
 
         <Route path="/child/:childId/qr" element={<QRreader />} />
 
-        <Route path="/child/:childId/vaccinate/:vaccineId/edit" element={<EditVaccineForm />} />
+        <Route
+          path="/child/:childId/vaccinate/:vaccineId/edit"
+          element={<EditVaccineForm />}
+        />
 
         <Route path="/vaccines/:vaccineId/edit" element={<EditVaccinePage />} />
 

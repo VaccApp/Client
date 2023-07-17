@@ -53,7 +53,9 @@ function ProfilePage() {
             profile.family.map((fam) => (
               <div key={fam._id}>
                 <h3>
-                  <Link to={`/family/${fam._id}`}>{fam.surname}</Link>
+                  <Link to={`/family/${fam._id}`} className="btn btn-primary">
+                    {fam.surname}
+                  </Link>
                 </h3>
                 <p>Creada el: {fam.createdAt.split("T")[0]}</p>
                 <hr />
