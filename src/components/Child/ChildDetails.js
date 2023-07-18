@@ -46,7 +46,7 @@ export default function ChildDetails(props) {
         <div>
           <h1>Vacunas {child.name}:</h1>
           <p>
-            {child.birthdate.slice(0, 10)} - {getAge()} años
+            {child.birthdate?.slice(0, 10)} - {getAge()} años
           </p>
         </div>
         <div className="apart">
@@ -65,7 +65,7 @@ export default function ChildDetails(props) {
             Vacunar con QR
           </Link>
         </div>
-        {child.vaccines.map((vaccine) => {
+        {child.vaccines?.map((vaccine) => {
           return (
             <div
               key={vaccine._id}

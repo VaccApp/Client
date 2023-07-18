@@ -27,7 +27,7 @@ export default function ChildrenPage() {
   };
 
   return (
-    <div>
+    <div className="saveBottom">
       <h1>Children Page</h1>
       {children.length > 0 ? (
         renderChildren()

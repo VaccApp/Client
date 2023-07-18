@@ -9,7 +9,7 @@ function AddChildPage() {
   const [name, setName] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [healthcard, setHealthcard] = useState("");
-  const [profilePic, setProfilePic] = useState("");
+  const [childPic, setChildPic] = useState("");
 
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -20,17 +20,17 @@ function AddChildPage() {
   const handleName = (e) => setName(e.target.value);
   const handleBirthdate = (e) => setBirthdate(e.target.value);
   const handleHealthcard = (e) => setHealthcard(e.target.value);
-  const handleProfilePic = (e) => setProfilePic(e.target.value);
+  const handleChildPic = (e) => setChildPic(e.target.value);
 
   const handleChildSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { name, birthdate, healthcard, profilePic };
+    const requestBody = { name, birthdate, healthcard, childPic };
 
     childService
       .addChild(familyId, requestBody)
       .then((response) => {
         console.log("New child", response);
-        navigate("/child/:id");
+        navigate(`/family/${familyId}/children`);
       })
       .catch((error) => console.log(error));
   };
@@ -43,8 +43,8 @@ function AddChildPage() {
         <input
           type="text"
           name="profilePic"
-          value={profilePic}
-          onChange={handleProfilePic}
+          value={childPic}
+          onChange={handleChildPic}
           className="form-control"
           required={true}
         />
@@ -56,6 +56,7 @@ function AddChildPage() {
           value={name}
           onChange={handleName}
           className="form-control"
+          required={true}
         />
         <label className="form-label">Fecha de nacimiento</label>
         <input
@@ -64,6 +65,7 @@ function AddChildPage() {
           value={birthdate}
           onChange={handleBirthdate}
           className="form-control"
+          required={true}
         />
         <label className="form-label">Tarjeta sanitaria</label>
         <input
@@ -72,6 +74,7 @@ function AddChildPage() {
           value={healthcard}
           onChange={handleHealthcard}
           className="form-control"
+          required={true}
         />
         <button type="submit" className="btn btn-dark">
           Continuar ➜

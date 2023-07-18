@@ -10,6 +10,7 @@ export default function ChildCard({
   healthcard,
   vaccines,
   edad,
+  childPic,
   family,
 }) {
   function edad(b) {
@@ -32,14 +33,14 @@ export default function ChildCard({
 
   let as = edad(birthdate.slice(0, 10));
 
-  console.log(as);
+  // console.log(as);
 
   // const { childId } = useParams();
   return (
     <div className="childCard">
       <Link to={`/child/${_id}`}>
         <div className="pic">
-          <img src="/childPic.png" alt="child pic" />
+          <img src={`${childPic}`} alt="child pic" />
         </div>
 
         <h2>{name}</h2>
