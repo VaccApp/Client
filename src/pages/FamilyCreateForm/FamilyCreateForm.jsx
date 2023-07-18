@@ -48,7 +48,7 @@ export default function FamilyCreateForm() {
             onChange={handleSurnameInput}
           />
           <br />
-          <label htmlFor="parents">Progenitor </label>
+          <label htmlFor="parents">Nombre del progenitor </label>
           <input
             type="text"
             name="parents"
@@ -59,7 +59,9 @@ export default function FamilyCreateForm() {
           />
         </div>
         <br />
-        <button type="submit">Crear Familia</button>
+        <button type="submit" className="btn btn-primary">
+          Crear Familia
+        </button>
       </form>
     </div>
   );

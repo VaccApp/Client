@@ -9,6 +9,8 @@ function AddChildPage() {
   const [name, setName] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [healthcard, setHealthcard] = useState("");
+  const [profilePic, setProfilePic] = useState("");
+
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -18,10 +20,11 @@ function AddChildPage() {
   const handleName = (e) => setName(e.target.value);
   const handleBirthdate = (e) => setBirthdate(e.target.value);
   const handleHealthcard = (e) => setHealthcard(e.target.value);
+  const handleProfilePic = (e) => setProfilePic(e.target.value);
 
   const handleChildSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { name, birthdate, healthcard };
+    const requestBody = { name, birthdate, healthcard, profilePic };
 
     childService
       .addChild(familyId, requestBody)
@@ -36,6 +39,16 @@ function AddChildPage() {
     <div className="AddChildPage">
       <h1>Añadir miembro de la familia</h1>
       <form onSubmit={handleChildSubmit}>
+        <label className="form-label">Foto de perfil</label>
+        <input
+          type="text"
+          name="profilePic"
+          value={profilePic}
+          onChange={handleProfilePic}
+          className="form-control"
+          required={true}
+        />
+
         <label className="form-label">Nombre</label>
         <input
           type="text"

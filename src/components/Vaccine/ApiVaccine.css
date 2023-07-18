@@ -45,3 +45,9 @@ li, ul {
   .vaccinePic {
     margin-right: 60px;
   }
+
+  .vacuna {
+    float: left;
+    height: 40px;
+    background-color: rgb(200, 226, 248);
+    border-radius: 50%;  }

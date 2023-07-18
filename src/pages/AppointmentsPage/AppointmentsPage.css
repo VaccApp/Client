@@ -1,17 +1,28 @@
 .vaccine {
-    float: left;
-    
+    float: left;    
+}
+
+h1 {
+    text-align: left;
+    margin: 0;
 }
 
 .status {
     margin: 10px;
 }
 
+.status i {
+    border: 1px solid black;
+    padding: 4px;
+}
+
 .dates {
     text-align: left;
-    margin: 20px;
-    border: 1px solid grey;
+    margin: 6px 0 0 0;
+    border-top: 1px solid rgb(187, 181, 181);
+    padding: 10px;
 }
+
 
 .dates img {
     margin: 10px 80px 0 40px;
@@ -29,4 +40,39 @@
 aside {
     font-size: 8px;
     text-align: right;
+    margin-top: 24px;
 }
+
+.filter {
+    background-color: white;
+    border: 1px solid black;
+    margin: 14px 6px 14px 6px;
+    border-radius: 18%;
+    font-size: 14px;
+    color: black;
+}
+
+.vacuna3 {
+    float: left;
+    height: 50px;
+    padding: 8px;
+    background-color: rgb(200, 226, 248);
+    border-radius: 50%;  }
+
+    .vaccLeft {
+        float: left;
+        font-size: 16px;
+    }
+
+    .contenedor{
+        position: relative;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .centrado{
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+    }

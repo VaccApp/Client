@@ -46,12 +46,13 @@ export default function VaccinesPage() {
   // };
 
   return (
-    <div>
+    <div className="saveBottom">
       <h1>Vacunación en la comunidad de Madrid</h1>
 
       {apiVaccines.map((elm, idx) => {
         return <ApiVaccine key={idx} apiVaccines={elm} />;
       })}
+      <aside>*Powered by VaccApp</aside>
     </div>
   );
 }
