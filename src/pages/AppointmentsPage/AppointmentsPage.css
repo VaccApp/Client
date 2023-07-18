@@ -1,16 +1,26 @@
 .vaccine {
-    float: left;
-    
+    float: left;    
+}
+
+h1 {
+    text-align: left;
+    margin: 0;
 }
 
 .status {
     margin: 10px;
 }
 
+.status i {
+    border: 1px solid black;
+    padding: 4px;
+}
+
 .dates {
     text-align: left;
-    margin: 20px;
-    border: 1px solid grey;
+    margin: 6px 0 0 0;
+    border-top: 1px solid rgb(187, 181, 181);
+    padding: 10px;
 }
 
 .dates img {
@@ -29,4 +39,14 @@
 aside {
     font-size: 8px;
     text-align: right;
+    margin-top: 24px;
+}
+
+.filter {
+    background-color: white;
+    border: 1px solid black;
+    margin: 14px 6px 14px 6px;
+    border-radius: 18%;
+    font-size: 14px;
+    color: black;
 }

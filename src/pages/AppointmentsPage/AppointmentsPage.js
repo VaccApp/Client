@@ -7,10 +7,12 @@ import familyService from "../../services/family.service";
 import ChildCard from "../../components/Child/ChildCard";
 import moment from "moment";
 import "./AppointmentsPage.css";
+import { Button } from "bootstrap";
 
 export default function AppointmentsPage() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const [children, setChildren] = useState([]);
+  const [filteredChild, setFilteredChild] = useState(null);
   const { familyId } = useParams();
 
   const getFamily = () => {
@@ -20,31 +22,44 @@ export default function AppointmentsPage() {
       .catch((error) => console.log(error));
   };
 
-  // function edad(b) {
-  //   let a = moment();
-  //   b = moment(children?.birthdate.slice(0, 10));
+  function filterChild(childName) {
+    let filteredChild = children.filter((child) => child.name === childName);
+    return filteredChild;
+  }
 
-  //   let years = a.diff(b, "year");
-  //   let months = a.diff(b, "months");
-
-  //   let days = a.diff(b, "days");
-
-  //   let diffObj = {
-  //     days: days,
-  //     months: months,
-  //     years: years,
-  //   };
-
-  //   return diffObj;
-  // }
-
-  // let as = edad(children?.birthdate.slice(0, 10));
+  function handleChild(e) {
+    let childName = e.target.value;
+    childName !== "Todos"
+      ? setFilteredChild(filterChild(childName))
+      : setFilteredChild(getFamily());
+  }
 
   const renderChildren = () => {
     return (
       children && (
         <div className="saveBottom">
-          <h2>Próximas citas:</h2>
+          <h1>Próximas citas:</h1>
+          <div>
+            <button className="filter"> + Filtros</button>
+
+            {children.map((child) => {
+              return (
+                <button
+                  key={child._id}
+                  {...child}
+                  className="filter"
+                  value={child.name}
+                  onClick={handleChild}
+                >
+                  {child.name}
+                </button>
+              );
+            })}
+            <button value="Todos" className="filter">
+              {" "}
+              Todos
+            </button>
+          </div>
           {children.map((child) => (
             <div key={child._id} {...child}>
               {/* <img src={child.childPic} alt="profile pic" />
@@ -56,7 +71,9 @@ export default function AppointmentsPage() {
                     alt="vaccine pic"
                     className="vaccine"
                   />
-                  <p className="status">{vaccine.status}</p>
+                  <p className="status">
+                    <i>{vaccine.status}</i>
+                  </p>
                   <p>
                     {child.name}
                     {/* Edad de vacunación: {vaccine.vaccinationAge} -{" "} */}

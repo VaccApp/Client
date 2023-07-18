@@ -14,7 +14,7 @@ function Navbar() {
   const getAllFamilies = () => {
     familyService
       .list()
-      .then((response) => setFamilies(response.data))
+      .then((response) => setFamilies(response.data[0]._id))
       .catch((error) => console.log(error));
   };
 
@@ -23,75 +23,90 @@ function Navbar() {
   }, []);
 
   console.log("user", user);
-  const familyId = families[0]._id;
+  // const familyId = families[0]._id;
 
   return (
-    <nav className="navbar fixed-bottom">
-      <div className="container-fluid">
-        {isLoggedIn && (
-          <>
-            {/* <button className="btn btn-light" onClick={logOutUser}>
+    families &&
+    user && (
+      <nav className="navbar fixed-bottom">
+        <div className="container-fluid">
+          {isLoggedIn && (
+            <>
+              {/* <button className="btn btn-light" onClick={logOutUser}>
               Cerrar sesión
             </button> */}
 
-            <div className="navbar navbar-el">
-              <Link to={`/family/${familyId}/appointments`}>
-                <img
-                  src="/Calendar.png"
-                  alt="calendar"
-                  className="navbar-img"
-                />
-                <br></br>
-                <button className=" navbar-text">Citas</button>
-              </Link>
-            </div>
-            <div className="navbar navbar-el">
-              <Link to="/family">
-                <img src="/Family.png" alt="calendar" className="navbar-img" />
-                <br></br>
-                <button className=" navbar-text">Familia</button>
-              </Link>
-            </div>
-            <div className="navbar-el">
-              <Link to={`/family/${familyId}/children`}>
-                <img src="/Add.png" alt="calendar" className="navbar-img" />
-                <br></br>
-                <button className=" navbar-text">Vacunar</button>
-              </Link>
-            </div>
-            <div className="navbar navbar-el">
-              <Link to="/vaccines">
-                <img src="/vacuna.png" alt="calendar" className="navbar-img" />
-                <br></br>
-                <button className="navbar-text">Info</button>
-              </Link>
-            </div>
-            <div className="navbar navbar-el">
-              <Link to="/profile">
-                <img src="/usuario.png" alt="calendar" className="navbar-img" />
-                <br></br>
-                <button className="navbar-text">Perfil</button>
-              </Link>
-            </div>
+              <div className="navbar navbar-el">
+                <Link to={`/family/${families}/appointments`}>
+                  <img
+                    src="/Calendar.png"
+                    alt="calendar"
+                    className="navbar-img"
+                  />
+                  <br></br>
+                  <button className=" navbar-text">Citas</button>
+                </Link>
+              </div>
+              <div className="navbar navbar-el">
+                <Link to="/family">
+                  <img
+                    src="/Family.png"
+                    alt="calendar"
+                    className="navbar-img"
+                  />
+                  <br></br>
+                  <button className=" navbar-text">Familia</button>
+                </Link>
+              </div>
+              <div className="navbar-el">
+                <Link to={`/family/${families}/children`}>
+                  <img src="/Add.png" alt="calendar" className="navbar-img" />
+                  <br></br>
+                  <button className=" navbar-text">Vacunar</button>
+                </Link>
+              </div>
+              <div className="navbar navbar-el">
+                <Link to="/vaccines">
+                  <img
+                    src="/vacuna.png"
+                    alt="calendar"
+                    className="navbar-img"
+                  />
+                  <br></br>
+                  <button className="navbar-text">Info</button>
+                </Link>
+              </div>
+              <div className="navbar navbar-el">
+                <Link to="/profile">
+                  <img
+                    src="/usuario.png"
+                    alt="calendar"
+                    className="navbar-img"
+                  />
+                  <br></br>
+                  <button className="navbar-text">Perfil</button>
+                </Link>
+              </div>
 
-            {/* <span classNameName="userIcon">{user && user.name}</span> */}
-          </>
-        )}
+              {/* <span classNameName="userIcon">{user && user.name}</span> */}
+            </>
+          )}
 
-        {!isLoggedIn && (
-          <>
-            <Link to="/signup">
-              {" "}
-              <button className="btn btn-light">Registrarse</button>{" "}
-            </Link>
-            <Link to="/login">
-              {" "}
-              <button className="btn btn-light">Iniciar sesión</button>{" "}
-            </Link>
-          </>
-        )}
-      </div>
-    </nav>
+          {!isLoggedIn && (
+            <>
+              <Link to="/signup">
+                {" "}
+                <button className="btn btn-light">Registrarse</button>{" "}
+              </Link>
+              <Link to="/login">
+                {" "}
+                <button className="btn btn-light">Iniciar sesión</button>{" "}
+              </Link>
+            </>
+          )}
+        </div>
+      </nav>
+    )
   );
 }
 
