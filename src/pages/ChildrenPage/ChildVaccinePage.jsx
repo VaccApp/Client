@@ -12,6 +12,8 @@ const REALAPI_URL = "http://localhost:4001/api";
 export default function ChildVaccinePage() {
   const [data, setData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(undefined);
+
   const { vaccineId } = useParams();
 
   const navigate = useNavigate();
@@ -23,21 +25,32 @@ export default function ChildVaccinePage() {
       .catch((error) => console.log(error));
   };
 
-  const setDate = () => {
+  const handleDate = (e) => {
+    setSelectedDate(e.target.value);
+  };
+
+  console.log("SELECTED DATE: ", selectedDate);
+
+  const handleDateSubmit = (e) => {
+    e.preventDefault();
+    const vaccineDate = { selectedDate };
     childService
-      .addDate(vaccineId, selectedDate)
-      .then(() => navigate("/"))
-      .catch((error) => console.log(error));
+      .addDate(vaccineId, vaccineDate)
+      .then((response) => {
+        console.log("RESPONSE: ", vaccineDate);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
     getChildAndVaccine();
   }, [vaccineId]);
 
-  console.log(selectedDate);
+  console.log("DATE: ", selectedDate);
 
   const [child, vaccine] = data;
-  console.log(data);
 
   function edad(b) {
     let a = moment();
@@ -59,17 +72,6 @@ export default function ChildVaccinePage() {
 
   let as = edad(child?.birthdate.slice(0, 10));
 
-  console.log(
-    "as",
-    as,
-    "selectedDate",
-    selectedDate,
-    "vaccinationDate",
-    vaccine
-  );
-
-  // let nextVaccine = as.months -
-
   return (
     data &&
     child &&
@@ -85,36 +87,58 @@ export default function ChildVaccinePage() {
             ? "Recuerde su cita para vacunar a " + child.name
             : child.name + " ya tiene puesta esta vacuna"}
         </p>
-        <p>Julio tiene {as.years} años.</p>
+        {/* <p>Julio tiene {as.years} años.</p>
         <p>
           Esta vacuna se recomienda a los{" "}
           {vaccine.vaccinationAge > 15
             ? vaccine.vaccinationAge / 12 + " años"
             : vaccine.vaccinationAge + " meses"}
         </p>
-        <p>{as.months}</p>
+        <p>{as.months}</p> */}
 
         <p>Vacuna: {vaccine.name}</p>
         <p>Dosis: {vaccine.dose}</p>
         <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
-        <h4>Cita vacunación</h4>
-        <form action="post">
-          <DatePicker
-            // value={selectedDate}
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            dateFormat={"dd/MM/yyyy"}
-            minDate={new Date()}
-            filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
-            isClearable
+        {/* <h4>Cita vacunación</h4> */}
+        <form onSubmit={handleDateSubmit}>
+          <label className="form-label">
+            Cita de vacunación:{" "}
+            {vaccine.vaccinationDate
+              ? vaccine.vaccinationDate.slice(0, 10)
+              : selectedDate
+              ? selectedDate
+              : "Pendiente de programar"}
+          </label>
+          <input
+            type="date"
+            name="selectedDate"
+            value={selectedDate}
+            onChange={handleDate}
+            className="form-control"
           />
-          <input type="submit" onClick={setDate} value="submit" />
+          {/* <DatePicker
+          value={selectedDate}
+          selected={selectedDate}
+          onChange={handleDate}
+          dateFormat={"dd/MM/yyyy"}
+          minDate={new Date()}
+          filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
+          isClearable
+        /> */}
+          {/* <form onSubmit={handleDateSubmit}> */}
+          {/* <input
+            type="date"
+            name="selectedDate"
+            value={
+              vaccine.vaccinationDate ? vaccine.vaccinationDate : selectedDate
+            }
+          ></input> */}
+
+          <button type="submit" className="btn btn-dark">
+            Agendar
+          </button>
         </form>
-        {/* <p>
-          Cita vacunación:{" "}
-          {/* {selectedDate ? selectedDate : vaccine.vaccinationDate} */}
-        {/* {selectedDate === null ? vaccine.vaccinationDate : selectedDate} */}
-        {/* </p> */}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     )
   );

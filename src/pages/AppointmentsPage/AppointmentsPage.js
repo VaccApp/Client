@@ -65,6 +65,7 @@ export default function AppointmentsPage() {
             <div key={child._id} {...child}>
               {child.vaccines.map((vaccine) => (
                 <div key={vaccine._id} {...vaccine} className="dates">
+                  <aside className="centrado">{vaccine.vaccinationAge}</aside>
                   <img
                     src="/Syringe.png"
                     alt="vaccine pic"

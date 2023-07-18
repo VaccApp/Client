@@ -45,7 +45,7 @@ function Navbar() {
                 </Link>
               </div>
               <div className="navbar navbar-el">
-                <Link to="/family">
+                <Link to={`/family/${families}/children`}>
                   <img
                     src="/Family.png"
                     alt="calendar"

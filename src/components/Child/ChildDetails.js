@@ -77,7 +77,9 @@ export default function ChildDetails(props) {
                 <img src="/Syringe.png" alt="vacuna" className="vacuna" />
 
                 <h4>{vaccine.name}</h4>
-                <Link to={`/vaccines/`}>Ver info de la vacuna</Link>
+                <Link to={`/child/vaccine/${vaccine._id}`}>
+                  Ver info de la vacuna
+                </Link>
               </div>
             </div>
           );
