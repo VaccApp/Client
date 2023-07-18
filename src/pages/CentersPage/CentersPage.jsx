@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import centerService from "../../services/center.service";
+import Map from "../../components/Map/Map";
 
 export default function CentersPage() {
   const [centers, setCenters] = useState("");
@@ -40,6 +41,8 @@ export default function CentersPage() {
           </p>
           <p>Latitud: {centersLatitude[index]}</p>
           <p>Longitud: {centersLongitude[index]}</p>
+          {/* <Map lng={centersLongitude[index]} lat={centersLatitude[index]} /> */}
+          {/* <Map lng={-3.7} lat={40.4} htmlId={index} /> */}
           <hr />
         </div>
       );
@@ -50,6 +53,7 @@ export default function CentersPage() {
     centers && (
       <div className="centers-page">
         <h1>Centros de vacunación</h1>
+        <Map lng={-3.7} lat={40.42} />
         <hr />
         <div className="centers-container">{renderCenters()}</div>
       </div>
