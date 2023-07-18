@@ -23,6 +23,7 @@ h1 {
     padding: 10px;
 }
 
+
 .dates img {
     margin: 10px 80px 0 40px;
 }
@@ -50,3 +51,28 @@ aside {
     font-size: 14px;
     color: black;
 }
+
+.vacuna3 {
+    float: left;
+    height: 50px;
+    padding: 8px;
+    background-color: rgb(200, 226, 248);
+    border-radius: 50%;  }
+
+    .vaccLeft {
+        float: left;
+        font-size: 16px;
+    }
+
+    .contenedor{
+        position: relative;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .centrado{
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+    }

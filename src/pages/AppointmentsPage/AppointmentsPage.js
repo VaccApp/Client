@@ -28,6 +28,7 @@ export default function AppointmentsPage() {
   }
 
   function handleChild(e) {
+    e.preventDefault();
     let childName = e.target.value;
     childName !== "Todos"
       ? setFilteredChild(filterChild(childName))
@@ -62,22 +63,17 @@ export default function AppointmentsPage() {
           </div>
           {children.map((child) => (
             <div key={child._id} {...child}>
-              {/* <img src={child.childPic} alt="profile pic" />
-          <p>{child.name}</p> */}
               {child.vaccines.map((vaccine) => (
                 <div key={vaccine._id} {...vaccine} className="dates">
                   <img
                     src="/Syringe.png"
                     alt="vaccine pic"
-                    className="vaccine"
+                    className=" vacuna3"
                   />
                   <p className="status">
                     <i>{vaccine.status}</i>
                   </p>
-                  <p>
-                    {child.name}
-                    {/* Edad de vacunación: {vaccine.vaccinationAge} -{" "} */}
-                  </p>
+                  <p>{child.name}</p>
                   <p>
                     {vaccine.vaccinationDate
                       ? "🗓 " + vaccine.vaccinationDate.slice(0, 10)

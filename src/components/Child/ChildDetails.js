@@ -39,31 +39,32 @@ export default function ChildDetails(props) {
     getAChild();
   }, []);
 
-  console.log("Child details", child);
   return (
     child && (
-      <div>
+      <div className="saveBottom">
         <img src={child.childPic} alt="Child" className="profile" />
-        <h1>Vacunas {child.name}:</h1>
-        <p>
-          {child.birthdate.slice(0, 10)} - {getAge()} años
-        </p>
-
-        <Link
-          to={`/child/${child._id}/vaccinate`}
-          role="button"
-          className="btn btn-primary"
-        >
-          Vacunar con formulario
-        </Link>
-        <Link
-          to={`/child/${child._id}/qr`}
-          role="button"
-          className="btn btn-danger"
-        >
-          Vacunar con QR
-        </Link>
-        <h3>Vacunas: </h3>
+        <div>
+          <h1>Vacunas {child.name}:</h1>
+          <p>
+            {child.birthdate.slice(0, 10)} - {getAge()} años
+          </p>
+        </div>
+        <div className="apart">
+          <Link
+            to={`/child/${child._id}/vaccinate`}
+            role="button"
+            className="btn btn-primary"
+          >
+            Vacunar con formulario
+          </Link>
+          <Link
+            to={`/child/${child._id}/qr`}
+            role="button"
+            className="btn btn-danger"
+          >
+            Vacunar con QR
+          </Link>
+        </div>
         {child.vaccines.map((vaccine) => {
           return (
             <div
@@ -77,11 +78,11 @@ export default function ChildDetails(props) {
 
                 <h4>{vaccine.name}</h4>
                 <Link to={`/vaccines/`}>Ver info de la vacuna</Link>
-                {console.log(vaccine)}
               </div>
             </div>
           );
         })}
+        <aside>*Powered by VaccApp</aside>
       </div>
     )
   );

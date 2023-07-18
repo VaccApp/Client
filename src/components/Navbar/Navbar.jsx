@@ -22,9 +22,6 @@ function Navbar() {
     getAllFamilies();
   }, []);
 
-  console.log("user", user);
-  // const familyId = families[0]._id;
-
   return (
     families &&
     user && (

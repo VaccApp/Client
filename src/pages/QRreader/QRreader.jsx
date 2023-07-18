@@ -25,7 +25,7 @@ function QRreader() {
   }
 
   return (
-    <div>
+    <div className="saveBottom">
       <h1>Escanea el código QR</h1>
       <QrReader
         className="qr-reader"
@@ -37,6 +37,7 @@ function QRreader() {
       <p>{result !== null && result.text}</p>
 
       <QRform result={result} />
+      <aside>*Powered by VaccApp</aside>
     </div>
   );
 }

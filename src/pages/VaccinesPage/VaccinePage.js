@@ -27,34 +27,16 @@ export default function VaccinePage(props) {
   console.log(vaccine);
 
   return (
-    <div>
+    <div className="saveBottom">
       <div className="flex">
-        <img src="/Syringe.png" alt="vacuna" />
+        <img src="/Syringe.png" alt="vacuna" className="vacuna2" />
         <h3>{vaccine.vaccineName}</h3>
       </div>
       <div className="infoText">
         <h4>Descripción</h4>
         <p>{vaccine.description}</p>
       </div>
+      <aside>* Powered by VaccApp</aside>
     </div>
-    // <div className="vaccineDetails">
-    //   <table className="vaccine">
-    //     <tbody>
-    //       <tr>
-    //         <td>Nombre: {vaccine.vaccineName}</td>
-    //         <td>Descripción: {vaccine.description}</td>
-    //         <td>Edad de vacunación: {vaccine.vaccinationAge}</td>
-    //       </tr>
-    //     </tbody>
-    //   </table>
-
-    //   {/* <Link to={`/vaccines/${vaccineId}/edit`}>
-    //     <button className="volver">Editar</button>
-    //   </Link> */}
-
-    //   <Link to={"/vaccines"}>
-    //     <button className="volver">Atrás</button>
-    //   </Link>
-    // </div>
   );
 }

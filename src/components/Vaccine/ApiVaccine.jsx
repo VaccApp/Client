@@ -21,6 +21,7 @@ export default function ApiVaccine({ apiVaccines }) {
           {vaccines.map((vaccine) => {
             return (
               <Link to={`/vaccines/${vaccine._id}`}>
+                <img src="/Syringe.png" alt="vacuna" className="vacuna" />
                 <h4>{vaccine.vaccineName}</h4>
               </Link>
             );

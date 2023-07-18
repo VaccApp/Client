@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import vaccineService from "../../services/vaccine.service";
 import childService from "../../services/child.service";
+import { Button } from "bootstrap";
 
 function VaccinationForm() {
   const [name, setName] = useState("Vacuna");
@@ -71,8 +72,10 @@ function VaccinationForm() {
   }, [childId]);
 
   return (
-    <div className="VaccinationForm">
-      <Link to={`/child/${childId}`}>Volver a {child.name}</Link>
+    <div className="VaccinationForm saveBottom">
+      <Link to={`/child/${childId}`}>
+        <button>Volver a {child.name}</button>
+      </Link>
       <h1>Vacunar a {child.name}</h1>
 
       <form onSubmit={handleVaccinationFormSubmit}>
@@ -156,8 +159,8 @@ function VaccinationForm() {
           required={true}
         >
           <option value="PENDIENTE">Pendiente</option>
-          <option value="PUESTA">Puesta</option>
           <option value="PROGRAMADA">Programada</option>
+          <option value="PUESTA">Puesta</option>
         </select>
         <label className="form-label">Edad de vacunación</label>
         <input
@@ -177,11 +180,12 @@ function VaccinationForm() {
           className="form-control"
           required={true}
         />
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary vaccineButton">
           Vacunar
         </button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
+      <aside>*Powered by VaccApp</aside>
     </div>
   );
 }
