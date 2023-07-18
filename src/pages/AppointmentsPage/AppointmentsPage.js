@@ -12,8 +12,10 @@ import { Button } from "bootstrap";
 export default function AppointmentsPage() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const [children, setChildren] = useState([]);
-  const [filteredChild, setFilteredChild] = useState(null);
+  const [filtredChild, setFiltredChild] = useState("Todos");
   const { familyId } = useParams();
+
+  console.log("filtredChild", filtredChild);
 
   const getFamily = () => {
     familyService
@@ -22,19 +24,18 @@ export default function AppointmentsPage() {
       .catch((error) => console.log(error));
   };
 
-  function filterChild(childName) {
-    let filteredChild = children.filter((child) => child.name === childName);
-    return filteredChild;
+  async function filterChild(childName) {
+    setFiltredChild(children.filter((child) => child.name === childName));
   }
+
+  console.log("CHILDREN", children);
 
   function handleChild(e) {
-    e.preventDefault();
-    let childName = e.target.value;
-    childName !== "Todos"
-      ? setFilteredChild(filterChild(childName))
-      : setFilteredChild(getFamily());
+    setFiltredChild(e.target.value);
+    filtredChild !== "Todos"
+      ? setFiltredChild(filterChild(e.target.value))
+      : setFiltredChild(getFamily());
   }
-
   const renderChildren = () => {
     return (
       children && (
@@ -57,7 +58,6 @@ export default function AppointmentsPage() {
               );
             })}
             <button value="Todos" className="filter">
-              {" "}
               Todos
             </button>
           </div>
@@ -65,7 +65,7 @@ export default function AppointmentsPage() {
             <div key={child._id} {...child}>
               {child.vaccines.map((vaccine) => (
                 <div key={vaccine._id} {...vaccine} className="dates">
-                  <aside className="centrado">{vaccine.vaccinationAge}</aside>
+                  {/* <aside className="centrado">{vaccine.vaccinationAge}</aside> */}
                   <img
                     src="/Syringe.png"
                     alt="vaccine pic"
@@ -92,6 +92,10 @@ export default function AppointmentsPage() {
 
   useEffect(() => {
     getFamily();
+  }, []);
+
+  useEffect(() => {
+    setFiltredChild(getFamily());
   }, []);
 
   return children && renderChildren();
