@@ -63,6 +63,15 @@ function ProfilePage() {
             ))}
         </div>
         <div>
+          <h2>Centro de salud</h2>
+          <h3>
+            <Link to={`/centers`} className="btn btn-primary">
+              Centros
+            </Link>
+          </h3>
+          <hr />
+        </div>
+        <div>
           <h2>Cuenta</h2>
           <Link
             to={`/profile/${user._id}/edit`}

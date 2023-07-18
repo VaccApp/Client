@@ -21,7 +21,7 @@ function QRform({ result }) {
   const [child, setChild] = useState([]);
   const navigate = useNavigate();
 
-  console.log("Result", result);
+  console.log("Result", typeof result);
   //   qr "name: Hexavalente, dose: 1, disease: 6 enf, creator: Pfizer, vaccinationAge: 2, batch: ADW3010, expires: 2025-12-31"
   useEffect(() => {
     const handleResult = () => {
@@ -34,16 +34,15 @@ function QRform({ result }) {
         setBatch("Sin datos");
         setExpires("Sin datos");
         return;
+      } else {
+        setName(result?.slice(7, 18));
+        setDose(result?.slice(26, 27));
+        setDisease(result?.slice(38, 43));
+        setCreator(result?.slice(54, 60));
+        setVaccinationAge(result?.slice(78, 79));
+        setBatch(result?.slice(88, 95));
+        setExpires(result?.slice(106, 116));
       }
-    //     else if (result !== null && result !== undefined) {
-    //     setName(result.text.slice(7, 18));
-    //     setDose(result.text.slice(26, 27));
-    //     setDisease(result.text.slice(38, 43));
-    //     setCreator(result.text.slice(54, 60));
-    //     setVaccinationAge(result.text.slice(78, 79));
-    //     setBatch(result.text.slice(88, 95));
-    //     setExpires(result.text.slice(106, 116));
-    //   }
     };
     handleResult();
   }, [result]);
@@ -91,92 +90,92 @@ function QRform({ result }) {
 
   return (
     // result !== null && (
-      <div>
-        <Link to={`/child/${childId}`}>Volver a {child.name}</Link>
-        <h1>Vacunar a {child.name}</h1>
-        <form onSubmit={handleVaccinationFormSubmit}>
-          <label className="form-label">Nombre de la vacuna</label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            value={name}
-            readOnly
-          />
-          <label className="form-label">Dosis</label>
-          <input
-            type="text"
-            className="form-control"
-            name="dose"
-            value={dose}
-            readOnly
-          />
-          <label className="form-label">Enfermedad</label>
-          <input
-            type="text"
-            className="form-control"
-            name="disease"
-            value={disease}
-            readOnly
-          />
-          <label className="form-label">Creador</label>
-          <input
-            type="text"
-            className="form-control"
-            name="creator"
-            value={creator}
-            readOnly
-          />
-          <label className="form-label">Edad de vacunación</label>
-          <input
-            type="text"
-            className="form-control"
-            name="vaccinationAge"
-            value={vaccinationAge}
-            readOnly
-          />
-          <label className="form-label">Lote</label>
-          <input
-            type="text"
-            className="form-control"
-            name="batch"
-            value={batch}
-            readOnly
-          />
-          <label className="form-label">Fecha de caducidad</label>
-          <input
-            type="text"
-            className="form-control"
-            name="expires"
-            value={expires}
-            readOnly
-          />
-          <label className="form-label">Estado</label>
-          <select
-            className="form-select"
-            name="status"
-            value={status}
-            onChange={handleStatus}
-          >
-            <option value="PENDIENTE">Pendiente</option>
-            <option value="PUESTA">Puesta</option>
-            <option value="PROGRAMADA">Programada</option>
-          </select>
-          <label className="form-label">Fecha de vacunación</label>
-          <input
-            type="date"
-            className="form-control"
-            name="vaccinationDate"
-            value={vaccinationDate}
-            onChange={handleVaccinationDate}
-          />
-          <br></br>
-          <button type="submit" className="btn btn-primary">
-            Vacunar
-          </button>
-        </form>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </div>
+    <div>
+      <Link to={`/child/${childId}`}>Volver a {child.name}</Link>
+      <h1>Vacunar a {child.name}</h1>
+      <form onSubmit={handleVaccinationFormSubmit}>
+        <label className="form-label">Nombre de la vacuna</label>
+        <input
+          type="text"
+          className="form-control"
+          name="name"
+          value={name}
+          readOnly
+        />
+        <label className="form-label">Dosis</label>
+        <input
+          type="text"
+          className="form-control"
+          name="dose"
+          value={dose}
+          readOnly
+        />
+        <label className="form-label">Enfermedad</label>
+        <input
+          type="text"
+          className="form-control"
+          name="disease"
+          value={disease}
+          readOnly
+        />
+        <label className="form-label">Creador</label>
+        <input
+          type="text"
+          className="form-control"
+          name="creator"
+          value={creator}
+          readOnly
+        />
+        <label className="form-label">Edad de vacunación</label>
+        <input
+          type="text"
+          className="form-control"
+          name="vaccinationAge"
+          value={vaccinationAge}
+          readOnly
+        />
+        <label className="form-label">Lote</label>
+        <input
+          type="text"
+          className="form-control"
+          name="batch"
+          value={batch}
+          readOnly
+        />
+        <label className="form-label">Fecha de caducidad</label>
+        <input
+          type="text"
+          className="form-control"
+          name="expires"
+          value={expires}
+          readOnly
+        />
+        <label className="form-label">Estado</label>
+        <select
+          className="form-select"
+          name="status"
+          value={status}
+          onChange={handleStatus}
+        >
+          <option value="PENDIENTE">Pendiente</option>
+          <option value="PUESTA">Puesta</option>
+          <option value="PROGRAMADA">Programada</option>
+        </select>
+        <label className="form-label">Fecha de vacunación</label>
+        <input
+          type="date"
+          className="form-control"
+          name="vaccinationDate"
+          value={vaccinationDate}
+          onChange={handleVaccinationDate}
+        />
+        <br></br>
+        <button type="submit" className="btn btn-primary">
+          Vacunar
+        </button>
+      </form>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+    </div>
     // )
   );
 }
