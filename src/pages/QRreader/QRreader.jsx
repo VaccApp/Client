@@ -5,10 +5,10 @@ import QRform from "../../components/QRform/QRform";
 
 function QRreader() {
   const [delay, setDelay] = useState(100);
-  const [result, setResult] = useState("No result");
+  const [result, setResult] = useState("");
 
   const handleScan = (data) => {
-    setResult(data);
+    setResult(data?.text);
   };
 
   const handleError = (err) => {
@@ -21,8 +21,10 @@ function QRreader() {
   };
 
   if (result !== null) {
-    console.log("Objeto", result.text);
+    console.log("Result", result);
   }
+
+  // console.log("Objeto", typeof JSON.parse(JSON.stringify(result ?? '')));
 
   return (
     <div className="saveBottom">
@@ -34,7 +36,7 @@ function QRreader() {
         onError={handleError}
         onScan={handleScan}
       />
-      <p>{result !== null && result.text}</p>
+      <p>{result && result}</p>
 
       <QRform result={result} />
       <aside>*Powered by VaccApp</aside>

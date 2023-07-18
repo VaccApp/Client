@@ -26,6 +26,8 @@ export default function CentersPage() {
       (center) => center.address["postal-code"]
     );
     const centersWeb = centers["@graph"].map((center) => center.relation);
+    const centersLatitude = centers["@graph"].map((center) => center.location.latitude);
+    const centersLongitude = centers["@graph"].map((center) => center.location.longitude);
 
     return centers["@graph"].map((center, index) => {
       return (
@@ -36,6 +38,8 @@ export default function CentersPage() {
           <p>
             {centersAdresses[index]}, {centersZipCodes[index]}
           </p>
+          <p>Latitud: {centersLatitude[index]}</p>
+          <p>Longitud: {centersLongitude[index]}</p>
           <hr />
         </div>
       );
