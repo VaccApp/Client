@@ -1,13 +1,29 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
+import familyService from "../../services/family.service";
 
 function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+
+  const [families, setFamilies] = useState([]);
+
+  const getAllFamilies = () => {
+    familyService
+      .list()
+      .then((response) => setFamilies(response.data))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    getAllFamilies();
+  }, []);
+
   console.log("user", user);
+  const familyId = families[0]._id;
 
   return (
     <nav className="navbar fixed-bottom">
@@ -19,7 +35,7 @@ function Navbar() {
             </button> */}
 
             <div className="navbar navbar-el">
-              <Link to="/family/:familyId/appointments">
+              <Link to={`/family/${familyId}/appointments`}>
                 <img
                   src="/Calendar.png"
                   alt="calendar"
@@ -37,7 +53,7 @@ function Navbar() {
               </Link>
             </div>
             <div className="navbar-el">
-              <Link to="/:familyId/vaccines">
+              <Link to={`/family/${familyId}/children`}>
                 <img src="/Add.png" alt="calendar" className="navbar-img" />
                 <br></br>
                 <button className=" navbar-text">Vacunar</button>
