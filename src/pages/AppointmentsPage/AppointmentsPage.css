@@ -70,9 +70,3 @@ aside {
         text-align: center;
     }
 
-    .centrado{
-        position: absolute;
-        top: 50%;
-        left: 20%;
-        transform: translate(-50%, -50%);
-    }
