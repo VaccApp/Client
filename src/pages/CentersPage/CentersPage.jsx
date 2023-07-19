@@ -5,6 +5,7 @@ import Map from "../../components/Map/Map";
 
 export default function CentersPage() {
   const [centers, setCenters] = useState("");
+  const [chosenCenter, setChosenCenter] = useState("");
 
   useEffect(() => {
     const getCenters = () => {
@@ -27,15 +28,31 @@ export default function CentersPage() {
       (center) => center.address["postal-code"]
     );
     const centersWeb = centers["@graph"].map((center) => center.relation);
-    const centersLatitude = centers["@graph"].map((center) => center.location.latitude);
-    const centersLongitude = centers["@graph"].map((center) => center.location.longitude);
+    const centersLatitude = centers["@graph"].map(
+      (center) => center.location.latitude
+    );
+    const centersLongitude = centers["@graph"].map(
+      (center) => center.location.longitude
+    );
 
     return centers["@graph"].map((center, index) => {
       return (
         <div key={center["@id"]} className="center-card">
-          <h4>
-            <Link to={centersWeb[index]}>{centersTitles[index]}</Link>
-          </h4>
+          <div className="center-card-header">
+            <input
+              type="radio"
+              name="center"
+              style={{ cursor: "pointer" }}
+              className="form-check-input"
+              onChange={() => {
+                setChosenCenter(center.title);
+                console.log("Centro elegido", chosenCenter);
+              }}
+            />
+            <h4>
+              <Link to={centersWeb[index]}>{centersTitles[index]}</Link>
+            </h4>
+          </div>
           <p>
             {centersAdresses[index]}, {centersZipCodes[index]}
           </p>
@@ -54,6 +71,7 @@ export default function CentersPage() {
       <div className="centers-page">
         <h1>Centros de vacunación</h1>
         <Map lng={-3.7} lat={40.42} />
+        <p>{chosenCenter}</p>
         <hr />
         <div className="centers-container">{renderCenters()}</div>
       </div>

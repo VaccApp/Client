@@ -31,6 +31,11 @@ export default function Map({ lng, lat }) {
     });
   });
 
+  const element = document.createElement("div");
+  element.className = "marker";
+
+//   const marker = new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map.current);
+
   return (
     <div>
       {/* <div className="sidebar">
