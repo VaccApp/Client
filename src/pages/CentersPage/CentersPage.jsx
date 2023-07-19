@@ -45,12 +45,16 @@ export default function CentersPage() {
               style={{ cursor: "pointer" }}
               className="form-check-input"
               onChange={() => {
-                setChosenCenter(center.title);
+                setChosenCenter(center);
                 console.log("Centro elegido", chosenCenter);
               }}
             />
             <h4>
-              <Link to={centersWeb[index]}>{centersTitles[index]}</Link>
+              <Link to={centersWeb[index]}>
+                {index + 1}
+                {". "}
+                {centersTitles[index]}
+              </Link>
             </h4>
           </div>
           <p>
@@ -58,8 +62,6 @@ export default function CentersPage() {
           </p>
           <p>Latitud: {centersLatitude[index]}</p>
           <p>Longitud: {centersLongitude[index]}</p>
-          {/* <Map lng={centersLongitude[index]} lat={centersLatitude[index]} /> */}
-          {/* <Map lng={-3.7} lat={40.4} htmlId={index} /> */}
           <hr />
         </div>
       );
@@ -70,8 +72,15 @@ export default function CentersPage() {
     centers && (
       <div className="centers-page">
         <h1>Centros de vacunación</h1>
-        <Map lng={-3.7} lat={40.42} />
-        <p>{chosenCenter}</p>
+        {!chosenCenter && <Map lng={-3.7033387} lat={40.4167278} chosenCenter={chosenCenter} />}
+        {chosenCenter && (
+          <Map
+            lng={chosenCenter.location.longitude}
+            lat={chosenCenter.location.latitude}
+            chosenCenter={chosenCenter}
+          />
+        )}
+        <p>{chosenCenter.title}</p>
         <hr />
         <div className="centers-container">{renderCenters()}</div>
       </div>
