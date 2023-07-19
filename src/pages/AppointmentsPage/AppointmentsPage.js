@@ -10,32 +10,46 @@ import "./AppointmentsPage.css";
 import { Button } from "bootstrap";
 
 export default function AppointmentsPage() {
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const [children, setChildren] = useState([]);
-  const [filtredChild, setFiltredChild] = useState("Todos");
+  const [wuwuChildren, setWuWuChildren] = useState([]);
   const { familyId } = useParams();
-
-  console.log("filtredChild", filtredChild);
 
   const getFamily = () => {
     familyService
       .appointments(familyId)
-      .then((response) => setChildren(response.data.children))
+      .then(({ data }) => {
+        setChildren(data.children);
+        setWuWuChildren(data.children);
+      })
       .catch((error) => console.log(error));
   };
 
-  async function filterChild(childName) {
-    setFiltredChild(children.filter((child) => child.name === childName));
-  }
+  // useEffect(() => {
+  //   setFiltredChild(getFamily());
+  // }, []);
 
-  console.log("CHILDREN", children);
+  console.log("CHILDREN", wuwuChildren);
 
-  function handleChild(e) {
-    setFiltredChild(e.target.value);
-    filtredChild !== "Todos"
-      ? setFiltredChild(filterChild(e.target.value))
-      : setFiltredChild(getFamily());
-  }
+  const filterChild = (display) => {
+    if (display === "Todos") {
+      setWuWuChildren(children);
+      return;
+    }
+    const filteredChild = children.filter((child) => child.name === display);
+    return setWuWuChildren(filteredChild);
+  };
+
+  // const filteredChildren = children.filter(
+  //   (filtredChild) => filtredChild.name ===
+  // );
+
+  // function handleChild(e) {
+  //   setFiltredChild(e.target.value);
+  //   filtredChild !== "Todos"
+  //     ? setFiltredChild(filterChild(e.target.value))
+  //     : setFiltredChild(getFamily());
+  // }
+
   const renderChildren = () => {
     return (
       children && (
@@ -47,21 +61,25 @@ export default function AppointmentsPage() {
             {children.map((child) => {
               return (
                 <button
-                  key={child._id}
+                  // key={child}
                   {...child}
                   className="filter"
                   value={child.name}
-                  onClick={handleChild}
+                  onClick={() => filterChild(child.name)}
                 >
                   {child.name}
                 </button>
               );
             })}
-            <button value="Todos" className="filter">
+            <button
+              value="Todos"
+              className="filter"
+              onClick={() => filterChild("Todos")}
+            >
               Todos
             </button>
           </div>
-          {children.map((child) => (
+          {wuwuChildren.map((child) => (
             <div key={child._id} {...child}>
               {child.vaccines.map((vaccine) => (
                 <div key={vaccine._id} {...vaccine} className="dates">
@@ -92,10 +110,6 @@ export default function AppointmentsPage() {
 
   useEffect(() => {
     getFamily();
-  }, []);
-
-  useEffect(() => {
-    setFiltredChild(getFamily());
   }, []);
 
   return children && renderChildren();

@@ -1,0 +1,70 @@
+
+
+
+
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+import familyService from "../../services/family.service";
+import ChildCard from "../../components/Child/ChildCard";
+import moment from "moment";
+import "./AppointmentsPage.css";
+import { Button } from "bootstrap";
+import { ButtonList } from "../../components/Filter/ButtonList";
+import { ChildList } from "../../components/Filter/ChildList";
+
+export default function AppointmentsPage() {
+  const [children, setChildren] = useState([]);
+
+  const getFamily = () => {
+    familyService
+      .appointments(familyId)
+      .then((response) => {
+        setChildren(response.data.children);
+      })
+      .catch((error) => console.log(error));
+  };
+  // const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+
+  console.log("allCategories", allCategories);
+
+  const allChildren = [...new Set(children.map((child) => child))];
+  // const [childName, setChildName] = useState(allChildren);
+  const [categories, setCategories] = useState();
+  const [child, setChild] = useState(children);
+  // const [filtredChild, setFiltredChild] = useState("Todos");
+  const { familyId } = useParams();
+
+  const filterCategory = (category) => {
+    if (category === "All") {
+      setChild(allChildren);
+      return;
+    }
+
+    const filteredData = children.filter((child) => child.name === category);
+    setChild(filteredData);
+  };
+
+  console.log("CHILDREN", children);
+
+  const renderChildren = () => {
+    return (
+      children && (
+        <div className="saveBottom">
+          <h1>Próximas citas:</h1>
+          <ButtonList categories={categories} filterCategory={filterCategory} />
+          <ChildList children={children} />
+          <aside>*Powered by VaccApp</aside>
+        </div>
+      )
+    );
+  };
+
+  useEffect(() => {
+    getFamily();
+  }, []);
+
+  return children && renderChildren();
+}
