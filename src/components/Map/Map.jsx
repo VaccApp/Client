@@ -6,7 +6,7 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoiYXlvemVtdCIsImEiOiJjbGs4azQzcDQwYW44M3JteTRmNXIyZXE5In0.lgoFVd2sMWHWjU2ZnViRmg";
 
 export default function Map({ lng, lat, chosenCenter }) {
-  const mapContainer = useRef("map");
+  const mapContainer = useRef();
   const map = useRef(null);
   //   const [lng, setLng] = useState(-3.7);
   //   const [lat, setLat] = useState(40.4);
@@ -20,7 +20,14 @@ export default function Map({ lng, lat, chosenCenter }) {
       center: [lng, lat],
       zoom: zoom,
     });
-  }, [lng, lat, zoom, chosenCenter]);
+  }, [lng, lat, zoom]);
+
+  useEffect(() => {
+    if (map.current) {
+      map.current.setCenter([lng, lat]);
+      new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map.current);
+    }
+  }, [lng, lat]);
 
   useEffect(() => {
     if (!map.current) return;
@@ -29,14 +36,7 @@ export default function Map({ lng, lat, chosenCenter }) {
       //   setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
     });
-  }, [lng, lat, zoom, chosenCenter]);
-
-  const element = document.createElement("div");
-  element.className = "marker";
-
-  if (map.current) {
-    new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map.current);
-  }
+  }, [lng, lat, zoom ]);
 
   return (
     <div>
