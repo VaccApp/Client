@@ -52,9 +52,16 @@ export default function AppointmentsPage() {
       <div className="saveBottom">
         <h1>Próximas citas:</h1>
         <div>
-          <button className="filter"> + Filtros</button>
+          {/* <button className="filter"> + Filtros</button> */}
+          <button
+            value="Todos"
+            className="filter"
+            onClick={() => filterChild("Todos")}
+          >
+            Todos
+          </button>
 
-          {children ? (
+          {children.length > 0 ? (
             children.map((child) => {
               return (
                 <button
@@ -69,16 +76,13 @@ export default function AppointmentsPage() {
               );
             })
           ) : (
-            <div></div>
+            <div>
+              <p>No has añadido a tus hij@s a la aplicación.</p>
+              <Link to={`/family/${familyId}/children`}>
+                <button className="btn btn-primary">Añádelos aquí</button>
+              </Link>
+            </div>
           )}
-
-          <button
-            value="Todos"
-            className="filter"
-            onClick={() => filterChild("Todos")}
-          >
-            Todos
-          </button>
         </div>
 
         {selectedChild.map((child) => (

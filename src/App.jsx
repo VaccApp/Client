@@ -36,6 +36,8 @@ import QRreader from "./pages/QRreader/QRreader";
 
 import { AuthContext } from "./context/auth.context";
 import VaccineDetailPage from "./pages/VaccinesPage/VaccineDetailPage";
+import { Calendar } from "react-big-calendar";
+import VaccineAlert from "./components/VaccineAlert/VaccineAlert";
 
 function App() {
   return (
@@ -69,6 +71,8 @@ function App() {
         <Route path="/child/:childId/vaccinate" element={<VaccinationForm />} />
 
         <Route path="/child/:childId/qr" element={<QRreader />} />
+
+        <Route path="/child/:childId/calendar" element={<VaccineAlert />} />
 
         <Route
           path="/child/:childId/vaccinate/:vaccineId/edit"
