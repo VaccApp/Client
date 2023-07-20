@@ -72,9 +72,11 @@ export default function CentersPage() {
     centers && (
       <div className="centers-page">
         <h1>Centros de vacunación</h1>
+
         {!chosenCenter && (
           <Map lng={-3.7033387} lat={40.4167278} chosenCenter={chosenCenter} />
         )}
+
         {chosenCenter && (
           <Map
             lng={chosenCenter.location.longitude}
