@@ -15,12 +15,16 @@ function AddChildPage() {
 
   const navigate = useNavigate();
 
+  const defaultPic =
+    "https://cdn3.iconfinder.com/data/icons/materia-human/24/013_042_newborn_infant_child_baby-512.png";
+
   const { user } = useContext(AuthContext);
 
   const handleName = (e) => setName(e.target.value);
   const handleBirthdate = (e) => setBirthdate(e.target.value);
   const handleHealthcard = (e) => setHealthcard(e.target.value);
-  const handleChildPic = (e) => setChildPic(e.target.value);
+  const handleChildPic = (e) =>
+    setChildPic(e.target.value ? e.target.value : defaultPic);
 
   const handleChildSubmit = (e) => {
     e.preventDefault();
@@ -44,7 +48,7 @@ function AddChildPage() {
           type="text"
           name="profilePic"
           value={childPic}
-          onChange={handleChildPic}
+          onChange={handleChildPic ? handleChildPic : defaultPic}
           className="form-control"
           required={true}
         />

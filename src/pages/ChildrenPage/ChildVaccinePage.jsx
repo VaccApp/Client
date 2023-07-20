@@ -107,7 +107,12 @@ export default function ChildVaccinePage() {
         <p>{as.months}</p> */}
 
           <p>Dosis: {vaccine.dose}</p>
-          <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
+          <p>
+            Edad de vacunación:{" "}
+            {vaccine.vaccinationAge < 16
+              ? vaccine.vaccinationAge + " meses"
+              : vaccine.vaccinationAge / 12 + " años"}
+          </p>
           {/* <h4>Cita vacunación</h4> */}
           <p>
             {vaccine.status === "PENDIENTE"
