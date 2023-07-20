@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import childService from "../../services/child.service";
 import VaccineCard from "../Vaccine/VaccineCard";
 import "./ChildDetails.css";
+import VaccineAlert from "../VaccineAlert/VaccineAlert";
 
 const API_URL = "http://localhost:5005";
 
@@ -84,6 +85,7 @@ export default function ChildDetails(props) {
             </div>
           );
         })}
+        <VaccineAlert childId={childId} childName={child.name} />
         <aside>*Powered by VaccApp</aside>
       </div>
     )
