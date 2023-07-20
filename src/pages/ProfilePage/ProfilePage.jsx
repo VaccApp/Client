@@ -22,7 +22,7 @@ function ProfilePage() {
   return (
     user &&
     profile && (
-      <div className="align-left">
+      <div className="align-left saveBottom">
         <div>
           <div className="profileHeader">
             <img

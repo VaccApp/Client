@@ -18,4 +18,16 @@
 .pic {
 float: left;
 margin: 12px;
+border-radius: 50%;
+}
+
+.profile2 {
+    margin: 10px 25px 25px 10px;
+    float: left;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.childrencard {
+    margin: 10px ;
 }

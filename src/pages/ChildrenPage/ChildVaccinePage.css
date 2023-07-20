@@ -1,0 +1,29 @@
+.vacuna4 {
+    width: 60px;
+    margin: 0 0 30px 0;
+}
+
+.vacuTitle {
+margin: 0 20px 20px;
+text-align: center;
+}
+
+.vacunaCard {
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.childPicRound {
+    height: 80px;
+    border-radius: 50%; 
+}
+.left {
+    text-align: left;
+}
+
+.btn-margin {
+    margin: 20px;
+    
+}

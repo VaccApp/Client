@@ -51,7 +51,7 @@ function EditProfilePage() {
   }, [userId]);
 
   return (
-    <div className="EditProfilePage">
+    <div className="EditProfilePage saveBottom">
       <h1>Editar perfil</h1>
       <form onSubmit={handleEditProfileSubmit}>
         <label className="form-label">Nombre</label>
