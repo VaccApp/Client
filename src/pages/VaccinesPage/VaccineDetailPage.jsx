@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-const API_URL = "http://localhost:5005";
-const REALAPI_URL = "http://localhost:4001/api";
+const API_URL = "https://vaccapp.fly.dev";
+const REALAPI_URL = "https://vaccapp.fly.dev";
 
 export default function VaccineDetailPage(props) {
   const [vaccine, setVaccine] = useState([]);

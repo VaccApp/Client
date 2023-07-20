@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://vaccapp.fly.dev";
 
 export default function EditVaccinePage(props) {
   const [name, setName] = useState("");

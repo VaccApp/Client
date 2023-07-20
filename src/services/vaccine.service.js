@@ -3,7 +3,7 @@ import axios from "axios";
 class VaccineService {
   constructor() {
     this.api = axios.create({
-      baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005",
+      baseURL: process.env.REACT_APP_SERVER_URL || "https://vaccapp.fly.dev",
     });
 
     // Automatically set JWT token on the request headers for every request
@@ -23,7 +23,7 @@ class VaccineService {
   getOne(vaccineId) {
     return this.api.get(`vaccines/${vaccineId}`);
   }
-  
+
   // POST /vaccine
   vaccinate(childId, requestBody) {
     return this.api.post(`vaccines/${childId}`, requestBody);
