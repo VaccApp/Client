@@ -36,7 +36,8 @@ export default function Map({ lng, lat, chosenCenter }) {
       //   setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
     });
-  }, [lng, lat, zoom ]);
+
+  }, [lng, lat, zoom]);
 
   return (
     <div>

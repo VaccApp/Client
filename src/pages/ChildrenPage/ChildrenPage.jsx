@@ -32,7 +32,12 @@ export default function ChildrenPage() {
       {children.length > 0 ? (
         renderChildren()
       ) : (
-        <p>Aún no hay miembros en la unidad familiar.</p>
+        <div>
+          <p>No has añadido a tus hij@s a la aplicación.</p>
+          <Link to={`/family/${familyId}/children`}>
+            <button className="btn btn-primary">Añádelos aquí</button>
+          </Link>
+        </div>
       )}
       {/* {children.map((child) => (
         <div key={child._id} {...child}>
