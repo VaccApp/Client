@@ -5,6 +5,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.module.css";
 import childService from "../../services/child.service";
+import "./ChildVaccinePage.css";
 
 const API_URL = "http://localhost:5005";
 const REALAPI_URL = "http://localhost:4001/api";
@@ -46,7 +47,7 @@ export default function ChildVaccinePage() {
 
   useEffect(() => {
     getChildAndVaccine();
-  }, [vaccineId]);
+  }, [selectedDate]);
 
   console.log("DATE: ", selectedDate);
 
@@ -71,23 +72,32 @@ export default function ChildVaccinePage() {
   }
 
   let as = edad(child?.birthdate.slice(0, 10));
-
   return (
     data &&
     child &&
     vaccine && (
-      <div>
-        <h1>
-          Vacuna {vaccine.name} de {child.name}
-        </h1>
-        <p>
-          {vaccine.status === "PENDIENTE"
-            ? child.name + " tiene esta vacuna pendiente."
-            : vaccine.status === "PROGRAMADA"
-            ? "Recuerde su cita para vacunar a " + child.name
-            : child.name + " ya tiene puesta esta vacuna"}
-        </p>
-        {/* <p>Julio tiene {as.years} años.</p>
+      <div className="saveBottom">
+        <div className="vacunaCard">
+          <img src={child.childPic} alt="child" className="childPicRound" />
+          <h1 className="vacuTitle">{child.name}</h1>
+          <p>
+            <b>Edad: </b>
+            <br></br>
+            {as.years > 0
+              ? as.years + " años"
+              : as.months > 0
+              ? as.months + " meses"
+              : as.days + " días"}
+          </p>
+        </div>
+
+        <div className="vacunaCard">
+          <img src="/Syringe.png" alt="vacuna" className="vacuna4" />
+          <h2 className="vacuTitle">Vacuna {vaccine.name}</h2>
+        </div>
+
+        <div className="left">
+          {/* <p>Julio tiene {as.years} años.</p>
         <p>
           Esta vacuna se recomienda a los{" "}
           {vaccine.vaccinationAge > 15
@@ -96,27 +106,32 @@ export default function ChildVaccinePage() {
         </p>
         <p>{as.months}</p> */}
 
-        <p>Vacuna: {vaccine.name}</p>
-        <p>Dosis: {vaccine.dose}</p>
-        <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
-        {/* <h4>Cita vacunación</h4> */}
-        <form onSubmit={handleDateSubmit}>
-          <label className="form-label">
-            Cita de vacunación:{" "}
+          <p>Dosis: {vaccine.dose}</p>
+          <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
+          {/* <h4>Cita vacunación</h4> */}
+          <p>
+            {vaccine.status === "PENDIENTE"
+              ? child.name + " tiene esta vacuna pendiente."
+              : vaccine.status === "PROGRAMADA"
+              ? "Recuerde su cita para vacunar a " + child.name
+              : child.name + " ya tiene puesta esta vacuna"}
+          </p>
+
+          <p>
             {vaccine.vaccinationDate
-              ? vaccine.vaccinationDate.slice(0, 10)
-              : selectedDate
-              ? selectedDate
-              : "Pendiente de programar"}
-          </label>
-          <input
-            type="date"
-            name="selectedDate"
-            value={selectedDate}
-            onChange={handleDate}
-            className="form-control"
-          />
-          {/* <DatePicker
+              ? "Tiene cita el día " + vaccine.vaccinationDate.slice(0, 10)
+              : "Selecciona una fecha para agendar su cita: "}
+          </p>
+          <form onSubmit={handleDateSubmit}>
+            <label className="form-label">Cita de vacunación: </label>
+            <input
+              type="date"
+              name="selectedDate"
+              value={selectedDate ? selectedDate : vaccine.vaccinationDate}
+              onChange={handleDate}
+              className="form-control"
+            />
+            {/* <DatePicker
           value={selectedDate}
           selected={selectedDate}
           onChange={handleDate}
@@ -125,8 +140,8 @@ export default function ChildVaccinePage() {
           filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
           isClearable
         /> */}
-          {/* <form onSubmit={handleDateSubmit}> */}
-          {/* <input
+            {/* <form onSubmit={handleDateSubmit}> */}
+            {/* <input
             type="date"
             name="selectedDate"
             value={
@@ -134,10 +149,11 @@ export default function ChildVaccinePage() {
             }
           ></input> */}
 
-          <button type="submit" className="btn btn-dark">
-            Agendar
-          </button>
-        </form>
+            <button type="submit" className="btn btn-dark btn-margin">
+              Agendar
+            </button>
+          </form>
+        </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     )

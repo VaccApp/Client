@@ -8,10 +8,11 @@ import ChildCard from "../../components/Child/ChildCard";
 import moment from "moment";
 import "./AppointmentsPage.css";
 import { Button } from "bootstrap";
+const API_URL = "http://localhost:3000";
 
 export default function AppointmentsPage() {
   const [children, setChildren] = useState([]);
-  const [wuwuChildren, setWuWuChildren] = useState([]);
+  const [selectedChild, setselectedChild] = useState([]);
   const { familyId } = useParams();
 
   const getFamily = () => {
@@ -19,24 +20,20 @@ export default function AppointmentsPage() {
       .appointments(familyId)
       .then(({ data }) => {
         setChildren(data.children);
-        setWuWuChildren(data.children);
+        setselectedChild(data.children);
       })
       .catch((error) => console.log(error));
   };
 
-  // useEffect(() => {
-  //   setFiltredChild(getFamily());
-  // }, []);
-
-  console.log("CHILDREN", wuwuChildren);
+  console.log("CHILDREN", selectedChild);
 
   const filterChild = (display) => {
     if (display === "Todos") {
-      setWuWuChildren(children);
+      setselectedChild(children);
       return;
     }
     const filteredChild = children.filter((child) => child.name === display);
-    return setWuWuChildren(filteredChild);
+    return setselectedChild(filteredChild);
   };
 
   // const filteredChildren = children.filter(
@@ -51,14 +48,21 @@ export default function AppointmentsPage() {
   // }
 
   const renderChildren = () => {
-    return (
-      children && (
-        <div className="saveBottom">
-          <h1>Próximas citas:</h1>
-          <div>
-            <button className="filter"> + Filtros</button>
+    return children ? (
+      <div className="saveBottom">
+        <h1>Próximas citas:</h1>
+        <div>
+          {/* <button className="filter"> + Filtros</button> */}
+          <button
+            value="Todos"
+            className="filter"
+            onClick={() => filterChild("Todos")}
+          >
+            Todos
+          </button>
 
-            {children.map((child) => {
+          {children.length > 0 ? (
+            children.map((child) => {
               return (
                 <button
                   // key={child}
@@ -70,18 +74,21 @@ export default function AppointmentsPage() {
                   {child.name}
                 </button>
               );
-            })}
-            <button
-              value="Todos"
-              className="filter"
-              onClick={() => filterChild("Todos")}
-            >
-              Todos
-            </button>
-          </div>
-          {wuwuChildren.map((child) => (
-            <div key={child._id} {...child}>
-              {child.vaccines.map((vaccine) => (
+            })
+          ) : (
+            <div>
+              <p>No has añadido a tus hij@s a la aplicación.</p>
+              <Link to={`/family/${familyId}/children`}>
+                <button className="btn btn-primary">Añádelos aquí</button>
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {selectedChild.map((child) => (
+          <div key={child._id} {...child}>
+            {child.vaccines.length > 0 ? (
+              child.vaccines.map((vaccine) => (
                 <div key={vaccine._id} {...vaccine} className="dates">
                   {/* <aside className="centrado">{vaccine.vaccinationAge}</aside> */}
                   <img
@@ -99,12 +106,30 @@ export default function AppointmentsPage() {
                       : "Debes fijar la cita"}
                   </p>
                 </div>
-              ))}
-            </div>
-          ))}
-          <aside>*Powered by VaccApp</aside>
-        </div>
-      )
+              ))
+            ) : (
+              <div className="dates">
+                <p>
+                  No has programado ninguna cita de vacunación para {child.name}
+                  , con la tarjeta sanitaria: {child.healthcard}.
+                </p>
+                <Link to={`${API_URL}/child/${child._id}`}>
+                  <button className="btn btn-primary">Hazlo aquí</button>
+                </Link>
+              </div>
+            )}
+          </div>
+        ))}
+
+        <aside>*Powered by VaccApp</aside>
+      </div>
+    ) : (
+      <div className="noChildren">
+        <p>Aún no has añadido a tus hijos.</p>
+        <Link to={`${API_URL}/family/${familyId}/children`}>
+          <button className="btn btn-primary">Añádelos aquí</button>
+        </Link>
+      </div>
     );
   };
 
