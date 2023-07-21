@@ -32,47 +32,47 @@ function ProfilePage() {
             />
             <h1>Hola, {user.name}</h1>
           </div>
-          <h2>Información personal</h2>
-          <p>
+          <h2 className="subtitle">Información personal</h2>
+          <p className="data">
             <b>Nombre:</b> {profile.name}
           </p>
-          <p>
+          <p className="data">
             <b>Apellido:</b> {profile.surname}
           </p>
-          <p>
+          <p className="data">
             <b>Email:</b> {user.email}
           </p>
-          <p>
+          <p className="data">
             <b>DNI:</b> {profile.dni}
           </p>
         </div>
         <hr />
         <div>
-          <h2>Tus familias</h2>
+          <h2 className="subtitle">Tus familias</h2>
           {profile.family &&
             profile.family.map((fam) => (
               <div key={fam._id}>
-                <h3>
+                <h3 className="butono">
                   <Link to={`/family/${fam._id}`} className="btn btn-primary">
                     {fam.surname}
                   </Link>
                 </h3>
-                <p>Creada el: {fam.createdAt.split("T")[0]}</p>
+                <p className="data">Creada el: {fam.createdAt.split("T")[0]}</p>
                 <hr />
               </div>
             ))}
         </div>
         <div>
-          <h2>Centro de salud</h2>
-          <h3>
+          <h2 className="subtitle">Centros de salud</h2>
+          <h3 className="butono">
             <Link to={`/centers`} className="btn btn-primary">
-              Centros
+              Info Centros
             </Link>
           </h3>
           <hr />
         </div>
         <div>
-          <h2>Cuenta</h2>
+          <h2 className="subtitle">Cuenta</h2>
           <Link
             to={`/profile/${user._id}/edit`}
             role="button"
