@@ -76,10 +76,11 @@ export default function CentersPage() {
           <p>...</p>
           <p>...</p>
           <p>...</p>
+
           <p>...</p>
           <img src="/Calendar.png" alt="apano" className="apano"></img>
         </div>
-        <div className="fixed-top">
+        <div className="white fixed-top">
           {/* <h1 className="wei">Centros de vacunación</h1> */}
           {!chosenCenter && (
             <Map
