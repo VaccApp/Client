@@ -10,7 +10,9 @@ export default function FamilyCard({
 }) {
   return (
     <div className="familyCard saveBottom">
-      <h1>Familia {surname}</h1>
+      <Link to={`/${_id}`}>
+        <h1>Familia {surname}</h1>
+      </Link>
       <div className="childCard center">
         <h4>Miembros de la familia: {parents.length + children.length}</h4>
         <hr></hr>
@@ -31,26 +33,28 @@ export default function FamilyCard({
         <hr></hr>
 
         <h4>Menores: {children.length}</h4>
+        <Link to={`${_id}/family/children`}>
+          <button className="btn btn-warning">Ver</button>
+        </Link>
         <hr></hr>
 
         {children.map((child) => (
           <div key={child._id} {...child} className="pic">
-            <Link to={`${API_URL}/child/${child._id}`}>
-              <div>
-                <img
-                  src={`${child.childPic}`}
-                  alt="child pic"
-                  className="profile2"
-                />
-              </div>
-              <div className="childrencard">
-                <h2>{child.name}</h2>
-                <p>
-                  Fecha de nacimiento: <br></br>
-                  {child.birthdate.slice(0, 10)}
-                </p>
-              </div>
-            </Link>
+            <div>
+              <img
+                src={`${child.childPic}`}
+                alt="child pic"
+                className="profile2"
+              />
+            </div>
+            <div className="childrencard">
+              <h2>{child.name}</h2>
+              <p>
+                Fecha de nacimiento: <br></br>
+                {child.birthdate.slice(0, 10)} <br></br>Vacunas:{" "}
+                {child.vaccines.length}
+              </p>
+            </div>
 
             <hr></hr>
           </div>

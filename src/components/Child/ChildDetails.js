@@ -10,7 +10,7 @@ const API_URL = "http://localhost:5005";
 export default function ChildDetails(props) {
   const [child, setChild] = useState(null);
   const { childId } = useParams();
-  const [vaccineArray, setVaccineArray] = useState([]);
+  // const [vaccineArray, setVaccineArray] = useState([]);
 
   const getAChild = (id) => {
     childService
@@ -19,16 +19,16 @@ export default function ChildDetails(props) {
       .catch((error) => console.log(error));
   };
 
-  const getVacc = child?.healthcard;
+  // const getVacc = child?.healthcard;
 
-  const getVaccines = (childId) => {
-    childService
-      .getVacc(childId)
-      .then((response) => setVaccineArray(response.data))
-      .catch((error) => console.log(error));
-  };
+  // const getVaccines = (childId) => {
+  //   childService
+  //     .getVacc(childId)
+  //     .then((response) => setVaccineArray(response.data))
+  //     .catch((error) => console.log(error));
+  // };
 
-  console.log("WEEE", vaccineArray);
+  // console.log("WEEE", vaccineArray);
 
   function getAge() {
     let hoy = new Date();
@@ -42,7 +42,7 @@ export default function ChildDetails(props) {
     return edad;
   }
 
-  console.log("13", vaccineArray);
+  // console.log("13", vaccineArray);
 
   function getMonths() {
     let meses = getAge() * 12;
@@ -54,9 +54,9 @@ export default function ChildDetails(props) {
     getAChild();
   }, []);
 
-  useEffect(() => {
-    getVaccines();
-  }, []);
+  // useEffect(() => {
+  //   getVaccines();
+  // }, []);
 
   return (
     child && (
@@ -111,7 +111,7 @@ export default function ChildDetails(props) {
             </div>
           );
         })}
-
+        {/* 
         {child.vaccines.length === 0 ? (
           <div></div>
         ) : (
@@ -123,7 +123,7 @@ export default function ChildDetails(props) {
           >
             Añadir vacunas
           </Link>
-        )}
+        )} */}
         <aside>*Powered by VaccApp</aside>
       </div>
     )
