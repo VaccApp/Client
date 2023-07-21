@@ -52,6 +52,11 @@ class ChildService {
   getOne = (childId) => {
     return this.api.get(`/child/${childId}`);
   };
+
+  // GET /child/:childId/sync
+  getVacc = (childId) => {
+    return this.api.get(`/child/${childId}/sync`);
+  };
 }
 
 const childService = new ChildService();

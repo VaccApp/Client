@@ -11,6 +11,7 @@ const API_URL = "http://localhost:5005";
 export default function ChildDetails(props) {
   const [child, setChild] = useState(null);
   const { childId } = useParams();
+  const [vaccineArray, setVaccineArray] = useState([]);
 
   const getAChild = (id) => {
     childService
@@ -18,6 +19,20 @@ export default function ChildDetails(props) {
       .then((response) => setChild(response.data))
       .catch((error) => console.log(error));
   };
+
+  // const getVacc = child?.healthcard;
+
+  const getVaccines = (childId) => {
+    childService
+      .getVacc(childId)
+      .then((response) => setChild(response.data))
+      .then(() => {
+        console.log(vaccineArray);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // console.log("WEEE", vaccineArray);
 
   function getAge() {
     let hoy = new Date();
@@ -31,23 +46,38 @@ export default function ChildDetails(props) {
     return edad;
   }
 
+  // console.log("13", vaccineArray);
+
   function getMonths() {
     let meses = getAge() * 12;
     return meses;
   }
+  console.log(child);
 
   useEffect(() => {
     getAChild();
   }, []);
+
+  // useEffect(() => {
+  //   getVaccines();
+  // }, []);
 
   return (
     child && (
       <div className="saveBottom">
         <img src={child.childPic} alt="Child" className="profile" />
         <div>
-          <h1>Vacunas {child.name}:</h1>
+          <h1>Información {child.name}:</h1>
           <p>
-            {child.birthdate?.slice(0, 10)} - {getAge()} años
+            Edad: {getAge()} años <i>({child.birthdate?.slice(0, 10)}) </i>
+          </p>
+          <p>Tarjeta sanitaria: {child.healthcard}</p>
+          <p>
+            Vacunas:{" "}
+            {child.vaccines.length
+              ? "Tiene " + child.vaccines.length
+              : "No hay "}{" "}
+            vacunas registradas
           </p>
         </div>
         <div className="apart">
@@ -85,7 +115,18 @@ export default function ChildDetails(props) {
             </div>
           );
         })}
+
+
+        {child.vaccines.length !== 0 ? (
+          <div></div>
+        ) : (
+          <Link onClick={getVaccines} role="button" className="btn btn-warning">
+            Añadir vacunas
+          </Link>
+        )}
+
         <VaccineAlert childId={childId} childName={child.name} />
+
         <aside>*Powered by VaccApp</aside>
       </div>
     )

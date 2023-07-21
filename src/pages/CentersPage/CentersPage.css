@@ -1,4 +1,22 @@
+
+.fixed-top {
+    background-color: white;
+}
+
+.centers-page {
+    padding-top: 200px;
+}
+.saveBottom {
+    margin: 20px;
+    padding-bottom: 160px;
+}
+
+.apano {
+    color: white;
+    background-color: white;
+
 .center-card-header {
     display: flex;
     flex-direction: row;
+
 }
