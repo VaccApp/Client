@@ -6,14 +6,14 @@ import VaccineCard from "../Vaccine/VaccineCard";
 import "./ChildDetails.css";
 import VaccineAlert from "../VaccineAlert/VaccineAlert";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://vaccapp.fly.dev/";
 
 export default function ChildDetails(props) {
   const [child, setChild] = useState(null);
   const { childId } = useParams();
   const [vaccineArray, setVaccineArray] = useState([]);
 
-  const getAChild = (id) => {
+  const getAChild = () => {
     childService
       .getOne(childId)
       .then((response) => setChild(response.data))
@@ -22,7 +22,7 @@ export default function ChildDetails(props) {
 
   // const getVacc = child?.healthcard;
 
-  const getVaccines = (childId) => {
+  const getVaccines = () => {
     childService
       .getVacc(childId)
       .then((response) => setChild(response.data))
@@ -115,7 +115,6 @@ export default function ChildDetails(props) {
             </div>
           );
         })}
-
 
         {child.vaccines.length !== 0 ? (
           <div></div>

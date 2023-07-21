@@ -70,7 +70,6 @@ export default function CentersPage() {
 
   return (
     centers && (
-
       <div className="centers-page saveBottom saveTop">
         <div className="apano">
           <img src="/Calendar.png" alt="apano" className="apano"></img>
@@ -79,7 +78,6 @@ export default function CentersPage() {
           <p>...</p>
 
           <p>...</p>
-          <img src="/Calendar.png" alt="apano" className="apano"></img>
         </div>
         <div className="white fixed-top">
           {/* <h1 className="wei">Centros de vacunación</h1> */}
