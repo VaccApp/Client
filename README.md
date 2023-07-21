@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# VaccApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Welcome to the VaccApp client repository
 
-## Available Scripts
+## app access
 
-In the project directory, you can run:
+[Try VaccApp!](https://vaccapp.netlify.app/)
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+VaccApp es una herramienta online que permite sustituir la clásica cartilla de vacunación por una moderna app que permite llevar un registro de las vacunas que se han aplicado a cada persona y las citas de vacunación, además de poder consultar información sobre las vacunas y sus enfermedades asociadas. Está principalmente enfocada para que los padres puedan llevar un control de las vacunas que se les han aplicado a sus hijos, así como de las citas de vacunación, pero también puede ser utilizado por cualquier persona que quiera llevar un registro de sus vacunas.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+VaccApp is an online tool that allows you to replace the classic vaccination card with a modern app that allows you to keep a record of the vaccines that have been applied to each person and vaccination appointments, as well as being able to consult information about vaccines and their associated diseases. It is mainly designed for parents who want to keep track of the vaccines that have been applied to their children, as well as vaccination appointments, but it can also be used by anyone who wants to keep a record of their vaccines.
 
-### `npm test`
+## Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- JavaScript / HTML / CSS
 
-### `npm run build`
+- React / npm / axios
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Bootstrap / Moment / React-qr-scanner / Mapbox
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## User Stories
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **404:** As a user I want to see a 404 page when I try to reach a page that does not exist so that I know it's my fault 🤦
 
-### `npm run eject`
+- **500:** As a user I want to see a 500 page when the super team screws it up so that I know that is not my fault
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Homepage:** As a user I want to be able to access the homepage so that I see what the app is about and login and signup 🏠
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Sign up:** As a user I want to be able to create an account to use the app
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Login:** As a user I want to be able to log in to the app so that I can get back to my account 👤
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Logout:** As a user I want to be able to log out from the app so that I can make sure no one will access my account 🚪
 
-## Learn More
+- **Profile:** As a user I want to be able to see my profile and edit it 🪪
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Vaccines info:** As a user I want to see the vaccines information 🦠
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Apointments Page:** As a user I want to see my apointments, sort them by child and edit them 📅
 
-### Code Splitting
+- **Children Page:** As a user I want to see my children page and their information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Children info:** As a user I want to see my children vaccines and alerts 🔍
 
-### Analyzing the Bundle Size
+- **Children edit:** As a user I want to edit my children information ✏️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Children add:** As a user I want to add a new child 👶
 
-### Making a Progressive Web App
+- **Family Page:** As a user I want to see my family page and their information 🧑‍🧒‍🧒
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Vaccinate Page:** As a user I want to be able to aply a vaccine to my children 💉
 
-### Advanced Configuration
+- **Vaccinate with QR:** As a user I want to be able to aply a vaccine to my children with a QR code
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Centers Page:** As a user I want to be able to select a center to aply a vaccine, see the center information and see the center in a map 🏥
 
-### Deployment
+## Backlog
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Any
 
-### `npm run build` fails to minify
+## Links
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Trello
+
+[Link to VaccApp trello board](https://trello.com/b/s2kDxZgh/vaccapp-backlog)
+
+### Git
+
+[Server repository Link](https://github.com/VaccApp/Server)
+
+[Client repository Link](https://github.com/VaccApp/Client)
+
+[Deploy Link](https://vaccapp.netlify.app/)
+
+### Slides
+
+[Slides Link](https://docs.google.com)

@@ -70,6 +70,7 @@ export default function CentersPage() {
 
   return (
     centers && (
+
       <div className="centers-page saveBottom saveTop">
         <div className="apano">
           <img src="/Calendar.png" alt="apano" className="apano"></img>
@@ -98,6 +99,7 @@ export default function CentersPage() {
           )}
           <p>{chosenCenter.title}</p>
         </div>
+
         <hr />
         <div className="centers-container">{renderCenters()}</div>
       </div>

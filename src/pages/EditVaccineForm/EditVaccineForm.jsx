@@ -16,6 +16,7 @@ function EditVaccineForm() {
   const [status, setStatus] = useState("");
   const [vaccinationAge, setVaccinationAge] = useState("");
   const [vaccinationDate, setVaccinationDate] = useState(Date.now());
+  const [center, setCenter] = useState("");
   const { vaccineId } = useParams();
   const { childId } = useParams();
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -31,6 +32,7 @@ function EditVaccineForm() {
   const handleStatus = (e) => setStatus(e.target.value);
   const handleVaccinationAge = (e) => setVaccinationAge(e.target.value);
   const handleVaccinationDate = (e) => setVaccinationDate(e.target.value);
+  const handleCenter = (e) => setCenter(e.target.value);
 
   const handleEditVaccineSubmit = (e) => {
     e.preventDefault();
@@ -44,6 +46,7 @@ function EditVaccineForm() {
       status,
       vaccinationAge,
       vaccinationDate,
+      center,
     };
 
     vaccineService
@@ -75,6 +78,7 @@ function EditVaccineForm() {
           setStatus(response.data.status);
           setVaccinationAge(response.data.vaccinationAge);
           setVaccinationDate(response.data.vaccinationDate);
+          setCenter(response.data.center);
         })
         .catch((error) => console.log(error));
     };
@@ -87,6 +91,14 @@ function EditVaccineForm() {
       <div className="EditVaccinePage">
         <h1>Editar vacuna</h1>
         <form onSubmit={handleEditVaccineSubmit}>
+          <label className="form-label">Centro de salud</label>
+          <input
+            type="text"
+            name="center"
+            value={center}
+            onChange={handleCenter}
+            className="form-control"
+          />
           <label className="form-label">Nombre</label>
           <input
             type="text"

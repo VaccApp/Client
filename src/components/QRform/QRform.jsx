@@ -6,14 +6,14 @@ import childService from "../../services/child.service";
 
 function QRform({ result }) {
   const [name, setName] = useState("Vacuna");
-  const [dose, setDose] = useState(1);
+  const [dose, setDose] = useState(0);
   const [disease, setDisease] = useState("Enfermedad");
-  const [creator, setCreator] = useState("Pfizer");
-  const [vaccinationAge, setVaccinationAge] = useState(12);
-  const [batch, setBatch] = useState("");
+  const [creator, setCreator] = useState("Farmacéutica");
+  const [vaccinationAge, setVaccinationAge] = useState(0);
+  const [batch, setBatch] = useState("1234ABC");
   const [expires, setExpires] = useState("2060-12-31");
 
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("PENDIENTE");
   const [vaccinationDate, setVaccinationDate] = useState(Date.now());
 
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -33,22 +33,28 @@ function QRform({ result }) {
         setVaccinationAge("Sin datos");
         setBatch("Sin datos");
         setExpires("Sin datos");
+        setStatus("Sin datos");
+        setVaccinationDate("Sin datos");
         return;
       } else {
-        setName(result?.slice(7, 18));
-        setDose(result?.slice(26, 27));
-        setDisease(result?.slice(38, 43));
-        setCreator(result?.slice(54, 60));
-        setVaccinationAge(result?.slice(78, 79));
-        setBatch(result?.slice(88, 95));
-        setExpires(result?.slice(106, 116));
+        setName(result?.split(";")[0]);
+        setDose(result?.split(";")[1]);
+        setDisease(result?.split(";")[2]);
+        setVaccinationAge(result?.split(";")[3]);
+        setCreator(result?.split(";")[4]);
+        setBatch(result?.split(";")[5]);
+        setExpires(result?.split(";")[6]);
+        setStatus("PUESTA");
+        setVaccinationDate(
+          new Date().toISOString().slice(0, 10).replace("T", " ")
+        );
       }
     };
     handleResult();
   }, [result]);
 
-  const handleStatus = (e) => setStatus(e.target.value);
-  const handleVaccinationDate = (e) => setVaccinationDate(e.target.value);
+  // const handleStatus = (e) => setStatus(e.target.value);
+  // const handleVaccinationDate = (e) => setVaccinationDate(e.target.value);
 
   const handleVaccinationFormSubmit = (e) => {
     e.preventDefault();
@@ -118,7 +124,7 @@ function QRform({ result }) {
           value={disease}
           readOnly
         />
-        <label className="form-label">Creador</label>
+        <label className="form-label">Farmacéutica</label>
         <input
           type="text"
           className="form-control"
@@ -151,23 +157,20 @@ function QRform({ result }) {
           readOnly
         />
         <label className="form-label">Estado</label>
-        <select
-          className="form-select"
+        <input
+          type="text"
+          className="form-control"
           name="status"
           value={status}
-          onChange={handleStatus}
-        >
-          <option value="PENDIENTE">Pendiente</option>
-          <option value="PUESTA">Puesta</option>
-          <option value="PROGRAMADA">Programada</option>
-        </select>
+          readOnly
+        />
         <label className="form-label">Fecha de vacunación</label>
         <input
           type="date"
           className="form-control"
           name="vaccinationDate"
           value={vaccinationDate}
-          onChange={handleVaccinationDate}
+          readOnly
         />
         <br></br>
         <button type="submit" className="btn btn-primary">

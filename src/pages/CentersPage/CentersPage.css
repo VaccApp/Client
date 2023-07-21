@@ -1,3 +1,4 @@
+
 .fixed-top {
     background-color: white;
 }
@@ -13,4 +14,9 @@
 .apano {
     color: white;
     background-color: white;
+
+.center-card-header {
+    display: flex;
+    flex-direction: row;
+
 }
