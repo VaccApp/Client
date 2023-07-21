@@ -37,7 +37,7 @@ export default function FamilyPage() {
         {families.length > 0 ? (
           renderFamily()
         ) : (
-          <div>
+          <div className="saveBottom">
             <img
               src="/noFamily.png"
               alt="Kid don't know"

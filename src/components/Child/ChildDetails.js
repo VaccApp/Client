@@ -10,7 +10,7 @@ const API_URL = "http://localhost:5005";
 export default function ChildDetails(props) {
   const [child, setChild] = useState(null);
   const { childId } = useParams();
-  const [vaccineArray, setVaccineArray] = useState();
+  const [vaccineArray, setVaccineArray] = useState([]);
 
   const getAChild = (id) => {
     childService
@@ -42,6 +42,8 @@ export default function ChildDetails(props) {
     return edad;
   }
 
+  console.log("13", vaccineArray);
+
   function getMonths() {
     let meses = getAge() * 12;
     return meses;
@@ -50,6 +52,10 @@ export default function ChildDetails(props) {
 
   useEffect(() => {
     getAChild();
+  }, []);
+
+  useEffect(() => {
+    getVaccines();
   }, []);
 
   return (
@@ -106,19 +112,17 @@ export default function ChildDetails(props) {
           );
         })}
 
-        {child.vaccines.length > 0 ? (
+        {child.vaccines.length === 0 ? (
           <div></div>
         ) : (
-          {
-            /* <Link
-              to={`/child/${child._id}/sync`}
-              type="submit"
-              role="button"
-              className="btn btn-warning"
-            >
-              Añadir vacunas
-            </Link> */
-          }
+          <Link
+            to={`/child/${child._id}/sync`}
+            type="submit"
+            role="button"
+            className="btn btn-warning"
+          >
+            Añadir vacunas
+          </Link>
         )}
         <aside>*Powered by VaccApp</aside>
       </div>

@@ -18,6 +18,8 @@ function Navbar() {
       .catch((error) => console.log(error));
   };
 
+  console.log("EEE", families);
+
   useEffect(() => {
     getAllFamilies();
   }, []);
@@ -45,7 +47,7 @@ function Navbar() {
                 </Link>
               </div>
               <div className="navbar navbar-el">
-                <Link to={`/family/${families}/children`}>
+                <Link to={`/family`}>
                   <img
                     src="/Family.png"
                     alt="calendar"
