@@ -10,7 +10,7 @@ const API_URL = "http://localhost:5005";
 export default function ChildDetails(props) {
   const [child, setChild] = useState(null);
   const { childId } = useParams();
-  // const [vaccineArray, setVaccineArray] = useState([]);
+  const [vaccineArray, setVaccineArray] = useState([]);
 
   const getAChild = (id) => {
     childService
@@ -21,12 +21,15 @@ export default function ChildDetails(props) {
 
   // const getVacc = child?.healthcard;
 
-  // const getVaccines = (childId) => {
-  //   childService
-  //     .getVacc(childId)
-  //     .then((response) => setVaccineArray(response.data))
-  //     .catch((error) => console.log(error));
-  // };
+  const getVaccines = (childId) => {
+    childService
+      .getVacc(childId)
+      .then((response) => setChild(response.data))
+      .then(() => {
+        console.log(vaccineArray);
+      })
+      .catch((error) => console.log(error));
+  };
 
   // console.log("WEEE", vaccineArray);
 
@@ -111,19 +114,14 @@ export default function ChildDetails(props) {
             </div>
           );
         })}
-        {/* 
-        {child.vaccines.length === 0 ? (
+
+        {child.vaccines.length !== 0 ? (
           <div></div>
         ) : (
-          <Link
-            to={`/child/${child._id}/sync`}
-            type="submit"
-            role="button"
-            className="btn btn-warning"
-          >
+          <Link onClick={getVaccines} role="button" className="btn btn-warning">
             Añadir vacunas
           </Link>
-        )} */}
+        )}
         <aside>*Powered by VaccApp</aside>
       </div>
     )
