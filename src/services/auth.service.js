@@ -3,7 +3,7 @@ import axios from "axios";
 class AuthService {
   constructor() {
     this.api = axios.create({
-      baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005",
+      baseURL: process.env.REACT_APP_SERVER_URL || "https://vaccapp.fly.dev/",
     });
 
     // Automatically set JWT token on the request headers for every request
@@ -22,19 +22,19 @@ class AuthService {
   login = (requestBody) => {
     return this.api.post("/auth/login", requestBody);
     // same as
-    // return axios.post("http://localhost:5005/auth/login");
+    // return axios.post("https://vaccapp.fly.dev//auth/login");
   };
 
   signup = (requestBody) => {
     return this.api.post("/auth/signup", requestBody);
     // same as
-    // return axios.post("http://localhost:5005/auth/singup");
+    // return axios.post("https://vaccapp.fly.dev//auth/singup");
   };
 
   verify = () => {
     return this.api.get("/auth/verify");
     // same as
-    // return axios.post("http://localhost:5005/auth/verify");
+    // return axios.post("https://vaccapp.fly.dev//auth/verify");
   };
 
   profile = (id) => {
@@ -43,11 +43,11 @@ class AuthService {
 
   edit = (id, requestBody) => {
     return this.api.put(`/auth/${id}`, requestBody);
-  }
+  };
 
   delete = (id) => {
     return this.api.delete(`/auth/${id}`);
-  }
+  };
 }
 
 // Create one instance (object) of the service

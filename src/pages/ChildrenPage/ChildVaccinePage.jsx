@@ -7,8 +7,8 @@ import "react-datepicker/dist/react-datepicker.module.css";
 import childService from "../../services/child.service";
 import "./ChildVaccinePage.css";
 
-const API_URL = "http://localhost:5005";
-const REALAPI_URL = "http://localhost:4001/api";
+const API_URL = "https://vaccapp.fly.dev/";
+const REALAPI_URL = "https://api-madrid.fly.dev//api";
 
 export default function ChildVaccinePage() {
   const [data, setData] = useState([]);

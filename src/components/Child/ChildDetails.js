@@ -6,7 +6,7 @@ import VaccineCard from "../Vaccine/VaccineCard";
 import "./ChildDetails.css";
 import VaccineAlert from "../VaccineAlert/VaccineAlert";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://vaccapp.fly.dev/";
 
 export default function ChildDetails(props) {
   const [child, setChild] = useState(null);
