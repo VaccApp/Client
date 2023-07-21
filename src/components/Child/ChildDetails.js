@@ -13,7 +13,7 @@ export default function ChildDetails(props) {
   const { childId } = useParams();
   const [vaccineArray, setVaccineArray] = useState([]);
 
-  const getAChild = (id) => {
+  const getAChild = () => {
     childService
       .getOne(childId)
       .then((response) => setChild(response.data))
@@ -22,7 +22,7 @@ export default function ChildDetails(props) {
 
   // const getVacc = child?.healthcard;
 
-  const getVaccines = (childId) => {
+  const getVaccines = () => {
     childService
       .getVacc(childId)
       .then((response) => setChild(response.data))
@@ -115,7 +115,6 @@ export default function ChildDetails(props) {
             </div>
           );
         })}
-
 
         {child.vaccines.length !== 0 ? (
           <div></div>
