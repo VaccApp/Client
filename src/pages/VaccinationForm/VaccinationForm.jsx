@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import vaccineService from "../../services/vaccine.service";
 import childService from "../../services/child.service";
-import { Button } from "bootstrap";
+import centerService from "../../services/center.service";
 
 function VaccinationForm() {
   const [name, setName] = useState("Vacuna");
@@ -17,6 +17,8 @@ function VaccinationForm() {
   const [status, setStatus] = useState("");
   const [vaccinationAge, setVaccinationAge] = useState("");
   const [vaccinationDate, setVaccinationDate] = useState(Date.now());
+  const [center, setCenter] = useState("");
+  const [healthCenters, setHealthCenters] = useState("");
   const { childId } = useParams();
   const [child, setChild] = useState([]);
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -45,6 +47,7 @@ function VaccinationForm() {
       status,
       vaccinationAge,
       vaccinationDate,
+      center,
     };
 
     vaccineService
@@ -71,6 +74,16 @@ function VaccinationForm() {
     getChild();
   }, [childId]);
 
+  useEffect(() => {
+    const getCenters = () => {
+      centerService
+        .getAll()
+        .then((response) => setHealthCenters(response.data))
+        .catch((error) => console.log(error));
+    };
+    getCenters();
+  }, []);
+
   return (
     <div className="VaccinationForm saveBottom">
       <Link to={`/child/${childId}`}>
@@ -79,6 +92,34 @@ function VaccinationForm() {
       <h1>Vacunar a {child.name}</h1>
 
       <form onSubmit={handleVaccinationFormSubmit}>
+        <label className="form-label">Centro de salud</label>
+        <select
+          className="form-select"
+          name="center"
+          value={center}
+          onChange={(e) => {
+            setCenter(e.target.value);
+          }}
+        >
+          <option value="">Selecciona un centro de salud</option>
+          {healthCenters &&
+            healthCenters["@graph"].map((center) => {
+              return (
+                <option key={center["@id"]} value={center.title}>
+                  {center.title}
+                </option>
+              );
+            })}
+        </select>
+        <Link
+          to={`/centers`}
+          role="button"
+          className="btn btn-secondary"
+          style={{ marginTop: "10px" }}
+        >
+          Info Centros
+        </Link>
+        <hr />
         <label className="form-label">Nombre de la vacuna</label>
         <input
           type="text"
