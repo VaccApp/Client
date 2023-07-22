@@ -13,6 +13,7 @@ const API_URL = "http://localhost:3000";
 export default function AppointmentsPage() {
   const [children, setChildren] = useState([]);
   const [selectedChild, setselectedChild] = useState([]);
+  const [apps, setApps] = useState([]);
   const { familyId } = useParams();
 
   const getFamily = () => {
@@ -25,7 +26,12 @@ export default function AppointmentsPage() {
       .catch((error) => console.log(error));
   };
 
-  console.log("CHILDREN", selectedChild);
+  const date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let hoy = year + "-" + month + "-" + day;
+  console.log("hoy", hoy);
 
   const filterChild = (display) => {
     if (display === "Todos") {
@@ -36,16 +42,7 @@ export default function AppointmentsPage() {
     return setselectedChild(filteredChild);
   };
 
-  // const filteredChildren = children.filter(
-  //   (filtredChild) => filtredChild.name ===
-  // );
-
-  // function handleChild(e) {
-  //   setFiltredChild(e.target.value);
-  //   filtredChild !== "Todos"
-  //     ? setFiltredChild(filterChild(e.target.value))
-  //     : setFiltredChild(getFamily());
-  // }
+  console.log(hoy >= "2023-07-26");
 
   const renderChildren = () => {
     return children ? (
@@ -91,6 +88,7 @@ export default function AppointmentsPage() {
               child.vaccines.map((vaccine) => (
                 <div key={vaccine._id} {...vaccine} className="dates">
                   {/* <aside className="centrado">{vaccine.vaccinationAge}</aside> */}
+
                   <img
                     src="/Syringe.png"
                     alt="vaccine pic"
@@ -100,8 +98,12 @@ export default function AppointmentsPage() {
                     <i>{vaccine.status}</i>
                   </p>
                   <p>{child.name}</p>
+                  {console.log(
+                    "vaccFecha",
+                    vaccine.vaccinationDate.slice(0, 10)
+                  )}
                   <p>
-                    {vaccine.vaccinationDate
+                    {vaccine.vaccinationDate <= hoy
                       ? "🗓 " + vaccine.vaccinationDate.slice(0, 10)
                       : "Debes fijar la cita"}
                   </p>

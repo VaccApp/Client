@@ -3,7 +3,7 @@ import axios from "axios";
 class ChildService {
   constructor() {
     this.api = axios.create({
-      baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005",
+      baseURL: process.env.REACT_APP_SERVER_URL || "https://vaccapp.fly.dev/",
     });
 
     // Automatically set JWT token in the headers for every request
@@ -51,6 +51,11 @@ class ChildService {
   // GET /child/:childId
   getOne = (childId) => {
     return this.api.get(`/child/${childId}`);
+  };
+
+  // GET /child/:childId/sync
+  getVacc = (childId) => {
+    return this.api.get(`/child/${childId}/sync`);
   };
 }
 

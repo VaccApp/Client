@@ -70,17 +70,34 @@ export default function CentersPage() {
 
   return (
     centers && (
-      <div className="centers-page">
-        <h1>Centros de vacunación</h1>
-        {!chosenCenter && <Map lng={-3.7033387} lat={40.4167278} chosenCenter={chosenCenter} />}
-        {chosenCenter && (
-          <Map
-            lng={chosenCenter.location.longitude}
-            lat={chosenCenter.location.latitude}
-            chosenCenter={chosenCenter}
-          />
-        )}
-        <p>{chosenCenter.title}</p>
+      <div className="centers-page saveBottom saveTop">
+        <div className="apano">
+          <img src="/Calendar.png" alt="apano" className="apano"></img>
+          <p>...</p>
+          <p>...</p>
+          <p>...</p>
+
+          <p>...</p>
+        </div>
+        <div className="white fixed-top">
+          {/* <h1 className="wei">Centros de vacunación</h1> */}
+          {!chosenCenter && (
+            <Map
+              lng={-3.7033387}
+              lat={40.4167278}
+              chosenCenter={chosenCenter}
+            />
+          )}
+          {chosenCenter && (
+            <Map
+              lng={chosenCenter.location.longitude}
+              lat={chosenCenter.location.latitude}
+              chosenCenter={chosenCenter}
+            />
+          )}
+          <p>{chosenCenter.title}</p>
+        </div>
+
         <hr />
         <div className="centers-container">{renderCenters()}</div>
       </div>

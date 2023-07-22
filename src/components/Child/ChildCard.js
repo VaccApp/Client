@@ -33,7 +33,7 @@ export default function ChildCard({
 
   let as = edad(birthdate.slice(0, 10));
 
-  // console.log(as);
+  console.log(_id);
 
   // const { childId } = useParams();
   return (

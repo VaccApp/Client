@@ -7,8 +7,8 @@ import "react-datepicker/dist/react-datepicker.module.css";
 import childService from "../../services/child.service";
 import "./ChildVaccinePage.css";
 
-const API_URL = "http://localhost:5005";
-const REALAPI_URL = "http://localhost:4001/api";
+const API_URL = "https://vaccapp.fly.dev/";
+const REALAPI_URL = "https://api-madrid.fly.dev//api";
 
 export default function ChildVaccinePage() {
   const [data, setData] = useState([]);
@@ -111,7 +111,12 @@ export default function ChildVaccinePage() {
         <p>{as.months}</p> */}
 
           <p>Dosis: {vaccine.dose}</p>
-          <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
+          <p>
+            Edad de vacunación:{" "}
+            {vaccine.vaccinationAge < 16
+              ? vaccine.vaccinationAge + " meses"
+              : vaccine.vaccinationAge / 12 + " años"}
+          </p>
           {/* <h4>Cita vacunación</h4> */}
           <p>
             {vaccine.status === "PENDIENTE"

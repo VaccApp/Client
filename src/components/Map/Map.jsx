@@ -40,7 +40,7 @@ export default function Map({ lng, lat, chosenCenter }) {
   }, [lng, lat, zoom]);
 
   return (
-    <div>
+    <div className="map-container">
       {/* <div className="sidebar">
         <div>
           Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}

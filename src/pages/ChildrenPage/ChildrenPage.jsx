@@ -34,7 +34,7 @@ export default function ChildrenPage() {
       ) : (
         <div>
           <p>No has añadido a tus hij@s a la aplicación.</p>
-          <Link to={`/family/${familyId}/children`}>
+          <Link to={`/family/${familyId}/add-child`}>
             <button className="btn btn-primary">Añádelos aquí</button>
           </Link>
         </div>
