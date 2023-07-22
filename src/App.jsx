@@ -33,7 +33,7 @@ import ChildVaccinePage from "./pages/ChildrenPage/ChildVaccinePage";
 import VaccinationForm from "./pages/VaccinationForm/VaccinationForm";
 import EditVaccineForm from "./pages/EditVaccineForm/EditVaccineForm";
 import QRreader from "./pages/QRreader/QRreader";
-
+import InviteParent from "./pages/InviteParent/InviteParent";
 import { AuthContext } from "./context/auth.context";
 import VaccineDetailPage from "./pages/VaccinesPage/VaccineDetailPage";
 import { Calendar } from "react-big-calendar";
@@ -65,6 +65,8 @@ function App() {
           element={<EditChildPage />}
         />
         <Route path="/family/:familyId/children" element={<ChildrenPage />} />
+
+        <Route path="/family/:familyId/invite" element={<InviteParent />} />
 
         <Route path="/child/:childId" element={<ChildDetails />} />
 

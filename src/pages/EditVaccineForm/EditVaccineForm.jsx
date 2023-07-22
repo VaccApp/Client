@@ -88,8 +88,8 @@ function EditVaccineForm() {
   return (
     vaccinationAge &&
     vaccinationDate && (
-      <div className="EditVaccinePage">
-        <h1>Editar vacuna</h1>
+      <div className="saveBottom">
+        <h1 style={{ margin: "5%" }}>Editar vacuna</h1>
         <form onSubmit={handleEditVaccineSubmit}>
           <label className="form-label">Centro de salud</label>
           <input

@@ -30,7 +30,7 @@ function InviteParent() {
 
   return (
     <div className="InviteParent">
-      <h1>Invitar a progenitor</h1>
+      <h1 style={{ margin: "5%" }}>Invitar a progenitor</h1>
       <img src={logo} alt="familyCare logo" className="logo" />
       <form onSubmit={handleInviteSubmit}>
         <label className="form-label">Email</label>
@@ -43,7 +43,7 @@ function InviteParent() {
           placeholder="Introduce el email del progenitor"
           required
         />
-        <button type="submit" className="btn btn-dark">
+        <button type="submit" className="btn btn-dark" style={{ marginTop: "5%" }}>
           Invitar
         </button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
