@@ -8,7 +8,7 @@ import childService from "../../services/child.service";
 import "./ChildVaccinePage.css";
 
 const API_URL = "https://vaccapp.fly.dev/";
-const REALAPI_URL = "https://api-madrid.fly.dev//api";
+const REALAPI_URL = "https://api-madrid.fly.dev/api";
 
 export default function ChildVaccinePage() {
   const [data, setData] = useState([]);
@@ -96,8 +96,10 @@ export default function ChildVaccinePage() {
           <h2 className="vacuTitle">Vacuna {vaccine.name}</h2>
           <br />
           <Link to={`/child/${child._id}/vaccinate/${vaccine._id}/edit`}>
-          <button className="btn btn-dark" style={{ float: "right" }}>Editar</button>
-        </Link>
+            <button className="btn btn-dark" style={{ float: "right" }}>
+              Editar
+            </button>
+          </Link>
         </div>
 
         <div className="left">

@@ -8,7 +8,7 @@ import ChildCard from "../../components/Child/ChildCard";
 import moment from "moment";
 import "./AppointmentsPage.css";
 import { Button } from "bootstrap";
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:5005";
 
 export default function AppointmentsPage() {
   const [children, setChildren] = useState([]);
