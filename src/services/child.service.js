@@ -3,7 +3,7 @@ import axios from "axios";
 class ChildService {
   constructor() {
     this.api = axios.create({
-      baseURL: process.env.REACT_APP_SERVER_URL || "https://vaccapp.fly.dev/",
+      baseURL: process.env.REACT_APP_SERVER_URL || "https://vaccapp.fly.dev",
     });
 
     // Automatically set JWT token in the headers for every request
@@ -21,7 +21,7 @@ class ChildService {
 
   // POST /child
   addChild(familyId, requestBody) {
-    return this.api.post(`family/${familyId}`, requestBody);
+    return this.api.post(`/family/${familyId}`, requestBody);
   }
 
   // POST vaccinationDate

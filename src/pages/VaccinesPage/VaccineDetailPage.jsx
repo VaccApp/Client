@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-const API_URL = "https://vaccapp.fly.dev/";
+const API_URL = "https://vaccapp.fly.dev";
 const REALAPI_URL = "https://api-madrid.fly.dev/api";
 
 export default function VaccineDetailPage(props) {

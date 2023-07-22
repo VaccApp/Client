@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import familyService from "../../services/family.service";
 
-const API_URL = "https://vaccapp.fly.dev/";
+const API_URL = "https://vaccapp.fly.dev";
 
 export default function FamilyDetails(props) {
   const [oneFamily, setOneFamily] = useState(null);
