@@ -94,6 +94,10 @@ export default function ChildVaccinePage() {
         <div className="vacunaCard">
           <img src="/Syringe.png" alt="vacuna" className="vacuna4" />
           <h2 className="vacuTitle">Vacuna {vaccine.name}</h2>
+          <br />
+          <Link to={`/child/${child._id}/vaccinate/${vaccine._id}/edit`}>
+          <button className="btn btn-dark" style={{ float: "right" }}>Editar</button>
+        </Link>
         </div>
 
         <div className="left">

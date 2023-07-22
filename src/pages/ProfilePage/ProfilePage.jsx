@@ -56,6 +56,14 @@ function ProfilePage() {
                   <Link to={`/family/${fam._id}`} className="btn btn-primary">
                     {fam.surname}
                   </Link>
+                  <Link to={`/family/${fam._id}/invite`}>
+                    <button
+                      className="btn btn-secondary"
+                      style={{ marginLeft: "20px" }}
+                    >
+                      Invitar
+                    </button>
+                  </Link>
                 </h3>
                 <p className="data">Creada el: {fam.createdAt.split("T")[0]}</p>
                 <hr />
@@ -76,7 +84,7 @@ function ProfilePage() {
           <Link
             to={`/profile/${user._id}/edit`}
             role="button"
-            className="btn btn-dark"
+            className="btn btn-secondary"
             style={{ marginLeft: "30px", marginBottom: "10px" }}
           >
             Editar perfil
