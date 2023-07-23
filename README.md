@@ -20,6 +20,18 @@ VaccApp is an online tool that allows to replace the classic vaccination card wi
 
 - Bootstrap / Moment / React-qr-scanner / Mapbox
 
+## Features
+
+- Schedule vaccination appointments.
+
+- Read QR to complete the vaccination form.
+
+- Madrid Salud vaccination info.
+
+- Madrid Salud health centers info with map.
+
+- Sync data with Madrid Salud server.
+
 ## User Stories
 
 - **404:** As a user I want to see a 404 page when I try to reach a page that does not exist so that I know it's my fault 🤦
