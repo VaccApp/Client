@@ -4,14 +4,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import ApiVaccine from "../../components/Vaccine/ApiVaccine";
 
-const API_URL = "https://vaccapp.fly.dev";
+const REALAPI_URL = "https://api-madrid.fly.dev/";
 
 export default function VaccinesPage() {
   const [vaccines, setVaccines] = useState([]);
 
   const getAllVaccines = () => {
     axios
-      .get(`${API_URL}/vaccines`)
+      .get(`${REALAPI_URL}/vaccines`)
       .then(({ data }) => {
         const sortedVaccines = data.reduce((acc, val) => {
           if (acc.hasOwnProperty(val.vaccinationAge)) {
