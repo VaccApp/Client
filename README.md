@@ -26,6 +26,8 @@ VaccApp is an online tool that allows to replace the classic vaccination card wi
 
 - Read QR to complete the vaccination form.
 
+- Invite parent to family by email.
+
 - Madrid Salud vaccination info.
 
 - Madrid Salud health centers info with map.
