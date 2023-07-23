@@ -35,6 +35,7 @@ function QRreader() {
         style={previewStyle}
         onError={handleError}
         onScan={handleScan}
+        facingMode="rear"
       />
       <p>{result && result}</p>
 
