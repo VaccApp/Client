@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import ApiVaccine from "../../components/Vaccine/ApiVaccine";
 
-const REALAPI_URL = "https://api-madrid.fly.dev/";
+const REALAPI_URL = "https://api-madrid.fly.dev/api";
 
 export default function VaccinesPage() {
   const [vaccines, setVaccines] = useState([]);
