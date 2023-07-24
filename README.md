@@ -36,11 +36,11 @@ VaccApp is an online tool that allows to replace the classic vaccination card wi
 
 ## QR examples for vaccination form
 
-![Meningococo](https://github.com/VaccApp/Client/blob/main/public/Meningococo%20C%20Univ.png)
+![Meningococo|150](https://github.com/VaccApp/Client/blob/main/public/Meningococo%20C%20Univ.png)
 
-![Hexavalente](https://github.com/VaccApp/Client/blob/main/public/Hexavalente%20Univ.png)
+![Hexavalente|150](https://github.com/VaccApp/Client/blob/main/public/Hexavalente%20Univ.png)
 
-![Varicela](https://github.com/VaccApp/Client/blob/main/public/Varicela%20Univ.png)
+![Varicela|150](https://github.com/VaccApp/Client/blob/main/public/Varicela%20Univ.png)
 
 ## User Stories
 
