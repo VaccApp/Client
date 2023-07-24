@@ -34,6 +34,14 @@ VaccApp is an online tool that allows to replace the classic vaccination card wi
 
 - Sync data with Madrid Salud server.
 
+## QR examples for vaccination form
+
+![Meningococo](./public/Meningococo C Univ.png)
+
+![Hexavalente](./public/Hexavalente Univ.png)
+
+![Varicela](./public/Varicela Univ.png)
+
 ## User Stories
 
 - **404:** As a user I want to see a 404 page when I try to reach a page that does not exist so that I know it's my fault 🤦
