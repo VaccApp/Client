@@ -12,11 +12,10 @@ export default function VaccinePage(props) {
 
   const getOneVaccine = (vaccineId) => {
     vaccineApiService
-      .getVaccines(vaccineId)
+      .getAVaccine(vaccineId)
       .then((response) => {
-        const oneVaccine = response.data.filter(
-          (vaccine) => (vaccine._id = vaccineId)
-        );
+        const oneVaccine = response.data;
+        console.log("oneVaccine", oneVaccine);
         setVaccine(oneVaccine);
       })
       .catch((error) => console.log(error));
