@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import ApiVaccine from "../../components/Vaccine/ApiVaccine";
 
-const API_URL = "https://vaccapp.fly.dev/";
+const API_URL = "https://vaccapp.fly.dev";
 const REALAPI_URL = "https://api-madrid.fly.dev";
 
 export default function VaccinesPage() {
@@ -34,16 +34,6 @@ export default function VaccinesPage() {
   useEffect(() => {
     getAllVaccines();
   }, []);
-
-  // const renderVaccines = () => {
-  //   return apiVaccines.map((vaccine) => (
-  //     <div key={vaccine._id} {...vaccine} className="vaccine">
-  //       <h4>{vaccine.vaccineName}</h4>
-  //       <p>Descripción: {vaccine.description}</p>
-  //       <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
-  //     </div>
-  //   ));
-  // };
 
   return (
     <div className="saveBottom">
