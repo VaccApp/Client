@@ -7,21 +7,21 @@ class VaccineApiService {
     });
 
     // Automatically set JWT token on the request headers for every request
-    // this.api.interceptors.request.use((config) => {
-    //   // Retrieve the JWT token from the local storage
-    //   const storedToken = localStorage.getItem("authToken");
+    this.api.interceptors.request.use((config) => {
+      // Retrieve the JWT token from the local storage
+      const storedToken = localStorage.getItem("authToken");
 
-    //   if (storedToken) {
-    //     config.headers = { Authorization: `Bearer ${storedToken}` };
-    //   }
+      if (storedToken) {
+        config.headers = { Authorization: `Bearer ${storedToken}` };
+      }
 
-    //   return config;
-    // });
+      return config;
+    });
   }
 
   // GET /vaccine
   getVaccines = () => {
-    return this.api.get(`/vaccines`);
+    return this.api.get(`/vaccines/calendar`);
   };
 
   //GET /vaccines/vaccineId
