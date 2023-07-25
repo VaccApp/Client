@@ -95,7 +95,7 @@ export default function CentersPage() {
               chosenCenter={chosenCenter}
             />
           )}
-          <p>{chosenCenter.title}</p>
+          <p className="sidebar">{chosenCenter.title}</p>
         </div>
 
         <hr />
