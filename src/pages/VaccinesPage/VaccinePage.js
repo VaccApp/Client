@@ -14,8 +14,9 @@ export default function VaccinePage(props) {
     vaccineApiService
       .getVaccines(vaccineId)
       .then((response) => {
-        console.log("VACC", response.data);
-        const oneVaccine = response.data;
+        const oneVaccine = response.data.filter(
+          (vaccine) => (vaccine._id = vaccineId)
+        );
         setVaccine(oneVaccine);
       })
       .catch((error) => console.log(error));
