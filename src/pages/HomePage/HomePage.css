@@ -44,3 +44,7 @@ justify-content: center;
     margin: 6px;
 
 }
+
+.logo {
+    max-width: 300px;
+}
