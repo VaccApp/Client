@@ -11,8 +11,9 @@ export default function VaccinesPage() {
 
   const getAllVaccines = () => {
     vaccineApiService
-      .getThem()
+      .getVaccines()
       .then(({ data }) => {
+        console.log("DAATA", data);
         const sortedVaccines = data.reduce((acc, val) => {
           if (acc.hasOwnProperty(val.vaccinationAge)) {
             acc[val.vaccinationAge].push(val);
