@@ -8,7 +8,7 @@ import childService from "../../services/child.service";
 import "./ChildVaccinePage.css";
 
 const API_URL = "https://vaccapp.fly.dev";
-const REALAPI_URL = "https://api-madrid.fly.dev/api";
+const REALAPI_URL = "https://api-madrid.fly.dev";
 
 export default function ChildVaccinePage() {
   const [data, setData] = useState([]);
