@@ -28,4 +28,4 @@ class VaccineApiService {
 // Create one instance (object) of the service
 const vaccineApiService = new VaccineApiService();
 
-export default VaccineApiService;
+export default vaccineApiService;
