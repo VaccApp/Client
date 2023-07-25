@@ -14,17 +14,18 @@ export default function VaccinePage(props) {
     vaccineApiService
       .getAVaccine(vaccineId)
       .then((response) => {
+        console.log("VACC", response.data);
         const oneVaccine = response.data;
         setVaccine(oneVaccine);
       })
       .catch((error) => console.log(error));
   };
 
+  console.log("VAC2C", vaccine);
+
   useEffect(() => {
     getAVaccine();
   }, [vaccineId]);
-
-  console.log(vaccine);
 
   return (
     <div className="saveBottom">

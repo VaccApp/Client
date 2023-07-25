@@ -24,6 +24,8 @@ class VaccineApiService {
     return this.api.get(`/api/vaccines`);
   };
 
+  //GET /vaccines/vaccineId
+
   getAVaccine = (vaccineId) => {
     return this.api.get(`/api/vaccines/${vaccineId}`);
   };
