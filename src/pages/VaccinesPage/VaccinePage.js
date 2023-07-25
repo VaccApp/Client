@@ -10,7 +10,7 @@ export default function VaccinePage(props) {
   const [vaccine, setVaccine] = useState([]);
   const { vaccineId } = useParams();
 
-  const getAVaccine = () => {
+  const getOneVaccine = (vaccineId) => {
     vaccineApiService
       .getAVaccine(vaccineId)
       .then((response) => {
@@ -24,7 +24,7 @@ export default function VaccinePage(props) {
   console.log("VAC2C", vaccine);
 
   useEffect(() => {
-    getAVaccine();
+    getOneVaccine();
   }, [vaccineId]);
 
   return (

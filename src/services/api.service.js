@@ -3,7 +3,7 @@ import axios from "axios";
 class VaccineApiService {
   constructor() {
     this.api = axios.create({
-      baseURL: process.env.REACT_APP_SERVER_URL || "https://api-madrid.fly.dev",
+      baseURL: process.env.REACT_APP_SERVER_URL || "https://vaccapp.fly.dev",
     });
 
     // Automatically set JWT token on the request headers for every request
@@ -21,13 +21,13 @@ class VaccineApiService {
 
   // GET /vaccine
   getVaccines = () => {
-    return this.api.get(`/api/vaccines`);
+    return this.api.get(`/vaccines`);
   };
 
   //GET /vaccines/vaccineId
 
   getAVaccine = (vaccineId) => {
-    return this.api.get(`/api/vaccines/${vaccineId}`);
+    return this.api.get(`/vaccines/${vaccineId}`);
   };
 }
 
