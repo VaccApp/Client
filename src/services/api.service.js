@@ -23,6 +23,10 @@ class VaccineApiService {
   getVaccines() {
     return this.api.get(`/api/vaccines`);
   }
+
+  getAVaccine(vaccineId) {
+    return this.api.get(`/api/vaccines/${vaccineId}`);
+  }
 }
 
 // Create one instance (object) of the service

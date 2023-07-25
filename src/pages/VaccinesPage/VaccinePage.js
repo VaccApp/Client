@@ -2,16 +2,17 @@ import "./VaccinePage.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import vaccineApiService from "../../services/api.service";
 
-const REALAPI_URL = "https://api-madrid.fly.dev";
+// const REALAPI_URL = "https://api-madrid.fly.dev";
 
 export default function VaccinePage(props) {
   const [vaccine, setVaccine] = useState([]);
   const { vaccineId } = useParams();
 
   const getAVaccine = () => {
-    axios
-      .get(`${REALAPI_URL}/vaccines/${vaccineId}`)
+    vaccineApiService
+      .getAVAccine(vaccineId)
       .then((response) => {
         const oneVaccine = response.data;
         setVaccine(oneVaccine);
