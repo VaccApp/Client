@@ -35,16 +35,6 @@ export default function VaccinesPage() {
     getAllVaccines();
   }, []);
 
-  // const renderVaccines = () => {
-  //   return apiVaccines.map((vaccine) => (
-  //     <div key={vaccine._id} {...vaccine} className="vaccine">
-  //       <h4>{vaccine.vaccineName}</h4>
-  //       <p>Descripción: {vaccine.description}</p>
-  //       <p>Edad de vacunación: {vaccine.vaccinationAge}</p>
-  //     </div>
-  //   ));
-  // };
-
   return (
     <div className="saveBottom">
       <h1>Vacunación en la comunidad de Madrid</h1>
