@@ -20,13 +20,13 @@ class VaccineApiService {
   }
 
   // GET /vaccine
-  getVaccines() {
+  getVaccines = () => {
     return this.api.get(`/api/vaccines`);
-  }
+  };
 
-  getAVaccine(vaccineId) {
+  getAVaccine = (vaccineId) => {
     return this.api.get(`/api/vaccines/${vaccineId}`);
-  }
+  };
 }
 
 // Create one instance (object) of the service

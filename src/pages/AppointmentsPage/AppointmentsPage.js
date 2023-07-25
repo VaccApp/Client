@@ -8,7 +8,7 @@ import ChildCard from "../../components/Child/ChildCard";
 import moment from "moment";
 import "./AppointmentsPage.css";
 import { Button } from "bootstrap";
-const API_URL = "https://vaccapp.fly.dev";
+const API_URL = "https://vaccapp.netlify.app/";
 
 export default function AppointmentsPage() {
   const [children, setChildren] = useState([]);
