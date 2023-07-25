@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-const REALAPI_URL = "https://api-madrid.fly.dev/api";
+const REALAPI_URL = "https://api-madrid.fly.dev";
 
 export default function VaccinePage(props) {
   const [vaccine, setVaccine] = useState([]);
