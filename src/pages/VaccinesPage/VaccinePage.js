@@ -12,7 +12,7 @@ export default function VaccinePage(props) {
 
   const getOneVaccine = (vaccineId) => {
     vaccineApiService
-      .getAVaccine(vaccineId)
+      .getVaccines(vaccineId)
       .then((response) => {
         console.log("VACC", response.data);
         const oneVaccine = response.data;
