@@ -50,7 +50,7 @@ function AddChildPage() {
           value={childPic}
           onChange={handleChildPic ? handleChildPic : defaultPic}
           className="form-control"
-          required={true}
+          
         />
 
         <label className="form-label">Nombre</label>
