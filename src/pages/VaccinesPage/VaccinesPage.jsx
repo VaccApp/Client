@@ -3,15 +3,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ApiVaccine from "../../components/Vaccine/ApiVaccine";
-
-const REALAPI_URL = "https://api-madrid.fly.dev/api";
+import vaccineApiService from "../../services/api.service";
+// const REALAPI_URL = "https://api-madrid.fly.dev/api";
 
 export default function VaccinesPage() {
   const [vaccines, setVaccines] = useState([]);
 
   const getAllVaccines = () => {
-    axios
-      .get(`${REALAPI_URL}/vaccines`)
+    vaccineApiService
+      .getThem()
       .then(({ data }) => {
         const sortedVaccines = data.reduce((acc, val) => {
           if (acc.hasOwnProperty(val.vaccinationAge)) {
