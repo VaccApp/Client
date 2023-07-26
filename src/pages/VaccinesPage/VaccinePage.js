@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import vaccineApiService from "../../services/api.service";
 
-// const REALAPI_URL = "https://api-madrid.fly.dev";
+const REALAPI_URL = "https://api-madrid.fly.dev";
 
 export default function VaccinePage(props) {
   const [vaccine, setVaccine] = useState([]);
@@ -13,8 +13,10 @@ export default function VaccinePage(props) {
   console.log("vaccineId front", vaccineId);
 
   const getOneVaccine = (vaccineId) => {
-    vaccineApiService
-      .getAVaccine(vaccineId)
+    // vaccineApiService
+    //   .getAVaccine(vaccineId)
+    axios
+      .get(`${REALAPI_URL}/api/vaccines/${vaccineId}`)
       .then((response) => {
         const oneVaccine = response.data;
         console.log("oneVaccine", oneVaccine);
