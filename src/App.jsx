@@ -45,11 +45,25 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route path="/family" element={<FamilyPage />} />
+        <Route
+          path="/family"
+          element={
+            <IsPrivate>
+              <FamilyPage />
+            </IsPrivate>
+          }
+        />
 
         <Route path="/family/create" element={<FamilyCreateForm />} />
 
-        <Route path="/family/:familyId" element={<FamilyDetails />} />
+        <Route
+          path="/family/:familyId"
+          element={
+            <IsPrivate>
+              <FamilyDetails />
+            </IsPrivate>
+          }
+        />
 
         <Route path="/family/:familyId/add-child" element={<AddChildPage />} />
 
@@ -57,18 +71,36 @@ function App() {
 
         <Route
           path="family/:familyId/children/:childId"
-          element={<ChildDetailPage />}
+          element={
+            <IsPrivate>
+              <ChildDetailPage />
+            </IsPrivate>
+          }
         />
 
         <Route
           path="/family/:familyId/children/:childId/edit"
           element={<EditChildPage />}
         />
-        <Route path="/family/:familyId/children" element={<ChildrenPage />} />
+        <Route
+          path="/family/:familyId/children"
+          element={
+            <IsPrivate>
+              <ChildrenPage />
+            </IsPrivate>
+          }
+        />
 
         <Route path="/family/:familyId/invite" element={<InviteParent />} />
 
-        <Route path="/child/:childId" element={<ChildDetails />} />
+        <Route
+          path="/child/:childId"
+          element={
+            <IsPrivate>
+              <ChildDetails />
+            </IsPrivate>
+          }
+        />
 
         <Route path="/child/:childId/vaccinate" element={<VaccinationForm />} />
 
@@ -94,7 +126,11 @@ function App() {
 
         <Route
           path="/family/:familyId/appointments"
-          element={<AppointmentsPage />}
+          element={
+            <IsPrivate>
+              <AppointmentsPage />
+            </IsPrivate>
+          }
         />
 
         <Route
