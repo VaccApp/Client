@@ -34,7 +34,7 @@ function VaccineAlert({ childId, childName, familyId }) {
 
   return (
     vaccines && (
-      <div>
+      <div style={{ marginTop: "20px" }}>
         <button
           type="button"
           className="btn btn-secondary"
