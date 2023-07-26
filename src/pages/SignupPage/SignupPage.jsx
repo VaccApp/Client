@@ -55,7 +55,7 @@ function SignupPage() {
   return (
     <div className="SignupPage">
       <h1>Signup</h1>
-      <img src={logo} alt="familyCare logo" className="logo" />
+      <img src={logo} alt="familyCare logo" className="logo" style={{ width: "200px" }} />
 
       <form onSubmit={handleSignupSubmit}>
         <label className="form-label">Usuario</label>
