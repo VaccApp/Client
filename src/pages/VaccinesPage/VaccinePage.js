@@ -10,7 +10,7 @@ export default function VaccinePage(props) {
   const [vaccine, setVaccine] = useState([]);
   const { vaccineId } = useParams();
 
-  console.log("vaccineId", typeof vaccineId);
+  console.log("vaccineId front", typeof vaccineId);
 
   const getOneVaccine = (vaccineId) => {
     vaccineApiService
