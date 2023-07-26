@@ -50,7 +50,7 @@ function LoginPage() {
   return (
     <div className="LoginPage">
       <h1>Login</h1>
-      <img src={logo} alt="familyCare logo" className="logo" />
+      <img src={logo} alt="familyCare logo" className="logo" style={{ width: "200px" }} />
 
       <form onSubmit={handleLoginSubmit}>
         <label className="form-label">Usuario</label>
